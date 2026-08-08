@@ -1,0 +1,63 @@
+/* ==========================================================================
+   CODEX STUDIO - Desktop React Design System
+   ========================================================================== */
+
+:root {
+  --bg-black: #05070B;
+  --bg-dark: #080C14;
+  --bg-surface: #0D121D;
+  --text-white: #F5F7FA;
+  --text-muted: #9CA6B5;
+  --blue-electric: #0066FF;
+  --blue-hover: #0052CC;
+  --border-dark: #162032;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body.light-theme {
+  --bg-black: #F8FAFC;
+  --bg-dark: #FFFFFF;
+  --bg-surface: #F1F5F9;
+  --text-white: #0F172A;
+  --text-muted: #475569;
+  --border-dark: #E2E8F0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-black);
+  color: var(--text-white);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Animations */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
