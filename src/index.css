@@ -1,27 +1,37 @@
 /* ==========================================================================
-   CODEX STUDIO - Fluid Mobile-First & Desktop High-Res Design System
+   CODEX STUDIO - Fluid Design System with High-End Dark & Light Mode
    ========================================================================== */
 
 :root {
-  --bg-black: #05070B;
-  --bg-dark: #080C14;
+  --bg-page: #05070B;
+  --bg-card: #080C14;
   --bg-surface: #0D121D;
-  --text-white: #F5F7FA;
-  --text-muted: #9CA6B5;
-  --blue-electric: #0066FF;
-  --blue-hover: #0052CC;
-  --border-dark: #162032;
+  --bg-input: #05070B;
+  --text-main: #F8FAFC;
+  --text-sub: #94A3B8;
+  --text-muted: #64748B;
+  --border-color: #162032;
+  --border-hover: rgba(0, 102, 255, 0.4);
+  --accent-blue: #0066FF;
+  --accent-blue-hover: #0052CC;
+  --accent-glow: rgba(0, 102, 255, 0.2);
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
 body.light-theme {
-  --bg-black: #F8FAFC;
-  --bg-dark: #FFFFFF;
+  --bg-page: #F8FAFC;
+  --bg-card: #FFFFFF;
   --bg-surface: #F1F5F9;
-  --text-white: #0F172A;
-  --text-muted: #475569;
-  --border-dark: #E2E8F0;
+  --bg-input: #FFFFFF;
+  --text-main: #0F172A;
+  --text-sub: #475569;
+  --text-muted: #64748B;
+  --border-color: #E2E8F0;
+  --border-hover: rgba(0, 102, 255, 0.5);
+  --accent-blue: #0066FF;
+  --accent-blue-hover: #0052CC;
+  --accent-glow: rgba(0, 102, 255, 0.12);
 }
 
 *, *::before, *::after {
@@ -38,8 +48,8 @@ html, body {
 }
 
 body {
-  background-color: var(--bg-black);
-  color: var(--text-white);
+  background-color: var(--bg-page);
+  color: var(--text-main);
   font-family: var(--font-sans);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -86,7 +96,7 @@ body {
   }
 }
 
-/* Hero Section Layout */
+/* Layout Grids */
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -101,35 +111,19 @@ body {
   }
 }
 
-/* General Two-Column Grid */
 .grid-two-col {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .grid-two-col {
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    gap: 20px;
   }
 }
 
-/* General Three-Column Grid */
-.grid-three-col {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-}
-
-@media (min-width: 768px) {
-  .grid-three-col {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-}
-
-/* Contact Grid */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -144,22 +138,6 @@ body {
   }
 }
 
-/* Animations */
-@keyframes marquee-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 25s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -167,14 +145,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-black);
+  background: var(--bg-page);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-dark);
+  background: var(--border-color);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--blue-electric);
+  background: var(--accent-blue);
 }
