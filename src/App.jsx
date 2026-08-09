@@ -767,7 +767,7 @@ export default function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('codex_theme') || 'light')
   const [scrollProgress, setScrollProgress] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [heroTab, setHeroTab] = useState('corporate')
+  const [heroTab, setHeroTab] = useState('landing')
   const [currentSlide, setCurrentSlide] = useState(0)
   const [openFaq, setOpenFaq] = useState(0)
 
@@ -1039,6 +1039,28 @@ export default function App() {
   const works = [
     {
       id: '01',
+      name: 'Emin İmanverdiyev — Şəxsi Portfel & Mühəndis Saytı',
+      type: lang === 'az' ? 'Fərdi portfel və təqdimat saytı' : 'Personal Portfolio & Presentation Site',
+      desc: lang === 'az'
+        ? 'Proqramlaşdırma layihələri, texnoloji stack, mühəndislik təcrübəsi və birbaşa əməkdaşlıq əlaqəsi üçün fərdi təqdimat platforması.'
+        : 'Showcase of software engineering projects, tech stack, and direct collaboration contact.',
+      url: 'https://eminimanverdiyev.site/',
+      displayUrl: 'eminimanverdiyev.site',
+      tags: ['Fərdi sayt', 'Portfel platforması', 'Texnoloji layihələr', 'CV təqdimatı']
+    },
+    {
+      id: '02',
+      name: 'Encode Soft — Biznes və Müəssisə İdarəetmə Sistemi',
+      type: lang === 'az' ? 'Fərdi Veb Sistem & İdarəetmə Portalı' : 'Custom Enterprise & Business Management Portal',
+      desc: lang === 'az'
+        ? 'Müəssisələr üçün anbar, satış, maliyyə, əməkdaşlar və biznes proseslərinin idarə olunması üçün hazırlanmış fərdi idarəetmə və bulud sistemi.'
+        : 'Cloud-based custom enterprise management platform covering warehouse, sales, finance, and operations.',
+      url: 'https://app.encode-soft.com/',
+      displayUrl: 'app.encode-soft.com',
+      tags: ['İdarəetmə sistemi', 'Anbar və Satış', 'Fərdi sistem', 'Bulud platforması']
+    },
+    {
+      id: '03',
       name: 'Sinaps Med — Tibbi Avadanlıq & Səhiyyə Şirkəti',
       type: lang === 'az' ? 'Korporativ şirkət saytı' : 'Corporate website development',
       desc: lang === 'az' 
@@ -1049,40 +1071,7 @@ export default function App() {
       tags: ['Korporativ sayt', 'Məhsul kataloqu', 'Çoxdillilik', 'Partnyor əlaqələri']
     },
     {
-      id: '02',
-      name: 'Encode Soft — ERP & Biznes İdarəetmə Sistemi',
-      type: lang === 'az' ? 'Fərdi Veb Sistem & ERP Portalı' : 'Custom ERP & Business Management Portal',
-      desc: lang === 'az'
-        ? 'Müəssisələr üçün anbar, satış, maliyyə, əməkdaşlar və biznes proseslərinin idarə olunması üçün hazırlanmış fərdi ERP bulud sistemi.'
-        : 'Cloud-based custom ERP enterprise management platform covering warehouse, sales, finance, and operations.',
-      url: 'https://app.encode-soft.com/',
-      displayUrl: 'app.encode-soft.com',
-      tags: ['ERP sistemi', 'Fərdi sistem', 'Biznes idarəetməsi', 'Bulud platforması']
-    },
-    {
-      id: '03',
-      name: 'Emin İmanverdiyev — Şəxsi Portfel & Mühəndis Saytı',
-      type: lang === 'az' ? 'Bir səhifəlik fərdi portfel və təqdimat saytı' : 'Personal Portfolio & Presentation Site',
-      desc: lang === 'az'
-        ? 'Proqramlaşdırma layihələri, texnoloji stack, mühəndislik təcrübəsi və birbaşa əməkdaşlıq əlaqəsi üçün fərdi təqdimat platforması.'
-        : 'Showcase of software engineering projects, tech stack, and direct collaboration contact.',
-      url: 'https://eminimanverdiyev.site/',
-      displayUrl: 'eminimanverdiyev.site',
-      tags: ['Fərdi sayt', 'Portfel platforması', 'Texnoloji layihələr', 'CV təqdimatı']
-    },
-    {
       id: '04',
-      name: 'Vektor Logistics & Holding',
-      type: lang === 'az' ? 'Korporativ şirkət saytı və logistika portalı' : 'Corporate website and logistics portal',
-      desc: lang === 'az'
-        ? 'Beynəlxalq yükdaşıma, anbar xidmətləri və tərəfdaş şirkətlər üçün çoxsəhifəli, etibarlı korporativ veb portal.'
-        : 'Global shipping routes, warehousing capabilities, and multi-page structured corporate presentation.',
-      url: 'https://vektor-holding.codexstudio.az',
-      displayUrl: 'vektor-holding.az',
-      tags: ['Korporativ sayt', 'Xidmət kataloqu', 'Çoxdilli struktur', 'Sorğu sistemi']
-    },
-    {
-      id: '05',
       name: 'Aura Home & Living',
       type: lang === 'az' ? 'Onlayn mağaza (E-ticarət)' : 'Online store & E-commerce',
       desc: lang === 'az'
@@ -1091,6 +1080,17 @@ export default function App() {
       url: 'https://aurahome.codexstudio.az',
       displayUrl: 'aurahome.az',
       tags: ['Onlayn mağaza', 'Səbət sistemi', 'Kartla ödəniş', 'Mobil uyğun dizayn']
+    },
+    {
+      id: '05',
+      name: 'Vektor Logistics & Holding',
+      type: lang === 'az' ? 'Korporativ şirkət saytı və logistika portalı' : 'Corporate website and logistics portal',
+      desc: lang === 'az'
+        ? 'Beynəlxalq yükdaşıma, anbar xidmətləri və tərəfdaş şirkətlər üçün çoxsəhifəli, etibarlı korporativ veb portal.'
+        : 'Global shipping routes, warehousing capabilities, and multi-page structured corporate presentation.',
+      url: 'https://vektor-holding.codexstudio.az',
+      displayUrl: 'vektor-holding.az',
+      tags: ['Korporativ sayt', 'Xidmət kataloqu', 'Çoxdilli struktur', 'Sorğu sistemi']
     }
   ]
 
@@ -1545,22 +1545,22 @@ export default function App() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', padding: '4px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '10px' }}>
                       <button
-                        onClick={() => setHeroTab('corporate')}
-                        style={{ padding: '6px 10px', borderRadius: '6px', border: 'none', background: heroTab === 'corporate' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'corporate' ? 'white' : 'var(--text-sub)', fontSize: '0.74rem', fontWeight: 600, cursor: 'pointer' }}
+                        onClick={() => setHeroTab('landing')}
+                        style={{ padding: '6px 10px', borderRadius: '6px', border: 'none', background: heroTab === 'landing' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'landing' ? 'white' : 'var(--text-sub)', fontSize: '0.74rem', fontWeight: 600, cursor: 'pointer' }}
                       >
-                        {lang === 'az' ? 'Korporativ sayt' : 'Corporate'}
+                        {lang === 'az' ? 'Fərdi sayt' : 'Personal site'}
                       </button>
                       <button
                         onClick={() => setHeroTab('erp')}
                         style={{ padding: '6px 10px', borderRadius: '6px', border: 'none', background: heroTab === 'erp' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'erp' ? 'white' : 'var(--text-sub)', fontSize: '0.74rem', fontWeight: 600, cursor: 'pointer' }}
                       >
-                        {lang === 'az' ? 'ERP & Sistem' : 'ERP & Portal'}
+                        {lang === 'az' ? 'İdarəetmə sistemi' : 'Business system'}
                       </button>
                       <button
-                        onClick={() => setHeroTab('landing')}
-                        style={{ padding: '6px 10px', borderRadius: '6px', border: 'none', background: heroTab === 'landing' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'landing' ? 'white' : 'var(--text-sub)', fontSize: '0.74rem', fontWeight: 600, cursor: 'pointer' }}
+                        onClick={() => setHeroTab('corporate')}
+                        style={{ padding: '6px 10px', borderRadius: '6px', border: 'none', background: heroTab === 'corporate' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'corporate' ? 'white' : 'var(--text-sub)', fontSize: '0.74rem', fontWeight: 600, cursor: 'pointer' }}
                       >
-                        {lang === 'az' ? 'Fərdi sayt' : 'Personal site'}
+                        {lang === 'az' ? 'Korporativ sayt' : 'Corporate'}
                       </button>
                       <button
                         onClick={() => setHeroTab('ecommerce')}
@@ -1585,9 +1585,9 @@ export default function App() {
                       <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', background: 'var(--bg-card)', padding: '3px 12px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
                         <span style={{ color: 'var(--accent-blue)' }}>https://</span>
                         <span>
-                          {heroTab === 'corporate' && 'sinapsmed.com'}
-                          {heroTab === 'erp' && 'app.encode-soft.com'}
                           {heroTab === 'landing' && 'eminimanverdiyev.site'}
+                          {heroTab === 'erp' && 'app.encode-soft.com'}
+                          {heroTab === 'corporate' && 'sinapsmed.com'}
                           {heroTab === 'ecommerce' && 'aurahome.az'}
                         </span>
                       </div>
@@ -1595,32 +1595,6 @@ export default function App() {
                     </div>
 
                     <div style={{ padding: '24px', background: 'var(--bg-card)', minHeight: '260px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                      {heroTab === 'corporate' && (
-                        <div>
-                          <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>
-                            {lang === 'az' ? 'KORPORATİV ŞİRKƏT PORTALI' : 'ENTERPRISE HEALTHCARE PORTAL'}
-                          </div>
-                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Sinaps Med — Tibbi Avadanlıq & Səhiyyə</h3>
-                          <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>
-                            {lang === 'az' ? 'Şirkətiniz və xidmətləriniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi rəsmi sayt.' : 'Official enterprise healthcare portal presenting equipment catalogs and distribution services.'}
-                          </p>
-                          <a href="https://sinapsmed.com" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>{t.works.viewLive} →</a>
-                        </div>
-                      )}
-
-                      {heroTab === 'erp' && (
-                        <div>
-                          <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>
-                            {lang === 'az' ? 'FƏRDİ ERP & BİZNES İDARƏETMƏ SİSTEMİ' : 'CUSTOM ERP & ENTERPRISE SYSTEM'}
-                          </div>
-                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Encode Soft — ERP İdarəetmə Portalı</h3>
-                          <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>
-                            {lang === 'az' ? 'Müəssisələr üçün anbar, satış, maliyyə, əməkdaşlar və proseslərin idarə olunması üçün bulud sistemi.' : 'Enterprise cloud management platform covering operations, sales, and analytics.'}
-                          </p>
-                          <a href="https://app.encode-soft.com/" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>{t.works.viewLive} →</a>
-                        </div>
-                      )}
-
                       {heroTab === 'landing' && (
                         <div>
                           <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>
@@ -1631,6 +1605,32 @@ export default function App() {
                             {lang === 'az' ? 'Proqramlaşdırma layihələri, texnoloji həllər və əməkdaşlıq üçün fərdi platforma.' : 'Personal developer portfolio and tech projects showcase platform.'}
                           </p>
                           <a href="https://eminimanverdiyev.site/" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>{t.works.viewLive} →</a>
+                        </div>
+                      )}
+
+                      {heroTab === 'erp' && (
+                        <div>
+                          <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>
+                            {lang === 'az' ? 'BİZNES VƏ MÜƏSSİSƏ İDARƏETMƏ SİSTEMİ' : 'CUSTOM ENTERPRISE MANAGEMENT SYSTEM'}
+                          </div>
+                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Encode Soft — İdarəetmə Portalı</h3>
+                          <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>
+                            {lang === 'az' ? 'Müəssisələr üçün anbar, satış, maliyyə, əməkdaşlar və proseslərin idarə olunması üçün fərdi bulud sistemi.' : 'Enterprise cloud management platform covering operations, sales, and analytics.'}
+                          </p>
+                          <a href="https://app.encode-soft.com/" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>{t.works.viewLive} →</a>
+                        </div>
+                      )}
+
+                      {heroTab === 'corporate' && (
+                        <div>
+                          <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>
+                            {lang === 'az' ? 'KORPORATİV ŞİRKƏT PORTALI' : 'ENTERPRISE HEALTHCARE PORTAL'}
+                          </div>
+                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Sinaps Med — Tibbi Avadanlıq & Səhiyyə</h3>
+                          <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>
+                            {lang === 'az' ? 'Şirkətiniz və xidmətləriniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi rəsmi sayt.' : 'Official enterprise healthcare portal presenting equipment catalogs and distribution services.'}
+                          </p>
+                          <a href="https://sinapsmed.com" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>{t.works.viewLive} →</a>
                         </div>
                       )}
 
