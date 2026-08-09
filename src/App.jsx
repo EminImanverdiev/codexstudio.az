@@ -339,6 +339,120 @@ export default function App() {
   const [activeWork, setActiveWork] = useState(0)
   const [openFaq, setOpenFaq] = useState(0)
 
+  const [quizPurpose, setQuizPurpose] = useState(1)
+  const [quizFeatures, setQuizFeatures] = useState([0, 1])
+
+  // Contact Form State
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [business, setBusiness] = useState('')
+  const [siteType, setSiteType] = useState('Korporativ saytların hazırlanması')
+  const [message, setMessage] = useState('')
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState(false)
+  const [captchaError, setCaptchaError] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
+
+  const heroSlides = [
+    {
+      badge: 'VEB SAYTLARIN HAZIRLANMASI',
+      heading: 'Biznesiniz üçün peşəkar veb sayt hazırlayırıq.',
+      desc: 'Landing Page, korporativ sayt və e-commerce layihələrinin dizaynı və hazırlanması.',
+      btn1: 'Sayt sifarişi',
+      btn2: 'İşlərimizə bax',
+      targetRoute: 'contact'
+    },
+    {
+      badge: 'KORPORATİV VƏ E-COMMERCE',
+      heading: 'Siz sadəcə biznesinizi böyüdün, veb saytınızı bizə həvalə edin.',
+      desc: 'Şirkətinizin fəaliyyətini, xidmətlərini və məhsullarını peşəkar şəkildə təqdim edən müasir həllər.',
+      btn1: 'Təklif al',
+      btn2: 'Xidmətlərimiz',
+      targetRoute: 'services'
+    },
+    {
+      badge: '100% MOBİL VƏ TEXNİKİ DƏSTƏK',
+      heading: 'Saytınız internetdə brendinizin ən güclü vizit kartıdır.',
+      desc: 'Aydın naviqasiya, SEO optimizasiyası və sayt təhvil verildikdən sonra daimi texniki dəstək.',
+      btn1: 'WhatsApp ilə əlaqə',
+      btn2: 'İşlərimizə bax',
+      targetRoute: 'works'
+    }
+  ]
+
+  // Auto rotate hero slides every 7.5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+    }, 7500)
+    return () => clearInterval(timer)
+  }, [heroSlides.length])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
+      if (totalHeight > 0) {
+        setScrollProgress((window.scrollY / totalHeight) * 100)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    document.body.classList.toggle('light-theme', theme === 'light')
+    localStorage.setItem('codex_theme', theme)
+  }, [theme])
+
+  useEffect(() => {
+    localStorage.setItem('codex_lang', lang)
+  }, [lang])
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+  }, [mobileMenuOpen])
+
+  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
+
+  const toggleQuizFeature = (index) => {
+    if (quizFeatures.includes(index)) {
+      setQuizFeatures(quizFeatures.filter((i) => i !== index))
+    } else {
+      setQuizFeatures([...quizFeatures, index])
+    }
+  }
+
+  const getQuizRecommendation = () => {
+    if (quizPurpose === 2 || quizFeatures.includes(3) || quizFeatures.includes(2)) {
+      return {
+        type: 'E-commerce saytların hazırlanması',
+        desc: 'Məhsulların təqdimatı, sifariş və onlayn satış üçün e-commerce saytların hazırlanması.'
+      }
+    }
+    if (quizPurpose === 0) {
+      return {
+        type: 'Landing Page hazırlanması',
+        desc: 'Məhsul, xidmət və reklam kampaniyalarının təqdimatı üçün məqsədyönlü bir səhifəlik saytların hazırlanması.'
+      }
+    }
+    if (quizPurpose === 3 || quizFeatures.includes(4) || quizFeatures.includes(5)) {
+      return {
+        type: 'Fərdi veb layihələrin hazırlanması',
+        desc: 'Biznesinizin unikal tələblərinə uyğun xüsusi kalkulyatorlar, rezervasiya modulları və fərdi idarəetmə sistemi.'
+      }
+    }
+    return {
+      type: 'Korporativ saytların hazırlanması',
+      desc: 'Şirkətiniz, xidmətləriniz və fəaliyyətiniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi korporativ saytların hazırlanması.'
+    }
+  }
+
+  const quizRec = getQuizRecommendation()
+
   // Initial Page Refresh Preloader Counter (Calm pace)
   useEffect(() => {
     let current = 0
