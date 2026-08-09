@@ -175,9 +175,9 @@ const detailedServicesData = {
       id: 'corporate',
       slug: 'korporativ-saytlarin-hazirlanmasi',
       num: '01',
-      title: 'Korporativ saytların hazırlanması',
-      shortDesc: 'Şirkətiniz, xidmətləriniz və fəaliyyətiniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi korporativ saytlar.',
-      fullDesc: 'Şirkətinizin brendini və etibarını gücləndirən, xidmətlər kataloqu, komanda, tərəfdaşlar və çoxdilli (AZ/EN/RU) struktura malik rəsmi korporativ saytlar. Partnyorlar və B2B müştərilər qarşısında şirkətinizin nüfuzunu ən yüksək səviyyədə təmsil edir.',
+      title: 'Korporativ şirkət saytları',
+      shortDesc: 'Şirkətiniz, xidmətləriniz və fəaliyyətiniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi rəsmi saytlar.',
+      fullDesc: 'Şirkətinizin brendini və etibarını gücləndirən, xidmətlər kataloqu, komanda, tərəfdaşlar və çoxdilli (AZ/EN/RU) struktura malik rəsmi korporativ saytlar. B2B müştərilər və partnyorlar qarşısında şirkətinizi ən yüksək səviyyədə təmsil edir.',
       whatWeOffer: [
         'Çoxsəhifəli zərif korporativ naviqasiya',
         'Xidmətlər və fəaliyyət sahələri kataloqu',
@@ -186,8 +186,8 @@ const detailedServicesData = {
         'Rəsmi korporativ email və sorğu sistemi'
       ],
       whoNeeds: [
-        'Holdinqlər, logistika, tibb və inşaat şirkətləri',
-        'B2B və dövlət layihələri ilə çalışan qurumlar',
+        'Holdinqlər, logistika, tibb, hüquq və inşaat şirkətləri',
+        'B2B və korporativ müştərilərlə çalışan müəssisələr',
         'Beynəlxalq tərəfdaşlarla işləyən təşkilatlar'
       ],
       tags: ['Korporativ sayt', 'Şirkət saytı', 'B2B portal', 'Çoxdilli sayt'],
@@ -197,66 +197,66 @@ const detailedServicesData = {
       id: 'landing',
       slug: 'landing-page-hazirlanmasi',
       num: '02',
-      title: 'Landing Page hazırlanması',
-      shortDesc: 'Məhsul, xidmət və reklam kampaniyalarının təqdimatı üçün məqsədyönlü bir səhifəlik saytlar.',
-      fullDesc: 'Ziyarətçiləri birbaşa əlaqəyə, WhatsApp sifarişinə və ya zəngə yönləndirən, reklam büdcənizin səmərəliliyini artıran tək səhifəlik saytlar. Bütün diqqət əsas təklifinizə yönəlir.',
+      title: 'Bir səhifəlik saytlar (Təqdimat və satış)',
+      shortDesc: 'Konkret məhsul, xidmət və ya reklam kampaniyaları üçün sürətli sifariş və zəng toplayan bir səhifəlik saytlar.',
+      fullDesc: 'Ziyarətçiləri birbaşa WhatsApp sifarişinə, müraciət formasına və ya zəngə yönləndirən, reklam büdcənizin səmərəliliyini artıran tək səhifəlik təqdimat saytları. Bütün diqqət birbaşa sizin əsas təklifinizə yönəlir.',
       whatWeOffer: [
-        'Satış yönümlü və güclü Call-to-Action (CTA) strukturu',
-        'Birbaşa WhatsApp və zəng inteqrasiyası',
-        'Sürətli müraciət forması və bildiriş sistemi',
+        'Satış və müraciət yönümlü aydın struktur (Sürətli əlaqə düymələri)',
+        'Birbaşa WhatsApp və telefon zəngi inteqrasiyası',
+        'Sürətli müraciət forması və email bildiriş sistemi',
         'Instagram, Google və TikTok reklamları üçün optimizasiya',
-        'Mobil telefonlarda ani açılış sürəti'
+        'Mobil telefonlarda saniyələr içində ani açılış'
       ],
       whoNeeds: [
-        'Konkret bir xidmət və ya məhsulu reklam edənlər',
-        'Təlim, kurs və ya konsaltinq təqdimatı edən mütəxəssislər',
-        'Qısa zamanda yeni layihəni bazara çıxarmaq istəyənlər'
+        'Konkret bir xidmət və ya məhsulunu reklam edən sahibkarlar',
+        'Təlim, kurs, sınaq dərsi və ya konsaltinq təqdim edən mütəxəssislər',
+        'Yeni layihəsini qısa müddətdə bazara çıxarmaq istəyənlər'
       ],
-      tags: ['Landing page', 'Tək səhifəlik sayt', 'Satış saytı', 'WhatsApp sifariş'],
+      tags: ['Bir səhifəlik sayt', 'Təqdimat saytı', 'Satış saytı', 'WhatsApp sifariş'],
       icon: 'globe'
     },
     {
       id: 'ecommerce',
       slug: 'e-commerce-saytlarin-hazirlanmasi',
       num: '03',
-      title: 'E-commerce saytların hazırlanması',
-      shortDesc: 'Məhsulların təqdimatı, sifariş və onlayn satış üçün e-commerce saytların hazırlanması.',
-      fullDesc: 'Məhsul kataloqu, dəqiq axtarış və kateqoriya filtrləri, səbət sistemi və Azərbaycan banklarının kartları ilə təhlükəsiz onlayn ödəniş axını.',
+      title: 'Onlayn mağazalar (E-ticarət)',
+      shortDesc: 'Məhsulların kataloqu, səbət sistemi və bank kartı ilə onlayn ödənişli satış saytları.',
+      fullDesc: 'Məhsul çeşidləri, rahat axtarış və kateqoriya filtrləri, səbət sistemi və Azərbaycan banklarının kartları ilə təhlükəsiz onlayn ödəniş axını təmin edən elektron ticarət mağazaları.',
       whatWeOffer: [
-        'Məhsul kataloqu, çeşidlər, ölçülər və filtrlər',
-        'Səbət və 1 addımlı rahat sifariş sistemi',
+        'Məhsul kataloqu, çeşidlər, ölçülər və dərhal axtarış filtrləri',
+        'Səbət və 1 addımlı rahat sifariş rəsmiləşdirmə',
         'Azərbaycan bankları ilə kartla onlayn ödəniş (Kapital, Paşa və s.)',
-        'Məhsulları və sifarişləri asanlıqla idarə etmək üçün Admin panel',
+        'Məhsulları və sifarişləri idarə etmək üçün rahat Admin panel',
         'Müştəriyə və mağaza sahibinə avtomatik sifariş bildirişləri'
       ],
       whoNeeds: [
-        'Geyim, mebel, elektronika və aksesuar mağazaları',
-        'Fiziki mağazasını internetə daşımaq istəyənlər',
-        'Öz brend məhsullarını onlayn satmaq istəyən istehsalçılar'
+        'Geyim, mebel, elektronika, kosmetika və aksesuar mağazaları',
+        'Fiziki mağazasını internetə daşıyıb 24/7 satış etmək istəyənlər',
+        'Öz məhsullarını birbaşa alıcıya çatdırmaq istəyən istehsalçılar'
       ],
-      tags: ['E-commerce', 'Onlayn mağaza', 'Kartla ödəniş', 'Səbət sistemi'],
+      tags: ['Onlayn mağaza', 'E-ticarət', 'Kartla ödəniş', 'Səbət sistemi'],
       icon: 'shopping'
     },
     {
-      id: 'web-dev',
-      slug: 'veb-saytlarin-hazirlanmasi',
+      id: 'custom-portal',
+      slug: 'ferdi-veb-layiheler-ve-portallar',
       num: '04',
-      title: 'Veb saytların hazırlanması',
-      shortDesc: 'Biznesinizin fəaliyyətinə və ehtiyaclarına uyğun funksional veb saytların hazırlanması.',
-      fullDesc: 'Müasir kodlaşdırma standartları, sürətli server arxitekturası, mobil və kompüter ekranlarına tam uyğunluq ilə istənilən mürəkkəblikdə saytların yığılması.',
+      title: 'Fərdi sistemlər və xüsusi portallar',
+      shortDesc: 'Biznesinizin unikal tələblərinə uyğun rezervasiya, onlayn tədris, elan, xəbər və fərdi idarəetmə sistemləri.',
+      fullDesc: 'Standart şablonlara sığmayan, xüsusi qiymət kalkulyatorları, müştəri kabineti, qeydiyyat/rezervasiya modulları, təlim/kurs idarəetməsi və ya xəbər portalları üçün fərdi proqramlaşdırma həlləri.',
       whatWeOffer: [
-        'Mobile-first və adaptiv dizayn strukturu',
-        'Sürətli və optimallaşdırılmış kod arxitekturası',
-        'Domen və hosting quraşdırılması, SSL sertifikatı',
-        'Axtarış sistemləri (Google) üçün texniki SEO uyğunluğu',
-        'Təhlükəsizlik və məlumatların qorunması'
+        'Biznesinizin iş prinsipinə uyğun xüsusi məntiq və proqramlaşdırma',
+        'Şəxsi müştəri kabineti və fərdi idarəetmə modulları',
+        'Onlayn rezervasiya, bronlaşdırma və ya tədris/kurs paneli',
+        'Avtomatlaşdırılmış hesablama və təklif kalkulyatorları',
+        'API və üçüncü tərəf sistemləri ilə inteqrasiyalar'
       ],
       whoNeeds: [
-        'Yeni fəaliyyətə başlayan və ya mövcud biznesini yeniləmək istəyən şirkətlər',
-        'Müştərilərinə 24/7 xidmət və məhsul təqdim etmək istəyən brendlər',
-        'İnternetdə etibarlı və peşəkar imic formalaşdırmaq istəyən sahibkarlar'
+        'Klinikalar, otellər, avtoicarə və xidmət rezervasiyası edənlər',
+        'Tədris mərkəzləri, kurslar və onlayn imtahan portalları',
+        'Unikal funksionallıq tələb edən startap və şirkətlər'
       ],
-      tags: ['Veb sayt', 'Sayt sifarişi', 'Responsive dizayn', 'Sürətli sayt'],
+      tags: ['Fərdi sistem', 'Veb portal', 'Rezervasiya', 'Xüsusi sayt'],
       icon: 'code'
     },
     {
@@ -285,8 +285,8 @@ const detailedServicesData = {
       id: 'support',
       slug: 'texniki-destek',
       num: '06',
-      title: 'Texniki dəstək',
-      shortDesc: 'Sayt istifadəyə verildikdən sonra texniki məsələlər, yenilənmələr və zəruri dəyişikliklər.',
+      title: 'Texniki dəstək və idarəetmə',
+      shortDesc: 'Sayt istifadəyə verildikdən sonra server nəzarəti, təhlükəsizlik və zəruri dəyişikliklər.',
       fullDesc: 'Saytın serverdə fasiləsiz işləməsi, təhlükəsizlik yenilənmələri, domen/SSL nəzarəti və biznesinizin tələbinə uyğun yeni məlumatların əlavə edilməsi.',
       whatWeOffer: [
         'Serverin və saytın fasiləsiz 24/7 işləməsinə nəzarət',
@@ -308,7 +308,7 @@ const detailedServicesData = {
       slug: 'seo-optimizasiyasi',
       num: '07',
       title: 'SEO optimizasiyası',
-      shortDesc: 'Saytın axtarış sistemləri tərəfindən daha düzgün oxunması üçün texniki SEO strukturu.',
+      shortDesc: 'Saytın axtarış sistemləri (Google) tərəfindən düzgün oxunması və tanınması üçün texniki struktur.',
       fullDesc: 'Google axtarış sisteminin saytınızın səhifələrini, başlıqlarını və mətnlərini düzgün indeksləməsi üçün texniki struktur, meta teqlər və sitemap tənzimləmələri.',
       whatWeOffer: [
         'Meta başlıqlar (Title), təsvirlər (Description) və H1-H6 hero iyerarxiyası',
@@ -353,9 +353,9 @@ const detailedServicesData = {
       id: 'landing',
       slug: 'landing-page-hazirlanmasi',
       num: '02',
-      title: 'Landing Page Development',
+      title: 'Single-Page Presentation Websites',
       shortDesc: 'Development of single-page targeted websites for presenting products, services, and campaigns.',
-      fullDesc: 'High-conversion landing pages designed to drive direct customer inquiries, phone calls, and WhatsApp sales without distractions.',
+      fullDesc: 'High-conversion single-page websites designed to drive direct customer inquiries, phone calls, and WhatsApp sales without distractions.',
       whatWeOffer: [
         'Conversion-focused visual layout & CTAs',
         'Direct WhatsApp & phone call triggers',
@@ -500,31 +500,31 @@ const translations = {
     hero: {
       eyebrow: 'VEB SAYTLARIN HAZIRLANMASI',
       heading: 'Biznesiniz üçün peşəkar veb sayt hazırlayırıq.',
-      desc: 'Landing Page, korporativ sayt və e-commerce layihələrinin dizaynı və hazırlanması.',
+      desc: 'Bir səhifəlik təqdimat saytları, korporativ şirkət saytları, onlayn mağazalar və fərdi veb sistemlər.',
       primaryBtn: 'Sayt sifarişi',
       secondaryBtn: 'İşlərimizə bax',
       trust1: 'Mobil uyğun',
       trust2: 'SEO optimizasiyası',
       trust3: 'Texniki dəstək',
-      tabLanding: 'Landing Page',
+      tabLanding: 'Bir səhifəlik sayt',
       tabCorporate: 'Korporativ sayt',
-      tabEcommerce: 'E-commerce sayt',
+      tabEcommerce: 'Onlayn mağaza',
       previewTag: '✓ Canlı önizləmə'
     },
     trustStrip: {
       items: [
-        'Veb saytların hazırlanması',
-        'Landing Page',
-        'Korporativ saytlar',
-        'E-commerce',
+        'Korporativ şirkət saytları',
+        'Bir səhifəlik saytlar',
+        'Onlayn mağazalar',
+        'Fərdi sistemlər və portallar',
         'Texniki dəstək'
       ],
-      tag: 'Kiçik və böyük bizneslər üçün veb xidmətlər.'
+      tag: 'Hər növ biznes və fərdi tələblər üçün peşəkar veb xidmətlər.'
     },
     services: {
       badge: 'XİDMƏTLƏRİMİZ',
       title: 'Xidmətlərimiz',
-      desc: 'Biznesinizin ehtiyacına uyğun veb saytların dizaynı və hazırlanması.',
+      desc: 'Biznesinizin növünə və hədəfinə uyğun peşəkar veb saytların dizaynı və hazırlanması.',
       moreBtn: 'Daha ətraflı',
       quoteBtn: 'Təklif al',
       allServices: 'Bütün Xidmətlər',
@@ -540,21 +540,21 @@ const translations = {
     },
     finder: {
       badge: 'SEÇİM KÖMƏKÇİSİ',
-      title: 'Hansı sayt sizə uyğundur?',
-      desc: '2 sadə suala cavab verin, biznesiniz üçün ən optimal formatı anında müəyyən edək.',
-      q1: '1. Saytı əsasən nə üçün istəyirsiniz?',
-      q1Opts: ['Xidmətimi təqdim etmək', 'Şirkətimi təqdim etmək', 'Onlayn satış etmək', 'Xüsusi sistem hazırlatmaq'],
-      q2: '2. Hansı funksiyalar sizə lazımdır?',
-      q2Opts: ['Əlaqə forması', 'WhatsApp düyməsi', 'Məhsul kataloqu', 'Onlayn kart ödənişi', 'Admin idarəetmə paneli', 'Rezervasiya / Qeydiyyat'],
-      recTag: 'TÖVSİYƏ OLUNAN FORMAT:',
+      title: 'Hansı növ sayt sizə lazımdır?',
+      desc: '2 sadə suala cavab verin, biznesiniz üçün ən uyğun sayt formatını anında müəyyən edək.',
+      q1: '1. Sayt əsasən nə məqsədlə hazırlanacaq?',
+      q1Opts: ['Xidmətimi təqdim etmək (Bir səhifəlik sayt)', 'Şirkətimi təqdim etmək (Korporativ sayt)', 'Məhsul satışı etmək (Onlayn mağaza)', 'Xüsusi sistem / Portal hazırlatmaq'],
+      q2: '2. Saytda hansı imkanlar olmalıdır?',
+      q2Opts: ['Sürətli əlaqə forması', 'WhatsApp sifariş düyməsi', 'Məhsul kataloqu', 'Kartla onlayn ödəniş', 'Admin idarəetmə paneli', 'Rezervasiya / Qeydiyyat modulu'],
+      recTag: 'TÖVSİYƏ OLUNAN SAYT NÖVÜ:',
       recTitlePrefix: 'Biznesiniz üçün',
-      recTitleSuffix: 'formatı daha uyğundur.',
+      recTitleSuffix: 'ən optimal seçimdir.',
       btn: 'Təklif al →'
     },
     works: {
       badge: 'İŞLƏRİMİZ',
       title: 'İşlərimiz',
-      desc: 'Müxtəlif fəaliyyət sahələrində olan şirkətlər və şəxslər üçün hazırladığımız veb layihələr.',
+      desc: 'Müxtəlif fəaliyyət sahələrində olan şirkətlər və şəxslər üçün hazırladığımız real layihələr.',
       viewLive: 'Sayta bax',
       orderSimilar: 'Bənzər sayt sifariş et'
     },
@@ -566,16 +566,16 @@ const translations = {
         { num: '01', title: 'Tələblərin müəyyən edilməsi', desc: 'Layihənin məqsədi, saytın strukturu və tələb olunan funksiyalar müəyyən edilir.' },
         { num: '02', title: 'Dizayn', desc: 'Saytın vizual görünüşü və istifadəçi interfeysi hazırlanır.' },
         { num: '03', title: 'Proqramlaşdırma', desc: 'Təsdiqlənmiş dizayn əsasında saytın hazırlanmasına başlanılır.' },
-        { num: '04', title: 'Test', desc: 'Sayt müxtəlif ekran ölçülərində və cihazlarda yoxlanılır.' },
-        { num: '05', title: 'Təhvil', desc: 'Yekun yoxlamadan sonra sayt istifadəyə verilir.' }
+        { num: '04', title: 'Test və yoxlanış', desc: 'Sayt bütün telefon və kompüter ekranlarında yoxlanılır.' },
+        { num: '05', title: 'Təhvil və dəstək', desc: 'Yekun yoxlamadan sonra sayt domendə istifadəyə verilir.' }
       ]
     },
     about: {
       badge: 'HAQQIMIZDA',
       title: 'Haqqımızda',
-      desc: 'Codex Studio bizneslər üçün veb saytların dizaynı və hazırlanması üzrə ixtisaslaşmış komandadır. Məqsədimiz şirkətinizin fəaliyyətini internetdə düzgün, peşəkar və etibarlı şəkildə təqdim edən veb saytlar hazırlamaqdır.',
+      desc: 'Codex Studio bizneslər üçün veb saytların dizaynı və hazırlanması üzrə ixtisaslaşmış komandadır. Məqsədimiz şirkətinizin fəaliyyətini internetdə düzgün, aydın və etibarlı şəkildə təqdim edən veb saytlar hazırlamaqdır.',
       values: [
-        { title: 'Sadə və anlaşılan ünsiyyət', desc: 'Texniki çətinliklər yaratmadan, layihəniz üçün nəyin lazım olduğunu aydın şəkildə müzakirə edirik.' },
+        { title: 'Sadə və aydın ünsiyyət', desc: 'Artıq texniki terminlər olmadan, biznesinizə real nəyin lazım olduğunu rahat şəkildə müzakirə edirik.' },
         { title: 'Dəqiq iş qrafiki', desc: 'Hər bir mərhələ razılaşdırılmış vaxt çərçivəsində və planlı şəkildə icra olunur.' },
         { title: 'Daimi texniki dəstək', desc: 'Sayt təhvil verildikdən sonra da server, domen və texniki məsələlərdə dəstəyimizi davam etdiririk.' }
       ]
@@ -583,12 +583,12 @@ const translations = {
     faq: {
       badge: 'SUAL-CAVAB',
       title: 'Tez-tez verilən suallar',
-      desc: 'Veb saytların hazırlanması və əməkdaşlıq prosesi ilə bağlı sualların cavabları.'
+      desc: 'Veb saytların hazırlanması və əməkdaşlıq prosesi ilə bağlı ən çox verilən suallar.'
     },
     finalCta: {
       badge: 'SAYT SİFARİŞİ',
       title: 'Veb sayt sifariş etmək istəyirsiniz?',
-      desc: 'Layihəniz haqqında qısa məlumat göndərin. Ehtiyacınıza uyğun həlli birlikdə müəyyən edək.',
+      desc: 'Biznesiniz haqqında qısa məlumat göndərin. Ehtiyacınıza uyğun sayt həllini birlikdə müəyyən edək.',
       primaryBtn: 'Təklif al',
       whatsappBtn: 'WhatsApp ilə əlaqə'
     },
@@ -604,8 +604,8 @@ const translations = {
       formDesc: 'Məlumatlarınızı qeyd edin, ən qısa zamanda sizinlə əlaqə saxlayaq.',
       nameLabel: 'Adınız və Soyadınız *',
       phoneInputLabel: 'Telefon / WhatsApp *',
-      businessLabel: 'Biznes sahəsi',
-      siteTypeLabel: 'Sayt növü',
+      businessLabel: 'Biznes sahəsi / Fəaliyyətiniz',
+      siteTypeLabel: 'İstədiyiniz sayt növü',
       messageLabel: 'Sayt haqqında qısa məlumat / İstəkləriniz',
       submitBtn: 'Təklif al',
       submitting: 'Göndərilir...',
@@ -950,25 +950,25 @@ export default function App() {
   const getQuizRecommendation = () => {
     if (quizPurpose === 2 || quizFeatures.includes(3) || quizFeatures.includes(2)) {
       return {
-        type: lang === 'az' ? 'E-commerce saytların hazırlanması' : 'E-commerce development',
-        desc: lang === 'az' ? 'Məhsulların təqdimatı, sifariş və onlayn satış üçün e-commerce saytların hazırlanması.' : 'Development of e-commerce websites for product presentation, ordering, and online sales.'
+        type: lang === 'az' ? 'Onlayn mağazalar (E-ticarət)' : 'Online store & E-commerce',
+        desc: lang === 'az' ? 'Məhsulların kataloqu, səbət sistemi və bank kartı ilə onlayn ödənişli elektron ticarət mağazası.' : 'Development of e-commerce websites for product catalog, shopping cart, and card payments.'
       }
     }
     if (quizPurpose === 0) {
       return {
-        type: lang === 'az' ? 'Landing Page hazırlanması' : 'Landing Page development',
-        desc: lang === 'az' ? 'Məhsul, xidmət və reklam kampaniyalarının təqdimatı üçün məqsədyönlü bir səhifəlik saytların hazırlanması.' : 'Development of single-page targeted websites for presenting products, services, and promotional campaigns.'
+        type: lang === 'az' ? 'Bir səhifəlik sayt (Təqdimat və satış)' : 'Single-page presentation website',
+        desc: lang === 'az' ? 'Xidmət və ya məhsulunuzu konkret təqdim edən və sürətli sifariş/zəng toplayan bir səhifəlik sayt.' : 'Targeted single-page website for presenting products, services, and capturing leads.'
       }
     }
     if (quizPurpose === 3 || quizFeatures.includes(4) || quizFeatures.includes(5)) {
       return {
-        type: lang === 'az' ? 'Fərdi veb layihələrin hazırlanması' : 'Custom web portal development',
-        desc: lang === 'az' ? 'Biznesinizin unikal tələblərinə uyğun xüsusi kalkulyatorlar, rezervasiya modulları və fərdi idarəetmə sistemi.' : 'Custom booking calculators, management modules and specialized systems.'
+        type: lang === 'az' ? 'Fərdi sistemlər və xüsusi portallar' : 'Custom web systems & portals',
+        desc: lang === 'az' ? 'Biznesinizin unikal tələblərinə uyğun xüsusi kalkulyatorlar, rezervasiya, tədris və ya elan modulları.' : 'Custom booking calculators, management modules, e-learning and specialized systems.'
       }
     }
     return {
-      type: lang === 'az' ? 'Korporativ saytların hazırlanması' : 'Corporate website development',
-      desc: lang === 'az' ? 'Şirkətiniz, xidmətləriniz və fəaliyyətiniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi korporativ saytların hazırlanması.' : 'Development of corporate websites that professionally present information about your company, services, and operations.'
+      type: lang === 'az' ? 'Korporativ şirkət saytı' : 'Corporate website development',
+      desc: lang === 'az' ? 'Şirkətiniz, xidmətləriniz və fəaliyyətiniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi rəsmi sayt.' : 'Development of corporate websites that professionally present information about your company and operations.'
     }
   }
 
@@ -1040,7 +1040,7 @@ export default function App() {
     {
       id: '01',
       name: 'Sinaps Med — Tibbi Avadanlıq & Səhiyyə Şirkəti',
-      type: lang === 'az' ? 'Korporativ saytların hazırlanması' : 'Corporate website development',
+      type: lang === 'az' ? 'Korporativ şirkət saytı' : 'Corporate website development',
       desc: lang === 'az' 
         ? 'Tibbi avadanlıqlar, klinik məhsul kataloqu, distribütorluq və səhiyyə müəssisələri üçün çoxdilli rəsmi korporativ platforma.' 
         : 'Medical devices, clinical equipment catalog, distribution services, and enterprise healthcare platform.',
@@ -1051,18 +1051,18 @@ export default function App() {
     {
       id: '02',
       name: 'Leyla Qasımova — Fizika və Elm Mərkəzi',
-      type: lang === 'az' ? 'Landing Page və Fərdi Sayt' : 'Landing Page & Personal Website',
+      type: lang === 'az' ? 'Bir səhifəlik təqdimat və qeydiyyat saytı' : 'Single-page presentation & registration site',
       desc: lang === 'az'
         ? 'Təlim proqramları, video dərslər, tələbə nəticələri və birbaşa sınaq dərsinə qeydiyyat toplayan şəxsi brend platforması.'
         : 'Course programs, video presentations, student testimonials, and direct trial lesson registrations.',
       url: 'https://leylagasimova.az',
       displayUrl: 'leylagasimova.az',
-      tags: ['Landing Page', 'Kurs qeydiyyatı', 'Video təqdimat', 'WhatsApp inteqrasiyası']
+      tags: ['Bir səhifəlik sayt', 'Kurs qeydiyyatı', 'Video təqdimat', 'WhatsApp inteqrasiyası']
     },
     {
       id: '03',
       name: 'Vektor Logistics & Holding',
-      type: lang === 'az' ? 'Korporativ saytların hazırlanması' : 'Corporate website development',
+      type: lang === 'az' ? 'Korporativ şirkət saytı və xidmət portalı' : 'Corporate website and logistics portal',
       desc: lang === 'az'
         ? 'Beynəlxalq yükdaşıma, anbar xidmətləri və tərəfdaş şirkətlər üçün çoxsəhifəli, etibarlı korporativ veb portal.'
         : 'Global shipping routes, warehousing capabilities, and multi-page structured corporate presentation.',
@@ -1073,23 +1073,23 @@ export default function App() {
     {
       id: '04',
       name: 'Aura Home & Living',
-      type: lang === 'az' ? 'E-commerce saytların hazırlanması' : 'E-commerce development',
+      type: lang === 'az' ? 'Onlayn mağaza (E-ticarət)' : 'Online store & E-commerce',
       desc: lang === 'az'
         ? 'İnteryer mebeli və ev aksessuarları üçün müasir məhsul vitrini, kateqoriya filtri, səbət və bank kartı ilə ödəniş axını.'
         : 'Designer furniture and home decor catalog with instant filters, cart checkout, and bank card payments.',
       url: 'https://aurahome.codexstudio.az',
       displayUrl: 'aurahome.az',
-      tags: ['E-commerce', 'Səbət sistemi', 'Kartla ödəniş', 'Mobil uyğun dizayn']
+      tags: ['Onlayn mağaza', 'Səbət sistemi', 'Kartla ödəniş', 'Mobil uyğun dizayn']
     }
   ]
 
   const faqs = lang === 'az' ? [
-    { q: 'Saytın hazırlanması neçə gün çəkir?', a: 'Müddət layihənin növündən asılıdır: Tək səhifəlik Landing Page adətən bir neçə günə, korporativ saytlar və e-commerce layihələri isə orta hesabla 1-3 həftəyə tam hazır vəziyyətə gətirilir.' },
-    { q: 'Qiymət necə müəyyən olunur?', a: 'Qiymət saytın növünə (Landing Page, Korporativ, E-commerce), səhifə sayına və tələb olunan funksionallığa (onlayn ödəniş, çoxdillilik və s.) görə şəffaf şəkildə hesablanır.' },
+    { q: 'Saytın hazırlanması neçə gün çəkir?', a: 'Müddət layihənin növündən asılıdır: Bir səhifəlik təqdimat saytları bir neçə günə, korporativ saytlar və onlayn mağazalar isə orta hesabla 1-3 həftəyə tam hazır vəziyyətə gətirilir.' },
+    { q: 'Qiymət necə müəyyən olunur?', a: 'Qiymət saytın növünə (Bir səhifəlik, Korporativ, Onlayn mağaza və ya Fərdi sistemlər), səhifə sayına və tələb olunan funksionallığa (onlayn ödəniş, çoxdillilik və s.) görə şəffaf şəkildə hesablanır.' },
     { q: 'Domen və hosting qiymətə daxildirmi?', a: 'Bəli, istəyinizə uyğun olaraq .az və ya beynəlxalq domenlərin seçilməsi, sürətli serverin quraşdırılması və SSL təhlükəsizlik sertifikatının aktivləşdirilməsi tərəfimizdən təmin edilir.' },
     { q: 'Sayt mobil cihazlara uyğun olacaq?', a: 'Bəli, 100%. Hazırladığımız bütün saytlar mobil cihazlara uyğunlaşdırılır və smartfon, planşet və kompüter ekranlarında qüsursuz işləyir.' },
     { q: 'Sonradan saytda dəyişiklik etmək mümkündür?', a: 'Bəli. Saytın strukturu elə qurulur ki, gələcəkdə yeni səhifələr, məhsullar, xidmətlər və ya yeni funksiyalar asanlıqla əlavə oluna bilsin.' },
-    { q: 'Onlayn ödəniş sistemi qoşmaq olar?', a: 'Bəli. E-commerce və sifariş saytlarınıza yerli bankların kartla ödəniş sistemlərini (Kapital Bank, Paşa Bank və s.) təhlükəsiz şəkildə inteqrasiya edirik.' },
+    { q: 'Onlayn ödəniş sistemi qoşmaq olar?', a: 'Bəli. Onlayn mağaza və sifariş saytlarınıza yerli bankların kartla ödəniş sistemlərini (Kapital Bank, Paşa Bank və s.) təhlükəsiz şəkildə inteqrasiya edirik.' },
     { q: 'Sayt hazır olduqdan sonra texniki dəstək verirsiniz?', a: 'Bəli. Sayt təhvil verildikdən sonra da serverin fasiləsiz işləməsi, domen və texniki suallarınız üzrə dəstəyimiz davam edir.' }
   ] : [
     { q: 'How long does it take to build a website?', a: 'It depends on the project: Single-page landing pages take a few days, while multi-page corporate and e-commerce projects take on average 1 to 3 weeks.' },
