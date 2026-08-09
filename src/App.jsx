@@ -328,6 +328,8 @@ export default function App() {
   const [currentRoute, setCurrentRoute] = useState('home')
   const [selectedServiceSlug, setSelectedServiceSlug] = useState('veb-saytlarin-hazirlanmasi')
   const [isPageLoading, setIsPageLoading] = useState(false)
+  const [initialLoading, setInitialLoading] = useState(true)
+  const [initialProgress, setInitialProgress] = useState(0)
   const [lang, setLang] = useState(() => localStorage.getItem('codex_lang') || 'az')
   const [theme, setTheme] = useState(() => localStorage.getItem('codex_theme') || 'dark')
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -336,6 +338,30 @@ export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [activeWork, setActiveWork] = useState(0)
   const [openFaq, setOpenFaq] = useState(0)
+
+  // Initial Page Refresh Preloader Counter
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setInitialProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(timer)
+          return 100
+        }
+        const jump = Math.floor(Math.random() * 25) + 15
+        return Math.min(prev + jump, 100)
+      })
+    }, 80)
+    return () => clearInterval(timer)
+  }, [])
+
+  useEffect(() => {
+    if (initialProgress >= 100) {
+      const timeout = setTimeout(() => {
+        setInitialLoading(false)
+      }, 300)
+      return () => clearTimeout(timeout)
+    }
+  }, [initialProgress])
 
   // Finder Quiz State
   const [quizPurpose, setQuizPurpose] = useState(1)
@@ -582,6 +608,57 @@ export default function App() {
   return (
     <div style={{ minHeight: '100vh', backgroundColor: 'var(--bg-page)', color: 'var(--text-main)', overflowX: 'hidden' }}>
       
+      {/* Full-Screen Initial Page Refresh Preloader */}
+      {initialLoading && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 99999,
+            backgroundColor: '#05070B',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'opacity 0.4s ease',
+          }}
+        >
+          <div
+            style={{
+              position: 'relative',
+              width: '64px',
+              height: '64px',
+              borderRadius: '18px',
+              overflow: 'hidden',
+              border: '1px solid #162032',
+              boxShadow: '0 8px 30px rgba(0, 102, 255, 0.35)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#080C14',
+              marginBottom: '20px'
+            }}
+          >
+            <img src="/logo.png" alt="CodeX Studio" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          </div>
+
+          <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#F5F7FA', marginBottom: '16px' }}>
+            <span>Code<span style={{ color: 'var(--accent-blue)' }}>X</span></span>
+            <span style={{ color: 'var(--text-sub)', fontWeight: 500 }}>Studio</span>
+          </div>
+
+          <div style={{ width: '200px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ width: '100%', height: '4px', background: '#080C14', border: '1px solid #162032', borderRadius: '999px', overflow: 'hidden' }}>
+              <div style={{ height: '100%', background: 'var(--accent-blue)', width: `${initialProgress}%`, boxShadow: '0 0 10px var(--accent-blue)', transition: 'width 0.1s ease' }} />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontFamily: 'monospace', color: 'var(--text-sub)' }}>
+              <span>YÜKLƏNİR...</span>
+              <span style={{ color: 'var(--accent-blue)', fontWeight: 'bold' }}>{initialProgress}%</span>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Top Loading Progress & Spinner Indicator */}
       {isPageLoading && (
         <div style={{
