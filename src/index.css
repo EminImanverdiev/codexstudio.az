@@ -169,16 +169,44 @@ body {
 }
 
 .lang-btn {
-  padding: 6px 12px;
+  padding: 6px 10px;
   border-radius: 6px;
   border: none;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
-  min-width: 36px;
-  min-height: 32px;
+  min-width: 32px;
+  min-height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.15s ease;
+}
+
+/* Hero CTA Button Layout */
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .hero-cta-group {
+    flex-direction: row;
+    width: auto;
+  }
+}
+
+/* Hero Tabs Grid */
+.hero-tabs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .hero-tabs-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

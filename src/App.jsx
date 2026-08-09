@@ -1497,7 +1497,7 @@ export default function App() {
                     {curSlide.desc}
                   </p>
 
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', marginBottom: '24px' }}>
+                  <div className="hero-cta-group" style={{ marginBottom: '24px' }}>
                     <button
                       onClick={() => navigateTo('contact')}
                       style={{
@@ -1512,6 +1512,7 @@ export default function App() {
                         boxShadow: '0 8px 24px var(--accent-glow)',
                         display: 'inline-flex',
                         alignItems: 'center',
+                        justifyContent: 'center',
                         gap: '6px'
                       }}
                     >
@@ -1529,7 +1530,10 @@ export default function App() {
                         borderRadius: '12px',
                         fontSize: '0.92rem',
                         fontWeight: 600,
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
                       }}
                     >
                       <span>{curSlide.btn2}</span>
@@ -1537,7 +1541,7 @@ export default function App() {
                   </div>
 
                   {/* Carousel Indicators & Controls */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '32px' }}>
                     <div style={{ display: 'flex', gap: '6px' }}>
                       {heroSlides.map((_, idx) => (
                         <button
@@ -1557,7 +1561,7 @@ export default function App() {
                       ))}
                     </div>
 
-                    <div style={{ display: 'flex', gap: '4px' }}>
+                    <div style={{ display: 'flex', gap: '6px' }}>
                       <button
                         onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
                         style={{ padding: '6px', borderRadius: '6px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-sub)', cursor: 'pointer' }}
@@ -1577,38 +1581,34 @@ export default function App() {
 
                 </div>
 
-                {/* Right: Mockup with Sinaps Med first */}
+                {/* Right: Mockup with spacious 2x2 grid tabs */}
                 <div style={{ width: '100%' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', padding: '4px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '10px' }}>
+                  <div style={{ marginBottom: '12px' }}>
+                    <div className="hero-tabs-grid" style={{ padding: '6px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
                       <button
                         onClick={() => setHeroTab('landing')}
-                        style={{ padding: '6px 10px', borderRadius: '6px', border: 'none', background: heroTab === 'landing' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'landing' ? 'white' : 'var(--text-sub)', fontSize: '0.74rem', fontWeight: 600, cursor: 'pointer' }}
+                        style={{ padding: '8px 10px', borderRadius: '8px', border: 'none', background: heroTab === 'landing' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'landing' ? 'white' : 'var(--text-sub)', fontSize: '0.78rem', fontWeight: 600, cursor: 'pointer', textAlign: 'center' }}
                       >
                         {lang === 'az' ? 'Fərdi sayt' : 'Personal site'}
                       </button>
                       <button
                         onClick={() => setHeroTab('erp')}
-                        style={{ padding: '6px 10px', borderRadius: '6px', border: 'none', background: heroTab === 'erp' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'erp' ? 'white' : 'var(--text-sub)', fontSize: '0.74rem', fontWeight: 600, cursor: 'pointer' }}
+                        style={{ padding: '8px 10px', borderRadius: '8px', border: 'none', background: heroTab === 'erp' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'erp' ? 'white' : 'var(--text-sub)', fontSize: '0.78rem', fontWeight: 600, cursor: 'pointer', textAlign: 'center' }}
                       >
                         {lang === 'az' ? 'İdarəetmə sistemi' : 'Business system'}
                       </button>
                       <button
                         onClick={() => setHeroTab('corporate')}
-                        style={{ padding: '6px 10px', borderRadius: '6px', border: 'none', background: heroTab === 'corporate' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'corporate' ? 'white' : 'var(--text-sub)', fontSize: '0.74rem', fontWeight: 600, cursor: 'pointer' }}
+                        style={{ padding: '8px 10px', borderRadius: '8px', border: 'none', background: heroTab === 'corporate' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'corporate' ? 'white' : 'var(--text-sub)', fontSize: '0.78rem', fontWeight: 600, cursor: 'pointer', textAlign: 'center' }}
                       >
                         {lang === 'az' ? 'Korporativ sayt' : 'Corporate'}
                       </button>
                       <button
                         onClick={() => setHeroTab('ecommerce')}
-                        style={{ padding: '6px 10px', borderRadius: '6px', border: 'none', background: heroTab === 'ecommerce' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'ecommerce' ? 'white' : 'var(--text-sub)', fontSize: '0.74rem', fontWeight: 600, cursor: 'pointer' }}
+                        style={{ padding: '8px 10px', borderRadius: '8px', border: 'none', background: heroTab === 'ecommerce' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'ecommerce' ? 'white' : 'var(--text-sub)', fontSize: '0.78rem', fontWeight: 600, cursor: 'pointer', textAlign: 'center' }}
                       >
                         {lang === 'az' ? 'Onlayn mağaza' : 'Online store'}
                       </button>
-                    </div>
-
-                    <div style={{ fontSize: '0.72rem', color: '#10B981', fontFamily: 'monospace', padding: '4px 10px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '8px' }}>
-                      {t.hero.previewTag}
                     </div>
                   </div>
 
@@ -1628,7 +1628,9 @@ export default function App() {
                           {heroTab === 'ecommerce' && 'aurahome.az'}
                         </span>
                       </div>
-                      <div style={{ width: '20px' }}></div>
+                      <div style={{ fontSize: '0.68rem', color: '#10B981', fontFamily: 'monospace' }}>
+                        ✓ {t.hero.previewTag}
+                      </div>
                     </div>
 
                     <div style={{ padding: '24px', background: 'var(--bg-card)', minHeight: '260px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -1707,7 +1709,7 @@ export default function App() {
             </div>
           </section>
 
-          {/* Services Section */}
+          {/* Services Section (No 01, 02 numbers) */}
           <section id="services" style={{ padding: '80px 0', borderTop: '1px solid var(--border-color)' }}>
             <div className="container">
               <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
@@ -1730,7 +1732,6 @@ export default function App() {
                         <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--bg-surface)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           {renderIcon(s.icon)}
                         </div>
-                        <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--text-sub)' }}>{s.num}</span>
                       </div>
                       <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '8px' }}>{s.title}</h3>
                       <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '20px' }}>{s.shortDesc}</p>
@@ -1830,7 +1831,7 @@ export default function App() {
             </div>
           </section>
 
-          {/* Process Section */}
+          {/* Process Section (No 01, 02 numbers) */}
           <section id="process" style={{ padding: '80px 0', borderTop: '1px solid var(--border-color)' }}>
             <div className="container">
               <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
@@ -1842,9 +1843,9 @@ export default function App() {
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '14px' }}>
-                {t.process.steps.map((st) => (
-                  <div key={st.num} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', padding: '20px', borderRadius: '16px' }}>
-                    <span style={{ fontSize: '1rem', fontFamily: 'monospace', color: 'var(--accent-blue)', fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{st.num}</span>
+                {t.process.steps.map((st, sIdx) => (
+                  <div key={sIdx} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', padding: '20px', borderRadius: '16px' }}>
+                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-blue)', marginBottom: '12px' }} />
                     <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '6px' }}>{st.title}</h4>
                     <p style={{ fontSize: '0.75rem', color: 'var(--text-sub)', lineHeight: 1.5 }}>{st.desc}</p>
                   </div>
@@ -1924,7 +1925,6 @@ export default function App() {
                         <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--bg-surface)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           {renderIcon(s.icon)}
                         </div>
-                        <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--accent-blue)', fontWeight: 'bold' }}>{s.num}</span>
                       </div>
                       <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '10px' }}>{s.title}</h3>
                       <p style={{ fontSize: '0.88rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '24px' }}>{s.shortDesc}</p>
