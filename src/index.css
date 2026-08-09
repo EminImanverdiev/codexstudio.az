@@ -156,3 +156,29 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-blue);
 }
+
+/* Header Responsive Helpers */
+.desktop-cta {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .desktop-cta {
+    display: inline-flex !important;
+  }
+}
+
+.lang-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-width: 36px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}

@@ -1253,29 +1253,42 @@ export default function App() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <div style={{ display: 'flex', padding: '3px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '8px' }}>
               <button
-                onClick={() => changeLanguage('az')}
-                style={{ padding: '4px 8px', borderRadius: '5px', border: 'none', background: lang === 'az' ? 'var(--accent-blue)' : 'transparent', color: lang === 'az' ? 'white' : 'var(--text-sub)', fontSize: '0.72rem', fontWeight: 'bold', cursor: 'pointer' }}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  changeLanguage('az')
+                }}
+                className="lang-btn"
+                style={{ background: lang === 'az' ? 'var(--accent-blue)' : 'transparent', color: lang === 'az' ? 'white' : 'var(--text-sub)' }}
               >
                 AZ
               </button>
               <button
-                onClick={() => changeLanguage('en')}
-                style={{ padding: '4px 8px', borderRadius: '5px', border: 'none', background: lang === 'en' ? 'var(--accent-blue)' : 'transparent', color: lang === 'en' ? 'white' : 'var(--text-sub)', fontSize: '0.72rem', fontWeight: 'bold', cursor: 'pointer' }}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  changeLanguage('en')
+                }}
+                className="lang-btn"
+                style={{ background: lang === 'en' ? 'var(--accent-blue)' : 'transparent', color: lang === 'en' ? 'white' : 'var(--text-sub)' }}
               >
                 EN
               </button>
             </div>
 
             <button
+              type="button"
               onClick={toggleTheme}
-              style={{ padding: '7px 10px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-sub)', cursor: 'pointer' }}
+              style={{ padding: '8px 10px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-sub)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               title="Rejimi dəyiş"
             >
-              {theme === 'dark' ? <Sun size={14} color="#FFBD2E" /> : <Moon size={14} color="var(--accent-blue)" />}
+              {theme === 'dark' ? <Sun size={15} color="#FFBD2E" /> : <Moon size={15} color="var(--accent-blue)" />}
             </button>
 
             <button
+              type="button"
               onClick={() => navigateTo('contact')}
+              className="desktop-cta"
               style={{
                 background: 'var(--accent-blue)',
                 color: 'white',
@@ -1285,7 +1298,6 @@ export default function App() {
                 fontWeight: 600,
                 border: 'none',
                 cursor: 'pointer',
-                display: 'inline-flex',
                 alignItems: 'center',
                 gap: '5px',
                 boxShadow: '0 4px 14px var(--accent-glow)',
@@ -1297,9 +1309,10 @@ export default function App() {
             </button>
 
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="mobile-menu-btn"
-              style={{ padding: '7px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', cursor: 'pointer', alignItems: 'center', justifyContent: 'center' }}
+              style={{ padding: '8px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', cursor: 'pointer', alignItems: 'center', justifyContent: 'center' }}
               aria-label="Menyu"
             >
               {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -1314,51 +1327,71 @@ export default function App() {
         <div style={{
           position: 'fixed',
           inset: 0,
-          zIndex: 90,
+          zIndex: 105,
           background: 'var(--bg-page)',
-          backdropFilter: 'blur(20px)',
-          padding: '80px 24px 24px',
+          padding: '24px 20px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
           overflowY: 'auto'
         }}>
-          {/* Mobile Language & Theme Switcher Top Row */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-color)' }}>
-            <div style={{ display: 'flex', padding: '3px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '8px' }}>
+          {/* Mobile Top Header row */}
+          <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-color)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <img src="/logo.png" alt="CodeX Studio" style={{ width: '28px', height: '28px', borderRadius: '8px' }} />
+                <span style={{ fontWeight: 800, fontSize: '1.1rem' }}>Code<span style={{ color: 'var(--accent-blue)' }}>X</span> Studio</span>
+              </div>
               <button
-                onClick={() => changeLanguage('az')}
-                style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: lang === 'az' ? 'var(--accent-blue)' : 'transparent', color: lang === 'az' ? 'white' : 'var(--text-sub)', fontSize: '0.8rem', fontWeight: 'bold', cursor: 'pointer' }}
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                style={{ padding: '8px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', cursor: 'pointer' }}
               >
-                AZ
-              </button>
-              <button
-                onClick={() => changeLanguage('en')}
-                style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: lang === 'en' ? 'var(--accent-blue)' : 'transparent', color: lang === 'en' ? 'white' : 'var(--text-sub)', fontSize: '0.8rem', fontWeight: 'bold', cursor: 'pointer' }}
-              >
-                EN
+                <X size={20} />
               </button>
             </div>
 
-            <button
-              onClick={toggleTheme}
-              style={{ padding: '8px 14px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-sub)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', fontWeight: 600 }}
-            >
-              {theme === 'dark' ? <><Sun size={14} color="#FFBD2E" /> <span>Light</span></> : <><Moon size={14} color="var(--accent-blue)" /> <span>Dark</span></>}
-            </button>
-          </div>
+            {/* Language & Theme in Drawer */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 0', borderBottom: '1px solid var(--border-color)' }}>
+              <div style={{ display: 'flex', padding: '4px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '10px' }}>
+                <button
+                  type="button"
+                  onClick={() => changeLanguage('az')}
+                  style={{ padding: '8px 18px', borderRadius: '8px', border: 'none', background: lang === 'az' ? 'var(--accent-blue)' : 'transparent', color: lang === 'az' ? 'white' : 'var(--text-sub)', fontSize: '0.88rem', fontWeight: 'bold', cursor: 'pointer' }}
+                >
+                  AZ (Azərbaycan)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => changeLanguage('en')}
+                  style={{ padding: '8px 18px', borderRadius: '8px', border: 'none', background: lang === 'en' ? 'var(--accent-blue)' : 'transparent', color: lang === 'en' ? 'white' : 'var(--text-sub)', fontSize: '0.88rem', fontWeight: 'bold', cursor: 'pointer' }}
+                >
+                  EN (English)
+                </button>
+              </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', paddingTop: '16px' }}>
-            <button onClick={() => navigateTo('home')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '10px 0', borderBottom: '1px solid var(--border-color)' }}>01. {t.nav.home}</button>
-            <button onClick={() => navigateTo('services')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '10px 0', borderBottom: '1px solid var(--border-color)' }}>02. {t.nav.services}</button>
-            <button onClick={() => navigateTo('works')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '10px 0', borderBottom: '1px solid var(--border-color)' }}>03. {t.nav.works}</button>
-            <button onClick={() => navigateTo('about')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '10px 0', borderBottom: '1px solid var(--border-color)' }}>04. {t.nav.about}</button>
-            <button onClick={() => navigateTo('faq')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '10px 0', borderBottom: '1px solid var(--border-color)' }}>05. {t.nav.faq}</button>
-            <button onClick={() => navigateTo('contact')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '10px 0', borderBottom: '1px solid var(--border-color)' }}>06. {t.nav.contact}</button>
+              <button
+                type="button"
+                onClick={toggleTheme}
+                style={{ padding: '8px 14px', borderRadius: '10px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-sub)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', fontWeight: 600 }}
+              >
+                {theme === 'dark' ? <><Sun size={16} color="#FFBD2E" /> <span>Light</span></> : <><Moon size={16} color="var(--accent-blue)" /> <span>Dark</span></>}
+              </button>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', paddingTop: '16px' }}>
+              <button type="button" onClick={() => navigateTo('home')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)', cursor: 'pointer' }}>01. {t.nav.home}</button>
+              <button type="button" onClick={() => navigateTo('services')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)', cursor: 'pointer' }}>02. {t.nav.services}</button>
+              <button type="button" onClick={() => navigateTo('works')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)', cursor: 'pointer' }}>03. {t.nav.works}</button>
+              <button type="button" onClick={() => navigateTo('about')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)', cursor: 'pointer' }}>04. {t.nav.about}</button>
+              <button type="button" onClick={() => navigateTo('faq')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)', cursor: 'pointer' }}>05. {t.nav.faq}</button>
+              <button type="button" onClick={() => navigateTo('contact')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)', cursor: 'pointer' }}>06. {t.nav.contact}</button>
+            </div>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '24px' }}>
             <button
+              type="button"
               onClick={() => navigateTo('contact')}
               style={{ background: 'var(--accent-blue)', color: 'white', padding: '14px', borderRadius: '12px', textAlign: 'center', fontWeight: 600, border: 'none', fontSize: '0.95rem', cursor: 'pointer' }}
             >
