@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import {
   MessageCircle, Send, ArrowRight, Laptop, Globe, ShoppingBag,
   Zap, Smartphone, CheckCircle2, ChevronDown, X, Sun, Moon,
-  Mail, ExternalLink, Loader2, ArrowUpRight, ShieldCheck, Menu
+  Mail, ExternalLink, Loader2, ArrowUpRight, ShieldCheck, Menu,
+  Code2, Palette, Headphones, Search, Phone
 } from 'lucide-react'
 
 export default function App() {
+  const [currentRoute, setCurrentRoute] = useState('home')
   const [lang, setLang] = useState('az')
   const [theme, setTheme] = useState('dark')
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -22,7 +24,7 @@ export default function App() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [business, setBusiness] = useState('')
-  const [siteType, setSiteType] = useState('Korporativ sayt')
+  const [siteType, setSiteType] = useState('Korporativ saytların hazırlanması')
   const [message, setMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -50,6 +52,11 @@ export default function App() {
     }
   }, [mobileMenuOpen])
 
+  // Scroll to top when changing route
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [currentRoute])
+
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
 
   const toggleQuizFeature = (index) => {
@@ -63,28 +70,28 @@ export default function App() {
   const getQuizRecommendation = () => {
     if (quizPurpose === 2 || quizFeatures.includes(3) || quizFeatures.includes(2)) {
       return {
-        type: 'E-commerce (Onlayn Mağaza)',
-        desc: 'Məhsul kataloqu, səbət və bank kartı ilə onlayn ödəniş qəbul etmək üçün ən uyğun seçimdir.',
+        type: 'E-commerce saytların hazırlanması',
+        desc: 'Məhsulların təqdimatı, sifariş və onlayn satış üçün e-commerce saytların hazırlanması.',
         badge: 'Satış Yönümlü'
       }
     }
     if (quizPurpose === 0) {
       return {
-        type: 'Landing Page (Təqdimat Saytı)',
-        desc: 'Bir xidmət və ya məhsulun təqdimatı üçün yüksək təsirli, dərhal müştəri müraciəti toplayan tək səhifəlik sayt.',
+        type: 'Landing Page hazırlanması',
+        desc: 'Məhsul, xidmət və reklam kampaniyalarının təqdimatı üçün məqsədyönlü bir səhifəlik saytların hazırlanması.',
         badge: 'Təqdimat & Satış'
       }
     }
     if (quizPurpose === 3 || quizFeatures.includes(4) || quizFeatures.includes(5)) {
       return {
-        type: 'Fərdi və Tibbi Veb Portal',
+        type: 'Fərdi veb layihələrin hazırlanması',
         desc: 'Biznesinizin unikal tələblərinə uyğun xüsusi kalkulyatorlar, rezervasiya modulları və fərdi idarəetmə sistemi.',
         badge: 'Xüsusi Həll'
       }
     }
     return {
-      type: 'Korporativ Şirkət Saytı',
-      desc: 'Şirkətinizi, xidmətlərinizi və etibarınızı çoxsəhifəli sistemdə peşəkar şəkildə təqdim edən rəsmi sayt.',
+      type: 'Korporativ saytların hazırlanması',
+      desc: 'Şirkətiniz, xidmətləriniz və fəaliyyətiniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi korporativ saytların hazırlanması.',
       badge: 'Şirkət Etibarı'
     }
   }
@@ -135,42 +142,94 @@ export default function App() {
     window.open(`https://wa.me/994106011201?text=${encodeURIComponent(text)}`, '_blank')
   }
 
+  const services = [
+    {
+      id: 'web-dev',
+      num: '01',
+      title: 'Veb saytların hazırlanması',
+      desc: 'Biznesinizin fəaliyyətinə və ehtiyaclarına uyğun funksional veb saytların hazırlanması.',
+      icon: <Code2 size={24} color="#0066FF" />
+    },
+    {
+      id: 'landing',
+      num: '02',
+      title: 'Landing Page hazırlanması',
+      desc: 'Məhsul, xidmət və reklam kampaniyalarının təqdimatı üçün məqsədyönlü bir səhifəlik saytların hazırlanması.',
+      icon: <Globe size={24} color="#0066FF" />
+    },
+    {
+      id: 'corporate',
+      num: '03',
+      title: 'Korporativ saytların hazırlanması',
+      desc: 'Şirkətiniz, xidmətləriniz və fəaliyyətiniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi korporativ saytların hazırlanması.',
+      icon: <Laptop size={24} color="#0066FF" />
+    },
+    {
+      id: 'ecommerce',
+      num: '04',
+      title: 'E-commerce saytların hazırlanması',
+      desc: 'Məhsulların təqdimatı, sifariş və onlayn satış üçün e-commerce saytların hazırlanması.',
+      icon: <ShoppingBag size={24} color="#0066FF" />
+    },
+    {
+      id: 'uiux',
+      num: '05',
+      title: 'Veb dizayn (UI/UX)',
+      desc: 'Saytın istifadəsini rahatlaşdıran, mobil cihazlara uyğun və müasir interfeys dizaynının hazırlanması.',
+      icon: <Palette size={24} color="#0066FF" />
+    },
+    {
+      id: 'support',
+      num: '06',
+      title: 'Texniki dəstək',
+      desc: 'Sayt istifadəyə verildikdən sonra texniki məsələlər, yenilənmələr və zəruri dəyişikliklər üzrə dəstək.',
+      icon: <Headphones size={24} color="#0066FF" />
+    },
+    {
+      id: 'seo',
+      num: '07',
+      title: 'SEO optimizasiyası',
+      desc: 'Saytın axtarış sistemləri tərəfindən daha düzgün oxunması üçün texniki və struktur SEO optimizasiyası.',
+      icon: <Search size={24} color="#0066FF" />
+    }
+  ]
+
   const works = [
     {
       id: '01',
       name: 'Sinaps Med — Tibbi Avadanlıq & Səhiyyə Şirkəti',
-      type: 'Tibbi & Korporativ Veb Portal',
-      desc: 'Tibbi cihazlar, klinik və ginekoloji məhsullar, beynəlxalq distribütorluq və xəstəxanalar üçün çoxdilli geniş korporativ sayt.',
+      type: 'Korporativ saytların hazırlanması',
+      desc: 'Tibbi avadanlıqlar, klinik məhsul kataloqu, distribütorluq və səhiyyə müəssisələri üçün çoxdilli rəsmi korporativ platforma.',
       url: 'https://sinapsmed.com',
       displayUrl: 'sinapsmed.com',
-      tags: ['Tibbi avadanlıq', 'Məhsul kataloqu', 'Korporativ arxitektura', 'Partnyor əlaqələri']
+      tags: ['Korporativ sayt', 'Məhsul kataloqu', 'Çoxdillilik', 'Partnyor əlaqələri']
     },
     {
       id: '02',
       name: 'Leyla Qasımova — Fizika və Elm Mərkəzi',
-      type: 'Müəllim / Təhsil üçün Şəxsi Brend Saytı',
+      type: 'Landing Page və Fərdi Sayt',
       desc: 'Təlim proqramları, video dərslər, tələbə nəticələri və birbaşa sınaq dərsinə qeydiyyat toplayan şəxsi brend platforması.',
       url: 'https://leylagasimova.az',
       displayUrl: 'leylagasimova.az',
-      tags: ['Şəxsi brend', 'Kurs qeydiyyatı', 'Video təqdimat', 'WhatsApp inteqrasiyası']
+      tags: ['Landing Page', 'Kurs qeydiyyatı', 'Video təqdimat', 'WhatsApp inteqrasiyası']
     },
     {
       id: '03',
       name: 'Vektor Logistics & Holding',
-      type: 'Korporativ B2B Şirkət Portalı',
+      type: 'Korporativ saytların hazırlanması',
       desc: 'Beynəlxalq yükdaşıma, anbar xidmətləri və tərəfdaş şirkətlər üçün çoxsəhifəli, etibarlı korporativ veb portal.',
       url: 'https://vektor-holding.codexstudio.az',
       displayUrl: 'vektor-holding.az',
-      tags: ['B2B korporativ', 'Xidmət kataloqu', 'Çoxdilli struktur', 'Sorğu sistemi']
+      tags: ['Korporativ sayt', 'Xidmət kataloqu', 'Çoxdilli struktur', 'Sorğu sistemi']
     },
     {
       id: '04',
       name: 'Aura Home & Living',
-      type: 'E-commerce Onlayn Mağaza',
+      type: 'E-commerce saytların hazırlanması',
       desc: 'İnteryer mebeli və ev aksessuarları üçün müasir məhsul vitrini, kateqoriya filtri, səbət və bank kartı ilə ödəniş axını.',
       url: 'https://aurahome.codexstudio.az',
       displayUrl: 'aurahome.az',
-      tags: ['Onlayn mağaza', 'Səbət sistemi', 'Kartla ödəniş', 'Mobil optimizasiya']
+      tags: ['E-commerce', 'Səbət sistemi', 'Kartla ödəniş', 'Mobil uyğun dizayn']
     }
   ]
 
@@ -179,33 +238,38 @@ export default function App() {
   const faqs = [
     {
       q: 'Saytın hazırlanması neçə gün çəkir?',
-      a: 'Müddət layihənin növündən asılıdır: Tək səhifəlik Landing page adətən bir neçə günə, korporativ şirkət saytları və onlayn mağazalar isə orta hesabla 1-3 həftəyə tam hazır vəziyyətə gətirilir.'
+      a: 'Müddət layihənin növündən asılıdır: Tək səhifəlik Landing Page adətən bir neçə günə, korporativ saytlar və e-commerce layihələri isə orta hesabla 1-3 həftəyə tam hazır vəziyyətə gətirilir.'
     },
     {
       q: 'Qiymət necə müəyyən olunur?',
-      a: 'Qiymət saytın növünə (Landing page, Korporativ, E-commerce), səhifə sayına və tələb olunan funksionallığa (onlayn ödəniş, çoxdillilik və s.) görə şəffaf şəkildə hesablanır. Gizli xərc olmur.'
+      a: 'Qiymət saytın növünə (Landing Page, Korporativ, E-commerce), səhifə sayına və tələb olunan funksionallığa (onlayn ödəniş, çoxdillilik və s.) görə şəffaf şəkildə hesablanır.'
     },
     {
       q: 'Domen və hosting qiymətə daxildirmi?',
       a: 'Bəli, istəyinizə uyğun olaraq .az və ya beynəlxalq domenlərin seçilməsi, sürətli serverin quraşdırılması və SSL təhlükəsizlik sertifikatının aktivləşdirilməsi tərəfimizdən təmin edilir.'
     },
     {
-      q: 'Sayt telefonda və planşetdə rahat açılacaq?',
-      a: 'Bəli, 100%. Hazırladığımız bütün saytlar Mobile-First prinsipi ilə yığılır və bütün iPhone, Android smartfon və planşet ekranlarında qüsursuz və rahat açılır.'
+      q: 'Sayt mobil cihazlara uyğun olacaq?',
+      a: 'Bəli, 100%. Hazırladığımız bütün saytlar mobil cihazlara uyğunlaşdırılır və smartfon, planşet və kompüter ekranlarında qüsursuz işləyir.'
     },
     {
-      q: 'Sonradan saytda dəyişiklik və əlavələr etmək mümkündür?',
-      a: 'Bəli. Saytın arxitekturası elə qurulur ki, gələcəkdə yeni səhifələr, məhsullar, xidmətlər və ya yeni funksiyalar asanlıqla əlavə oluna bilsin.'
+      q: 'Sonradan saytda dəyişiklik etmək mümkündür?',
+      a: 'Bəli. Saytın strukturu elə qurulur ki, gələcəkdə yeni səhifələr, məhsullar, xidmətlər və ya yeni funksiyalar asanlıqla əlavə oluna bilsin.'
     },
     {
-      q: 'Onlayn bank kartı ilə ödəniş sistemi qoşmaq olar?',
-      a: 'Bəli. E-commerce və ya sifariş saytlarınıza Azərbaycanın aparıcı banklarının kartla ödəniş sistemlərini (Kapital Bank, Paşa Bank və s.) təhlükəsiz şəkildə inteqrasiya edirik.'
+      q: 'Onlayn ödəniş sistemi qoşmaq olar?',
+      a: 'Bəli. E-commerce və sifariş saytlarınıza yerli bankların kartla ödəniş sistemlərini (Kapital Bank, Paşa Bank və s.) təhlükəsiz şəkildə inteqrasiya edirik.'
     },
     {
       q: 'Sayt hazır olduqdan sonra texniki dəstək verirsiniz?',
-      a: 'Bəli. Sayt təhvil verildikdən sonra da serverin fasiləsiz işləməsi, texniki suallarınız və istənilən yenilənmələrdə dəstəyimiz davam edir.'
+      a: 'Bəli. Sayt təhvil verildikdən sonra da serverin fasiləsiz işləməsi, domen və texniki suallarınız üzrə dəstəyimiz davam edir.'
     }
   ]
+
+  const navigateTo = (route) => {
+    setCurrentRoute(route)
+    setMobileMenuOpen(false)
+  }
 
   return (
     <div className="min-h-screen bg-[#05070B] text-[#F5F7FA] overflow-x-hidden">
@@ -236,7 +300,10 @@ export default function App() {
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
           
           {/* CS Logo + CodeX Studio */}
-          <a href="#hero" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', flexShrink: 0 }}>
+          <button
+            onClick={() => navigateTo('home')}
+            style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0 }}
+          >
             <div style={{
               width: '38px',
               height: '38px',
@@ -255,17 +322,46 @@ export default function App() {
               <span>Code<span style={{ color: '#0066FF' }}>X</span></span>
               <span style={{ color: '#9CA6B5', fontWeight: 500, fontSize: '1.15rem' }}>Studio</span>
             </div>
-          </a>
+          </button>
 
           {/* Desktop Nav */}
           <nav className="desktop-nav">
-            <a href="#hero" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>Ana səhifə</a>
-            <a href="#services" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>Xidmətlər</a>
-            <a href="#works" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>İşlərimiz</a>
-            <a href="#process" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>İş prosesi</a>
-            <a href="#about" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>Haqqımızda</a>
-            <a href="#faq" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>Sual-Cavab</a>
-            <a href="#contact" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>Əlaqə</a>
+            <button
+              onClick={() => navigateTo('home')}
+              style={{ background: 'none', border: 'none', color: currentRoute === 'home' ? '#F5F7FA' : '#9CA6B5', fontWeight: currentRoute === 'home' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
+            >
+              Ana səhifə
+            </button>
+            <button
+              onClick={() => navigateTo('services')}
+              style={{ background: 'none', border: 'none', color: currentRoute === 'services' ? '#F5F7FA' : '#9CA6B5', fontWeight: currentRoute === 'services' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
+            >
+              Xidmətlər
+            </button>
+            <button
+              onClick={() => navigateTo('works')}
+              style={{ background: 'none', border: 'none', color: currentRoute === 'works' ? '#F5F7FA' : '#9CA6B5', fontWeight: currentRoute === 'works' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
+            >
+              İşlərimiz
+            </button>
+            <button
+              onClick={() => navigateTo('about')}
+              style={{ background: 'none', border: 'none', color: currentRoute === 'about' ? '#F5F7FA' : '#9CA6B5', fontWeight: currentRoute === 'about' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
+            >
+              Haqqımızda
+            </button>
+            <button
+              onClick={() => navigateTo('faq')}
+              style={{ background: 'none', border: 'none', color: currentRoute === 'faq' ? '#F5F7FA' : '#9CA6B5', fontWeight: currentRoute === 'faq' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
+            >
+              Tez-tez verilən suallar
+            </button>
+            <button
+              onClick={() => navigateTo('contact')}
+              style={{ background: 'none', border: 'none', color: currentRoute === 'contact' ? '#F5F7FA' : '#9CA6B5', fontWeight: currentRoute === 'contact' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
+            >
+              Bizimlə əlaqə
+            </button>
           </nav>
 
           {/* Controls */}
@@ -293,8 +389,8 @@ export default function App() {
               {theme === 'dark' ? <Sun size={14} color="#FFBD2E" /> : <Moon size={14} color="#0066FF" />}
             </button>
 
-            <a
-              href="#contact"
+            <button
+              onClick={() => navigateTo('contact')}
               style={{
                 background: '#0066FF',
                 color: 'white',
@@ -302,7 +398,8 @@ export default function App() {
                 borderRadius: '10px',
                 fontSize: '0.84rem',
                 fontWeight: 600,
-                textDecoration: 'none',
+                border: 'none',
+                cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '5px',
@@ -312,7 +409,7 @@ export default function App() {
             >
               <span>Təklif al</span>
               <ArrowRight size={14} />
-            </a>
+            </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -342,23 +439,21 @@ export default function App() {
           overflowY: 'auto'
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <a href="#hero" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>01. Ana səhifə</a>
-            <a href="#services" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>02. Xidmətlər</a>
-            <a href="#works" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>03. İşlərimiz</a>
-            <a href="#process" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>04. İş prosesi</a>
-            <a href="#about" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>05. Haqqımızda</a>
-            <a href="#faq" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>06. Sual-Cavab</a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>07. Əlaqə</a>
+            <button onClick={() => navigateTo('home')} style={{ background: 'none', border: 'none', textAlign: 'left', color: '#F5F7FA', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>01. Ana səhifə</button>
+            <button onClick={() => navigateTo('services')} style={{ background: 'none', border: 'none', textAlign: 'left', color: '#F5F7FA', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>02. Xidmətlər</button>
+            <button onClick={() => navigateTo('works')} style={{ background: 'none', border: 'none', textAlign: 'left', color: '#F5F7FA', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>03. İşlərimiz</button>
+            <button onClick={() => navigateTo('about')} style={{ background: 'none', border: 'none', textAlign: 'left', color: '#F5F7FA', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>04. Haqqımızda</button>
+            <button onClick={() => navigateTo('faq')} style={{ background: 'none', border: 'none', textAlign: 'left', color: '#F5F7FA', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>05. Tez-tez verilən suallar</button>
+            <button onClick={() => navigateTo('contact')} style={{ background: 'none', border: 'none', textAlign: 'left', color: '#F5F7FA', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>06. Bizimlə əlaqə</button>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '24px' }}>
-            <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ background: '#0066FF', color: 'white', padding: '14px', borderRadius: '12px', textAlign: 'center', fontWeight: 600, textDecoration: 'none', fontSize: '0.95rem' }}
+            <button
+              onClick={() => navigateTo('contact')}
+              style={{ background: '#0066FF', color: 'white', padding: '14px', borderRadius: '12px', textAlign: 'center', fontWeight: 600, border: 'none', fontSize: '0.95rem', cursor: 'pointer' }}
             >
               Sayt sifarişi verin →
-            </a>
+            </button>
             <a
               href="https://wa.me/994106011201"
               target="_blank"
@@ -371,759 +466,735 @@ export default function App() {
         </div>
       )}
 
-      {/* 1. Hero Section */}
-      <section id="hero" style={{ padding: '60px 0 70px' }}>
-        <div className="container">
-          <div className="hero-grid">
-            
-            {/* Left Column */}
-            <div>
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '5px 12px',
-                borderRadius: '999px',
-                background: '#080C14',
-                border: '1px solid #162032',
-                fontSize: '0.72rem',
-                fontFamily: 'monospace',
-                color: '#9CA6B5',
-                marginBottom: '16px'
-              }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#0066FF', boxShadow: '0 0 8px #0066FF' }}></span>
-                <span>CODEX STUDIO • VEB SAYTLARIN HAZIRLANMASI</span>
-              </div>
-
-              <h1 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', lineHeight: 1.14, fontWeight: 800, marginBottom: '18px', letterSpacing: '-0.02em' }}>
-                Biznesiniz üçün işləyən və <br />
-                <span style={{ color: '#0066FF' }}>müştəri qazandıran saytlar.</span>
-              </h1>
-
-              <p style={{ color: '#9CA6B5', fontSize: 'clamp(0.92rem, 2vw, 1.1rem)', lineHeight: 1.6, maxWidth: '540px', marginBottom: '28px' }}>
-                Landing page, korporativ şirkət saytları və onlayn mağazalar — sürətli, mobil cihazlara tam uyğun və biznesinizi bazarda ən yaxşı şəkildə təqdim edən peşəkar veb həllər.
-              </p>
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', marginBottom: '28px' }}>
-                <a
-                  href="#contact"
-                  style={{
-                    background: '#0066FF',
-                    color: 'white',
-                    padding: '14px 28px',
-                    borderRadius: '12px',
-                    fontSize: '0.92rem',
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                    boxShadow: '0 8px 24px rgba(0, 102, 255, 0.35)',
+      {/* ======================================================== */}
+      {/* PAGE: HOME */}
+      {/* ======================================================== */}
+      {currentRoute === 'home' && (
+        <>
+          {/* Hero Section */}
+          <section id="hero" style={{ padding: '60px 0 70px' }}>
+            <div className="container">
+              <div className="hero-grid">
+                <div>
+                  <div style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '6px'
-                  }}
-                >
-                  <span>Sayt sifarişi ver</span>
-                  <ArrowRight size={15} />
-                </a>
-
-                <a
-                  href="#works"
-                  style={{
+                    gap: '8px',
+                    padding: '5px 12px',
+                    borderRadius: '999px',
                     background: '#080C14',
-                    color: '#F5F7FA',
                     border: '1px solid #162032',
-                    padding: '14px 24px',
-                    borderRadius: '12px',
-                    fontSize: '0.92rem',
-                    fontWeight: 600,
-                    textDecoration: 'none'
-                  }}
-                >
-                  <span>Son işlərimizə bax</span>
-                </a>
-              </div>
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', fontSize: '0.82rem', color: '#9CA6B5', borderTop: '1px solid #162032', paddingTop: '16px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="#0066FF" /><span style={{ color: '#F5F7FA' }}>100% Mobil uyğunluq</span></div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="#0066FF" /><span style={{ color: '#F5F7FA' }}>Yüksək yüklənmə sürəti</span></div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="#0066FF" /><span style={{ color: '#F5F7FA' }}>Google və SEO strukturu</span></div>
-              </div>
-            </div>
-
-            {/* Right Column: Realistic Website Mockup */}
-            <div style={{ width: '100%' }}>
-              
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                <div style={{ display: 'flex', gap: '6px', padding: '4px', background: '#080C14', border: '1px solid #162032', borderRadius: '10px' }}>
-                  <button
-                    onClick={() => setHeroTab('landing')}
-                    style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: heroTab === 'landing' ? '#0066FF' : 'transparent', color: 'white', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
-                  >
-                    Landing page
-                  </button>
-                  <button
-                    onClick={() => setHeroTab('corporate')}
-                    style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: heroTab === 'corporate' ? '#0066FF' : 'transparent', color: 'white', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
-                  >
-                    Korporativ
-                  </button>
-                  <button
-                    onClick={() => setHeroTab('ecommerce')}
-                    style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: heroTab === 'ecommerce' ? '#0066FF' : 'transparent', color: 'white', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
-                  >
-                    E-commerce
-                  </button>
-                </div>
-
-                <div style={{ fontSize: '0.72rem', color: '#10B981', fontFamily: 'monospace', padding: '4px 10px', background: '#080C14', border: '1px solid #162032', borderRadius: '8px' }}>
-                  ✓ Canlı önizləmə
-                </div>
-              </div>
-
-              <div style={{
-                background: '#080C14',
-                border: '1px solid #162032',
-                borderRadius: '18px',
-                overflow: 'hidden',
-                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.6)'
-              }}>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '10px 16px',
-                  background: '#05070B',
-                  borderBottom: '1px solid #162032'
-                }}>
-                  <div style={{ display: 'flex', gap: '6px' }}>
-                    <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#FF5F56' }}></span>
-                    <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#FFBD2E' }}></span>
-                    <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27C93F' }}></span>
+                    fontSize: '0.72rem',
+                    fontFamily: 'monospace',
+                    color: '#9CA6B5',
+                    marginBottom: '16px'
+                  }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#0066FF', boxShadow: '0 0 8px #0066FF' }}></span>
+                    <span>VEB SAYTLARIN HAZIRLANMASI</span>
                   </div>
-                  <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', background: '#080C14', padding: '3px 12px', borderRadius: '6px', border: '1px solid #162032' }}>
-                    <span style={{ color: '#0066FF' }}>https://</span>
-                    <span>
-                      {heroTab === 'landing' && 'sinapsmed.com'}
-                      {heroTab === 'corporate' && 'vektor-holding.az'}
-                      {heroTab === 'ecommerce' && 'aurahome.az'}
-                    </span>
+
+                  <h1 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', lineHeight: 1.14, fontWeight: 800, marginBottom: '18px', letterSpacing: '-0.02em' }}>
+                    Biznesiniz üçün peşəkar <br />
+                    <span style={{ color: '#0066FF' }}>veb sayt hazırlayırıq.</span>
+                  </h1>
+
+                  <p style={{ color: '#9CA6B5', fontSize: 'clamp(0.92rem, 2vw, 1.1rem)', lineHeight: 1.6, maxWidth: '540px', marginBottom: '28px' }}>
+                    Landing Page, korporativ sayt və e-commerce layihələrinin dizaynı və hazırlanması.
+                  </p>
+
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', marginBottom: '28px' }}>
+                    <button
+                      onClick={() => navigateTo('contact')}
+                      style={{
+                        background: '#0066FF',
+                        color: 'white',
+                        padding: '14px 28px',
+                        borderRadius: '12px',
+                        fontSize: '0.92rem',
+                        fontWeight: 600,
+                        border: 'none',
+                        cursor: 'pointer',
+                        boxShadow: '0 8px 24px rgba(0, 102, 255, 0.35)',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px'
+                      }}
+                    >
+                      <span>Sayt sifarişi</span>
+                      <ArrowRight size={15} />
+                    </button>
+
+                    <button
+                      onClick={() => navigateTo('works')}
+                      style={{
+                        background: '#080C14',
+                        color: '#F5F7FA',
+                        border: '1px solid #162032',
+                        padding: '14px 24px',
+                        borderRadius: '12px',
+                        fontSize: '0.92rem',
+                        fontWeight: 600,
+                        cursor: 'pointer'
+                      }}
+                    >
+                      <span>İşlərimizə bax</span>
+                    </button>
                   </div>
-                  <div style={{ width: '20px' }}></div>
+
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', fontSize: '0.82rem', color: '#9CA6B5', borderTop: '1px solid #162032', paddingTop: '16px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="#0066FF" /><span style={{ color: '#F5F7FA' }}>Mobil uyğun</span></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="#0066FF" /><span style={{ color: '#F5F7FA' }}>SEO optimizasiyası</span></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="#0066FF" /><span style={{ color: '#F5F7FA' }}>Texniki dəstək</span></div>
+                  </div>
                 </div>
 
-                <div style={{ padding: '24px', background: 'linear-gradient(180deg, #080C14 0%, #0D121D 100%)', minHeight: '260px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                  {heroTab === 'landing' && (
-                    <div>
-                      <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '6px' }}>TİBBİ AVADANLIQ & SƏHİYYƏ</div>
-                      <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Sinaps Med — Tibbi Avadanlıq və Klinik Həllər.</h3>
-                      <p style={{ fontSize: '0.85rem', color: '#9CA6B5', lineHeight: 1.6, marginBottom: '18px' }}>
-                        Beynəlxalq tibbi avadanlıqlar, distribütorluq və səhiyyə müəssisələri üçün korporativ veb portal.
-                      </p>
-                      <div style={{ display: 'flex', gap: '8px' }}>
-                        <a href="https://sinapsmed.com" target="_blank" rel="noopener noreferrer" style={{ background: '#0066FF', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>Sayta baxın →</a>
-                        <span style={{ background: '#162032', color: '#9CA6B5', padding: '8px 14px', borderRadius: '8px', fontSize: '0.78rem' }}>Məhsul kataloqu</span>
-                      </div>
+                {/* Right: Mockup */}
+                <div style={{ width: '100%' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                    <div style={{ display: 'flex', gap: '6px', padding: '4px', background: '#080C14', border: '1px solid #162032', borderRadius: '10px' }}>
+                      <button
+                        onClick={() => setHeroTab('landing')}
+                        style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: heroTab === 'landing' ? '#0066FF' : 'transparent', color: 'white', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
+                      >
+                        Landing Page
+                      </button>
+                      <button
+                        onClick={() => setHeroTab('corporate')}
+                        style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: heroTab === 'corporate' ? '#0066FF' : 'transparent', color: 'white', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
+                      >
+                        Korporativ sayt
+                      </button>
+                      <button
+                        onClick={() => setHeroTab('ecommerce')}
+                        style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: heroTab === 'ecommerce' ? '#0066FF' : 'transparent', color: 'white', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
+                      >
+                        E-commerce sayt
+                      </button>
                     </div>
-                  )}
 
-                  {heroTab === 'corporate' && (
-                    <div>
-                      <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '6px' }}>B2B & LOGİSTİKA PORTALI</div>
-                      <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Qlobal tərəfdaşlarınız üçün etibarlı həllər.</h3>
-                      <p style={{ fontSize: '0.85rem', color: '#9CA6B5', lineHeight: 1.6, marginBottom: '18px' }}>
-                        Müasir texnologiyalar və təhlükəsiz korporativ arxitektura ilə biznesinizi təmsil edirik.
-                      </p>
-                      <div style={{ display: 'flex', gap: '8px' }}>
-                        <a href="#contact" style={{ background: '#0066FF', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>Təklif al →</a>
-                        <span style={{ background: '#162032', color: '#9CA6B5', padding: '8px 14px', borderRadius: '8px', fontSize: '0.78rem' }}>Xidmətlər</span>
-                      </div>
+                    <div style={{ fontSize: '0.72rem', color: '#10B981', fontFamily: 'monospace', padding: '4px 10px', background: '#080C14', border: '1px solid #162032', borderRadius: '8px' }}>
+                      ✓ Canlı önizləmə
                     </div>
-                  )}
+                  </div>
 
-                  {heroTab === 'ecommerce' && (
-                    <div>
-                      <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '6px' }}>MEBEL & İNTERYER MAĞAZASI</div>
-                      <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Müasir interyer məhsulları və onlayn ödəniş.</h3>
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', margin: '12px 0' }}>
-                        <div style={{ background: '#05070B', border: '1px solid #162032', padding: '8px 12px', borderRadius: '8px' }}>
-                          <span style={{ fontSize: '0.7rem', color: '#9CA6B5' }}>Skandinav Divan</span>
-                          <div style={{ fontSize: '0.95rem', fontWeight: 700 }}>680 ₼</div>
+                  <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '18px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(0, 0, 0, 0.6)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px', background: '#05070B', borderBottom: '1px solid #162032' }}>
+                      <div style={{ display: 'flex', gap: '6px' }}>
+                        <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#FF5F56' }}></span>
+                        <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#FFBD2E' }}></span>
+                        <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27C93F' }}></span>
+                      </div>
+                      <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', background: '#080C14', padding: '3px 12px', borderRadius: '6px', border: '1px solid #162032' }}>
+                        <span style={{ color: '#0066FF' }}>https://</span>
+                        <span>
+                          {heroTab === 'landing' && 'leylagasimova.az'}
+                          {heroTab === 'corporate' && 'sinapsmed.com'}
+                          {heroTab === 'ecommerce' && 'aurahome.az'}
+                        </span>
+                      </div>
+                      <div style={{ width: '20px' }}></div>
+                    </div>
+
+                    <div style={{ padding: '24px', background: 'linear-gradient(180deg, #080C14 0%, #0D121D 100%)', minHeight: '260px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                      {heroTab === 'landing' && (
+                        <div>
+                          <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '6px' }}>LANDİNG PAGE HAZIRLANMASI</div>
+                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Leyla Qasımova — Fizika və Elm Mərkəzi</h3>
+                          <p style={{ fontSize: '0.85rem', color: '#9CA6B5', lineHeight: 1.6, marginBottom: '18px' }}>
+                            Məhsul, xidmət və kursların təqdimatı üçün məqsədyönlü bir səhifəlik sayt.
+                          </p>
+                          <a href="https://leylagasimova.az" target="_blank" rel="noopener noreferrer" style={{ background: '#0066FF', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>Sayta bax →</a>
                         </div>
-                        <div style={{ background: '#05070B', border: '1px solid #162032', padding: '8px 12px', borderRadius: '8px' }}>
-                          <span style={{ fontSize: '0.7rem', color: '#9CA6B5' }}>Qəhvə Masası</span>
-                          <div style={{ fontSize: '0.95rem', fontWeight: 700 }}>240 ₼</div>
-                        </div>
-                      </div>
-                      <a href="#contact" style={{ background: '#0066FF', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none', display: 'inline-block' }}>Sifariş et →</a>
-                    </div>
-                  )}
+                      )}
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #162032', paddingTop: '12px', marginTop: '16px', fontSize: '0.72rem', color: '#9CA6B5' }}>
-                    <span>✓ 100% Mobil və Planşet Uyğun</span>
-                    <span style={{ color: '#0066FF' }}>Codex Studio Standartı</span>
+                      {heroTab === 'corporate' && (
+                        <div>
+                          <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '6px' }}>KORPORATİV SAYTLARIN HAZIRLANMASI</div>
+                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Sinaps Med — Tibbi Avadanlıq & Səhiyyə</h3>
+                          <p style={{ fontSize: '0.85rem', color: '#9CA6B5', lineHeight: 1.6, marginBottom: '18px' }}>
+                            Şirkətiniz və xidmətləriniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi rəsmi sayt.
+                          </p>
+                          <a href="https://sinapsmed.com" target="_blank" rel="noopener noreferrer" style={{ background: '#0066FF', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>Sayta bax →</a>
+                        </div>
+                      )}
+
+                      {heroTab === 'ecommerce' && (
+                        <div>
+                          <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '6px' }}>E-COMMERCE SAYTLARIN HAZIRLANMASI</div>
+                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Aura Home & Living — Mebel Mağazası</h3>
+                          <p style={{ fontSize: '0.85rem', color: '#9CA6B5', lineHeight: 1.6, marginBottom: '18px' }}>
+                            Məhsulların təqdimatı, səbət və onlayn ödəniş sistemi ilə tam təchiz olunmuş onlayn mağaza.
+                          </p>
+                          <button onClick={() => navigateTo('contact')} style={{ background: '#0066FF', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, border: 'none', cursor: 'pointer' }}>Təklif al →</button>
+                        </div>
+                      )}
+
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #162032', paddingTop: '12px', marginTop: '16px', fontSize: '0.72rem', color: '#9CA6B5' }}>
+                        <span>✓ 100% Mobil və Planşet Uyğun</span>
+                        <span style={{ color: '#0066FF' }}>Codex Studio</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-
             </div>
+          </section>
 
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Trust Strip */}
-      <section style={{ padding: '24px 0', background: '#080C14', borderTop: '1px solid #162032', borderBottom: '1px solid #162032' }}>
-        <div className="container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '12px' }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', fontSize: '0.85rem', fontWeight: 600 }}>
-            <div><span style={{ color: '#0066FF' }}>•</span> Korporativ saytlar</div>
-            <div><span style={{ color: '#0066FF' }}>•</span> Landing Page</div>
-            <div><span style={{ color: '#0066FF' }}>•</span> E-commerce mağazalar</div>
-            <div><span style={{ color: '#0066FF' }}>•</span> Tibbi & Fərdi portallar</div>
-            <div><span style={{ color: '#0066FF' }}>•</span> Texniki dəstək</div>
-          </div>
-          <div style={{ fontSize: '0.78rem', color: '#9CA6B5' }}>Azərbaycan və xarici bazarda fəaliyyət göstərən bizneslər üçün etibarlı tərəfdaş.</div>
-        </div>
-      </section>
-
-      {/* 3. Services Section */}
-      <section id="services" style={{ padding: '80px 0', borderTop: '1px solid #162032' }}>
-        <div className="container">
-          <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
-            <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-              XİDMƏTLƏRİMİZ
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Biznesiniz üçün hansı veb sayt lazımdır?</h2>
-            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Fəaliyyət sahənizə və satış hədəflərinizə uyğun ən optimal sayt formatını birlikdə seçirik.</p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-            
-            <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '18px', padding: '24px' }}>
-              <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '8px' }}>01 // ŞİRKƏT ETİBARI</div>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '8px' }}>Korporativ Şirkət Saytları</h3>
-              <p style={{ fontSize: '0.85rem', color: '#F5F7FA', marginBottom: '8px' }}>Şirkətinizi, xidmətlərinizi və etibarınızı peşəkar səviyyədə təqdim etmək üçün.</p>
-              <p style={{ fontSize: '0.78rem', color: '#9CA6B5', lineHeight: 1.5, marginBottom: '16px' }}>Şirkətinizin fəaliyyətini, xidmət kataloqunu, komandasını və tərəfdaşlarını əks etdirən rəsmi saytlar.</p>
-              <a href="#contact" style={{ color: '#0066FF', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>Təklif al →</a>
+          {/* Trust Strip */}
+          <section style={{ padding: '24px 0', background: '#080C14', borderTop: '1px solid #162032', borderBottom: '1px solid #162032' }}>
+            <div className="container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '12px' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', fontSize: '0.85rem', fontWeight: 600 }}>
+                <div><span style={{ color: '#0066FF' }}>•</span> Veb saytların hazırlanması</div>
+                <div><span style={{ color: '#0066FF' }}>•</span> Landing Page</div>
+                <div><span style={{ color: '#0066FF' }}>•</span> Korporativ saytlar</div>
+                <div><span style={{ color: '#0066FF' }}>•</span> E-commerce</div>
+                <div><span style={{ color: '#0066FF' }}>•</span> Texniki dəstək</div>
+              </div>
+              <div style={{ fontSize: '0.78rem', color: '#9CA6B5' }}>Kiçik və böyük bizneslər üçün veb xidmətlər.</div>
             </div>
+          </section>
 
-            <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '18px', padding: '24px' }}>
-              <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '8px' }}>02 // TƏQDİMAT & SATIŞ</div>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '8px' }}>Landing Page (Təqdimat Saytı)</h3>
-              <p style={{ fontSize: '0.85rem', color: '#F5F7FA', marginBottom: '8px' }}>Bir xidmət, məhsul və ya kampaniyadan birbaşa müştəri toplamaq üçün.</p>
-              <p style={{ fontSize: '0.78rem', color: '#9CA6B5', lineHeight: 1.5, marginBottom: '16px' }}>Ziyarətçini yayındırmadan birbaşa hədəfə aparan, WhatsApp və müraciət formaları ilə dərhal sifariş toplayan saytlar.</p>
-              <a href="#contact" style={{ color: '#0066FF', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>Təklif al →</a>
-            </div>
+          {/* Services Section */}
+          <section id="services" style={{ padding: '80px 0', borderTop: '1px solid #162032' }}>
+            <div className="container">
+              <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
+                <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
+                  XİDMƏTLƏRİMİZ
+                </span>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Xidmətlərimiz</h2>
+                <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Biznesinizin ehtiyacına uyğun veb saytların dizaynı və hazırlanması.</p>
+              </div>
 
-            <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '18px', padding: '24px' }}>
-              <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '8px' }}>03 // ONLAYN SATIŞ</div>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '8px' }}>E-commerce (Onlayn Mağaza)</h3>
-              <p style={{ fontSize: '0.85rem', color: '#F5F7FA', marginBottom: '8px' }}>Məhsullarınızı internet üzərindən 24/7 təqdim etmək və onlayn satmaq üçün.</p>
-              <p style={{ fontSize: '0.78rem', color: '#9CA6B5', lineHeight: 1.5, marginBottom: '16px' }}>Məhsul kataloqu, filtrlər, səbət sistemi və Azərbaycan banklarının kartları ilə təhlükəsiz onlayn ödəniş axını.</p>
-              <a href="#contact" style={{ color: '#0066FF', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>Təklif al →</a>
-            </div>
-
-            <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '18px', padding: '24px' }}>
-              <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '8px' }}>04 // XÜSUSİ HƏLL</div>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '8px' }}>Fərdi və Tibbi Veb Portallar</h3>
-              <p style={{ fontSize: '0.85rem', color: '#F5F7FA', marginBottom: '8px' }}>Klinikalar, təhsil mərkəzləri, logistika və xüsusi funksionallıq tələb edən layihələr üçün.</p>
-              <p style={{ fontSize: '0.78rem', color: '#9CA6B5', lineHeight: 1.5, marginBottom: '16px' }}>Biznesinizin unikal tələblərinə uyğunlaşdırılmış rezervasiya, kalkulyatorlar və fərdi idarəetmə sistemləri.</p>
-              <a href="#contact" style={{ color: '#0066FF', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>Təklif al →</a>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Interactive Website Finder Quiz */}
-      <section id="finder" style={{ padding: '80px 0', background: '#080C14', borderTop: '1px solid #162032' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 40px' }}>
-            <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-              SEÇİM KÖMƏKÇİSİ
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Hansı sayt sizə uyğundur?</h2>
-            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>2 sadə suala cavab verin, biznesiniz üçün ən optimal formatı anında müəyyən edək.</p>
-          </div>
-
-          <div style={{ background: '#05070B', border: '1px solid #162032', borderRadius: '22px', padding: '28px', maxWidth: '840px', margin: '0 auto', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}>
-            
-            <div style={{ marginBottom: '24px' }}>
-              <div style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: '12px' }}>1. Saytı əsasən nə üçün istəyirsiniz?</div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px' }}>
-                {['Xidmətimi təqdim etmək', 'Şirkətimi təqdim etmək', 'Onlayn satış etmək', 'Xüsusi sistem hazırlatmaq'].map((p, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setQuizPurpose(idx)}
-                    style={{
-                      padding: '12px',
-                      borderRadius: '10px',
-                      border: `1px solid ${quizPurpose === idx ? '#0066FF' : '#162032'}`,
-                      background: quizPurpose === idx ? '#0066FF' : '#080C14',
-                      color: quizPurpose === idx ? 'white' : '#9CA6B5',
-                      fontSize: '0.8rem',
-                      fontWeight: 600,
-                      cursor: 'pointer'
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                {services.map((s) => (
+                  <div
+                    key={s.id}
+                    onClick={() => {
+                      setSiteType(s.title)
+                      navigateTo('contact')
                     }}
+                    style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '18px', padding: '26px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', cursor: 'pointer' }}
                   >
-                    {p}
-                  </button>
+                    <div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                        <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#05070B', border: '1px solid #162032', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          {s.icon}
+                        </div>
+                        <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: '#9CA6B5' }}>{s.num}</span>
+                      </div>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '8px' }}>{s.title}</h3>
+                      <p style={{ fontSize: '0.85rem', color: '#9CA6B5', lineHeight: 1.6, marginBottom: '20px' }}>{s.desc}</p>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#0066FF', fontSize: '0.82rem', fontWeight: 700 }}>
+                      <span>Daha ətraflı</span>
+                      <ArrowRight size={14} />
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
+          </section>
 
-            <div style={{ marginBottom: '28px' }}>
-              <div style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: '12px' }}>2. Hansı funksiyalar sizə lazımdır?</div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '10px' }}>
-                {['Əlaqə forması', 'WhatsApp düyməsi', 'Məhsul kataloqu', 'Onlayn kart ödənişi', 'Admin idarəetmə paneli', 'Rezervasiya / Qeydiyyat'].map((f, idx) => (
+          {/* Interactive Finder Quiz */}
+          <section id="finder" style={{ padding: '80px 0', background: '#080C14', borderTop: '1px solid #162032' }}>
+            <div className="container">
+              <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 40px' }}>
+                <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
+                  SEÇİM KÖMƏKÇİSİ
+                </span>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Hansı sayt sizə uyğundur?</h2>
+                <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>2 sadə suala cavab verin, biznesiniz üçün ən optimal formatı anında müəyyən edək.</p>
+              </div>
+
+              <div style={{ background: '#05070B', border: '1px solid #162032', borderRadius: '22px', padding: '28px', maxWidth: '840px', margin: '0 auto' }}>
+                <div style={{ marginBottom: '24px' }}>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: '12px' }}>1. Saytı əsasən nə üçün istəyirsiniz?</div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px' }}>
+                    {['Xidmətimi təqdim etmək', 'Şirkətimi təqdim etmək', 'Onlayn satış etmək', 'Xüsusi sistem hazırlatmaq'].map((p, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setQuizPurpose(idx)}
+                        style={{
+                          padding: '12px',
+                          borderRadius: '10px',
+                          border: `1px solid ${quizPurpose === idx ? '#0066FF' : '#162032'}`,
+                          background: quizPurpose === idx ? '#0066FF' : '#080C14',
+                          color: quizPurpose === idx ? 'white' : '#9CA6B5',
+                          fontSize: '0.8rem',
+                          fontWeight: 600,
+                          cursor: 'pointer'
+                        }}
+                      >
+                        {p}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: '28px' }}>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: '12px' }}>2. Hansı funksiyalar sizə lazımdır?</div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '10px' }}>
+                    {['Əlaqə forması', 'WhatsApp düyməsi', 'Məhsul kataloqu', 'Onlayn kart ödənişi', 'Admin idarəetmə paneli', 'Rezervasiya / Qeydiyyat'].map((f, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => toggleQuizFeature(idx)}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: '10px',
+                          border: `1px solid ${quizFeatures.includes(idx) ? '#0066FF' : '#162032'}`,
+                          background: quizFeatures.includes(idx) ? '#0D121D' : '#080C14',
+                          color: quizFeatures.includes(idx) ? '#F5F7FA' : '#9CA6B5',
+                          fontSize: '0.78rem',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <span>{f}</span>
+                        {quizFeatures.includes(idx) && <CheckCircle2 size={14} color="#0066FF" />}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div style={{ padding: '20px', background: '#080C14', border: '1px solid #0066FF', borderRadius: '16px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
+                  <div>
+                    <span style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#0066FF' }}>TÖVSİYƏ OLUNAN FORMAT:</span>
+                    <h4 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0' }}>Biznesiniz üçün <span style={{ color: '#0066FF' }}>{quizRec.type}</span> formatı daha uyğundur.</h4>
+                    <p style={{ fontSize: '0.78rem', color: '#9CA6B5', maxWidth: '480px' }}>{quizRec.desc}</p>
+                  </div>
                   <button
-                    key={idx}
-                    type="button"
-                    onClick={() => toggleQuizFeature(idx)}
-                    style={{
-                      padding: '10px 12px',
-                      borderRadius: '10px',
-                      border: `1px solid ${quizFeatures.includes(idx) ? '#0066FF' : '#162032'}`,
-                      background: quizFeatures.includes(idx) ? '#0D121D' : '#080C14',
-                      color: quizFeatures.includes(idx) ? '#F5F7FA' : '#9CA6B5',
-                      fontSize: '0.78rem',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      cursor: 'pointer'
+                    onClick={() => {
+                      setSiteType(quizRec.type)
+                      navigateTo('contact')
                     }}
+                    style={{ background: '#0066FF', color: 'white', padding: '12px 20px', borderRadius: '10px', fontSize: '0.85rem', fontWeight: 600, border: 'none', cursor: 'pointer' }}
                   >
-                    <span>{f}</span>
-                    {quizFeatures.includes(idx) && <CheckCircle2 size={14} color="#0066FF" />}
+                    Təklif al →
                   </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Process Section */}
+          <section id="process" style={{ padding: '80px 0', borderTop: '1px solid #162032' }}>
+            <div className="container">
+              <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
+                <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
+                  İŞ PROSESİ
+                </span>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Saytın hazırlanması prosesi</h2>
+                <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Layihənizin vaxtında və keyfiyyətlə təhvil verilməsi üçün mərhələli iş planı.</p>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '14px' }}>
+                {[
+                  { num: '01', title: 'Tələblərin müəyyən edilməsi', desc: 'Layihənin məqsədi, saytın strukturu və tələb olunan funksiyalar müəyyən edilir.' },
+                  { num: '02', title: 'Dizayn', desc: 'Saytın vizual görünüşü və istifadəçi interfeysi hazırlanır.' },
+                  { num: '03', title: 'Proqramlaşdırma', desc: 'Təsdiqlənmiş dizayn əsasında saytın hazırlanmasına başlanılır.' },
+                  { num: '04', title: 'Test', desc: 'Sayt müxtəlif ekran ölçülərində və cihazlarda yoxlanılır.' },
+                  { num: '05', title: 'Təhvil', desc: 'Yekun yoxlamadan sonra sayt istifadəyə verilir.' },
+                ].map((st) => (
+                  <div key={st.num} style={{ background: '#080C14', border: '1px solid #162032', padding: '20px', borderRadius: '16px' }}>
+                    <span style={{ fontSize: '1rem', fontFamily: 'monospace', color: '#0066FF', fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{st.num}</span>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '6px' }}>{st.title}</h4>
+                    <p style={{ fontSize: '0.75rem', color: '#9CA6B5', lineHeight: 1.5 }}>{st.desc}</p>
+                  </div>
                 ))}
               </div>
             </div>
+          </section>
 
-            <div style={{ padding: '20px', background: '#080C14', border: '1px solid #0066FF', borderRadius: '16px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
-              <div>
-                <span style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#0066FF' }}>TÖVSİYƏ OLUNAN SEÇİM:</span>
-                <h4 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0' }}>Biznesiniz üçün <span style={{ color: '#0066FF' }}>{quizRec.type}</span> formatı daha uyğundur.</h4>
-                <p style={{ fontSize: '0.78rem', color: '#9CA6B5', maxWidth: '480px' }}>{quizRec.desc}</p>
-              </div>
-              <a
-                href="#contact"
-                style={{ background: '#0066FF', color: 'white', padding: '12px 20px', borderRadius: '10px', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}
-              >
-                Bu layihə üçün təklif alın →
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Works / Portfolio Section */}
-      <section id="works" style={{ padding: '80px 0', borderTop: '1px solid #162032' }}>
-        <div className="container">
-          <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
-            <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-              İŞLƏRİMİZ & PORTFOLİO
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Son əl işlərimiz və layihələrimiz</h2>
-            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Fərqli sahələrdən olan şirkətlər, təhsil mərkəzləri və brendlər üçün hazırladığımız rəsmi veb layihələr.</p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px', marginBottom: '30px' }}>
-            {works.map((w, idx) => (
-              <button
-                key={w.id}
-                onClick={() => setActiveWork(idx)}
-                style={{
-                  padding: '16px',
-                  borderRadius: '14px',
-                  textAlign: 'left',
-                  border: `1px solid ${activeWork === idx ? '#0066FF' : '#162032'}`,
-                  background: activeWork === idx ? '#080C14' : '#05070B',
-                  color: 'white',
-                  cursor: 'pointer'
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                  <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', fontWeight: 'bold' }}>0{idx + 1}</span>
-                  <span style={{ fontSize: '0.68rem', fontFamily: 'monospace', padding: '2px 8px', borderRadius: '4px', background: '#05070B', color: '#10B981', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
-                    {w.displayUrl}
-                  </span>
+          {/* Final CTA Section */}
+          <section style={{ padding: '60px 0', background: '#080C14', borderTop: '1px solid #162032' }}>
+            <div className="container">
+              <div style={{ background: 'linear-gradient(180deg, #05070B 0%, #0D121D 100%)', border: '1px solid rgba(0, 102, 255, 0.3)', borderRadius: '24px', padding: '36px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', alignItems: 'center' }}>
+                <div>
+                  <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>SAYT SİFARİŞİ</span>
+                  <h3 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '8px' }}>Veb sayt sifariş etmək istəyirsiniz?</h3>
+                  <p style={{ fontSize: '0.9rem', color: '#9CA6B5', lineHeight: 1.6 }}>Layihəniz haqqında qısa məlumat göndərin. Ehtiyacınıza uyğun həlli birlikdə müəyyən edək.</p>
                 </div>
-                <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '4px' }}>{w.name}</h4>
-                <p style={{ fontSize: '0.72rem', color: '#9CA6B5' }}>{w.type}</p>
-              </button>
-            ))}
-          </div>
-
-          {/* Active Work Large Showcase */}
-          <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '24px', padding: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}>
-            <div className="hero-grid">
-              <div>
-                <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', display: 'block', marginBottom: '6px' }}>{currentWork.type}</span>
-                <h3 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '12px' }}>{currentWork.name}</h3>
-                <p style={{ fontSize: '0.88rem', color: '#9CA6B5', lineHeight: 1.6, marginBottom: '20px' }}>{currentWork.desc}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '24px' }}>
-                  {currentWork.tags.map((t, i) => (
-                    <span key={i} style={{ fontSize: '0.72rem', background: '#05070B', border: '1px solid #162032', padding: '4px 10px', borderRadius: '6px' }}>
-                      ✓ {t}
-                    </span>
-                  ))}
-                </div>
-                <div style={{ display: 'flex', gap: '10px' }}>
+                <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+                  <button
+                    onClick={() => navigateTo('contact')}
+                    style={{ background: '#0066FF', color: 'white', padding: '14px 28px', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 600, border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 6px 20px rgba(0, 102, 255, 0.35)' }}
+                  >
+                    <span>Təklif al</span>
+                    <ArrowRight size={16} />
+                  </button>
                   <a
-                    href={currentWork.url}
+                    href={`https://wa.me/994106011201?text=${encodeURIComponent('Salam. Biznesim üçün sayt hazırlatmaq istəyirəm. Ətraflı məlumat ala bilərəm?')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ background: '#0066FF', color: 'white', padding: '10px 20px', borderRadius: '8px', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                    style={{ color: '#9CA6B5', fontSize: '0.82rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}
                   >
-                    <span>Sayta daxil olun</span>
-                    <ExternalLink size={14} />
-                  </a>
-
-                  <a
-                    href="#contact"
-                    style={{ background: '#05070B', border: '1px solid #162032', color: '#F5F7FA', padding: '10px 18px', borderRadius: '8px', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
-                  >
-                    <span>Bənzər sayt sifariş et</span>
-                    <ArrowUpRight size={14} />
+                    <MessageCircle size={14} color="#0066FF" />
+                    <span>WhatsApp ilə əlaqə: 010 601 12 01</span>
                   </a>
                 </div>
               </div>
+            </div>
+          </section>
+        </>
+      )}
 
-              <div style={{ background: '#05070B', border: '1px solid #162032', borderRadius: '16px', padding: '20px', minHeight: '220px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #162032', paddingBottom: '8px' }}>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 700 }}>{currentWork.name}</span>
-                  <span style={{ fontSize: '0.68rem', color: '#0066FF', fontFamily: 'monospace' }}>{currentWork.displayUrl}</span>
+      {/* ======================================================== */}
+      {/* PAGE: XİDMƏTLƏR */}
+      {/* ======================================================== */}
+      {currentRoute === 'services' && (
+        <section style={{ padding: '60px 0 80px' }}>
+          <div className="container">
+            <div style={{ maxWidth: '680px', marginBottom: '40px' }}>
+              <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
+                XİDMƏTLƏRİMİZ
+              </span>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>Xidmətlərimiz</h1>
+              <p style={{ color: '#9CA6B5', fontSize: '1rem', lineHeight: 1.6 }}>Biznesinizin ehtiyacına uyğun veb saytların dizaynı və hazırlanması.</p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+              {services.map((s) => (
+                <div key={s.id} style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '20px', padding: '28px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                      <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#05070B', border: '1px solid #162032', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        {s.icon}
+                      </div>
+                      <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: '#0066FF', fontWeight: 'bold' }}>{s.num}</span>
+                    </div>
+                    <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '10px' }}>{s.title}</h3>
+                    <p style={{ fontSize: '0.88rem', color: '#9CA6B5', lineHeight: 1.6, marginBottom: '24px' }}>{s.desc}</p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setSiteType(s.title)
+                      navigateTo('contact')
+                    }}
+                    style={{ background: '#0066FF', color: 'white', padding: '12px', borderRadius: '10px', border: 'none', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+                  >
+                    <span>Təklif al</span>
+                    <ArrowRight size={14} />
+                  </button>
                 </div>
-                <div style={{ margin: '20px 0' }}>
-                  <h5 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '6px' }}>{currentWork.type}</h5>
-                  <p style={{ fontSize: '0.8rem', color: '#9CA6B5' }}>{currentWork.desc}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ======================================================== */}
+      {/* PAGE: İŞLƏRİMİZ */}
+      {/* ======================================================== */}
+      {currentRoute === 'works' && (
+        <section style={{ padding: '60px 0 80px' }}>
+          <div className="container">
+            <div style={{ maxWidth: '680px', marginBottom: '40px' }}>
+              <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
+                İŞLƏRİMİZ
+              </span>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>İşlərimiz</h1>
+              <p style={{ color: '#9CA6B5', fontSize: '1rem', lineHeight: 1.6 }}>Müxtəlif fəaliyyət sahələrində olan şirkətlər və şəxslər üçün hazırladığımız veb layihələr.</p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+              {works.map((w) => (
+                <div key={w.id} style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '20px', padding: '28px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+                      <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF' }}>{w.type}</span>
+                      <span style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#10B981', background: '#05070B', padding: '2px 8px', borderRadius: '4px', border: '1px solid rgba(16, 185, 129, 0.3)' }}>{w.displayUrl}</span>
+                    </div>
+                    <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px' }}>{w.name}</h3>
+                    <p style={{ fontSize: '0.85rem', color: '#9CA6B5', lineHeight: 1.6, marginBottom: '18px' }}>{w.desc}</p>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '24px' }}>
+                      {w.tags.map((t, idx) => (
+                        <span key={idx} style={{ fontSize: '0.72rem', background: '#05070B', border: '1px solid #162032', padding: '3px 8px', borderRadius: '6px' }}>
+                          ✓ {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <a href={w.url} target="_blank" rel="noopener noreferrer" style={{ background: '#0066FF', color: 'white', padding: '10px 16px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      <span>Sayta bax</span>
+                      <ExternalLink size={14} />
+                    </a>
+                    <button
+                      onClick={() => {
+                        setSiteType(`${w.name} (${w.type})`)
+                        navigateTo('contact')
+                      }}
+                      style={{ background: '#05070B', border: '1px solid #162032', color: '#F5F7FA', padding: '10px 16px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
+                    >
+                      Bənzər sayt sifariş et
+                    </button>
+                  </div>
                 </div>
-                <div style={{ fontSize: '0.7rem', color: '#10B981', fontFamily: 'monospace' }}>✓ 100% Mobil və Kompüter Uyğunluğu</div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ======================================================== */}
+      {/* PAGE: HAQQIMIZDA */}
+      {/* ======================================================== */}
+      {currentRoute === 'about' && (
+        <section style={{ padding: '60px 0 80px' }}>
+          <div className="container">
+            <div style={{ maxWidth: '680px', marginBottom: '40px' }}>
+              <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
+                HAQQIMIZDA
+              </span>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '16px' }}>Haqqımızda</h1>
+              <p style={{ fontSize: '1.05rem', color: '#F5F7FA', lineHeight: 1.6, marginBottom: '24px' }}>
+                Codex Studio bizneslər üçün veb saytların dizaynı və hazırlanması üzrə ixtisaslaşmış komandadır. Məqsədimiz şirkətinizin fəaliyyətini internetdə düzgün, peşəkar və etibarlı şəkildə təqdim edən veb saytlar hazırlamaqdır.
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', marginBottom: '40px' }}>
+              <div style={{ background: '#080C14', border: '1px solid #162032', padding: '24px', borderRadius: '16px' }}>
+                <h4 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '8px' }}>Sadə və anlaşılan ünsiyyət</h4>
+                <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.6 }}>Texniki çətinliklər yaratmadan, layihəniz üçün nəyin lazım olduğunu aydın şəkildə müzakirə edirik.</p>
+              </div>
+              <div style={{ background: '#080C14', border: '1px solid #162032', padding: '24px', borderRadius: '16px' }}>
+                <h4 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '8px' }}>Dəqiq iş qrafiki</h4>
+                <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.6 }}>Hər bir mərhələ razılaşdırılmış vaxt çərçivəsində və planlı şəkildə icra olunur.</p>
+              </div>
+              <div style={{ background: '#080C14', border: '1px solid #162032', padding: '24px', borderRadius: '16px' }}>
+                <h4 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '8px' }}>Daimi texniki dəstək</h4>
+                <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.6 }}>Sayt təhvil verildikdən sonra da server, domen və texniki məsələlərdə dəstəyimizi davam etdiririk.</p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* 6. Why Codex */}
-      <section id="why" style={{ padding: '80px 0', background: '#080C14', borderTop: '1px solid #162032' }}>
-        <div className="container">
-          <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
-            <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-              BİZİM YANAŞMAMIZ
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Sayt yalnız gözəl görünməməli, biznesinizə real gəlir gətirməlidir.</h2>
-            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Biznes sahibi üçün əsas məsələ saytın rahat açılması, telefonlarda problemsiz işləməsi və ziyarətçini real müştəriyə çevirməsidir.</p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
-            <div style={{ background: '#05070B', border: '1px solid #162032', padding: '24px', borderRadius: '16px' }}>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>Sürətli və Rahat Açılış</h4>
-              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.5 }}>İstifadəçi saytın açılmasını gözləməməlidir. Yüngül və optimallaşdırılmış kod sayəsində səhifələr anında açılır.</p>
-            </div>
-
-            <div style={{ background: '#05070B', border: '1px solid #162032', padding: '24px', borderRadius: '16px' }}>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>100% Mobil Uyğunluq</h4>
-              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.5 }}>Sayt ziyarətçilərinin 80%-dən çoxu telefondan daxil olur. Bütün smartfon və planşetlərdə qüsursuz işləyir.</p>
-            </div>
-
-            <div style={{ background: '#05070B', border: '1px solid #162032', padding: '24px', borderRadius: '16px' }}>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>Aydın və Rahat Struktur</h4>
-              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.5 }}>Müştəri axtardığı xidməti, qiyməti və ya əlaqə nömrəsini bir neçə saniyəyə tapır, vaxt itirmir.</p>
-            </div>
-
-            <div style={{ background: '#05070B', border: '1px solid #162032', padding: '24px', borderRadius: '16px' }}>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>Təhvildən Sonra Dəstək</h4>
-              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.5 }}>Sayt təhvil verildikdən sonra da serverin fasiləsiz işləməsi, domen və texniki suallarınızda yanınızda oluruq.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. Objection-Removal Section */}
-      <section style={{ padding: '60px 0', borderTop: '1px solid #162032' }}>
-        <div className="container">
-          <div style={{ background: 'linear-gradient(180deg, #080C14 0%, #0D121D 100%)', border: '1px solid rgba(0, 102, 255, 0.3)', borderRadius: '24px', padding: '36px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', alignItems: 'center' }}>
-            <div>
-              <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>RAHAT BAŞLANĞIC</span>
-              <h3 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '8px' }}>Sayt sifariş etmək çətin proses deyil.</h3>
-              <p style={{ fontSize: '0.9rem', color: '#9CA6B5', lineHeight: 1.6 }}>Nə istədiyinizi tam dəqiqləşdirməmisinizsə, narahat olmayın. Biznesiniz haqqında qısa məlumat verin, sizə ən uyğun sayt strukturunu birlikdə müəyyən edək.</p>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <a
-                href={`https://wa.me/994106011201?text=${encodeURIComponent('Salam. Biznesim üçün sayt hazırlatmaq istəyirəm. Ətraflı məlumat ala bilərəm?')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ background: '#0066FF', color: 'white', padding: '14px 28px', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 6px 20px rgba(0, 102, 255, 0.35)' }}
+            <div style={{ background: '#080C14', border: '1px solid #0066FF', borderRadius: '20px', padding: '28px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
+              <div>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '4px' }}>Veb sayt sifariş etmək istəyirsiniz?</h3>
+                <p style={{ fontSize: '0.85rem', color: '#9CA6B5' }}>Layihəniz haqqında qısa məlumat göndərin. Ehtiyacınıza uyğun həlli birlikdə müəyyən edək.</p>
+              </div>
+              <button
+                onClick={() => navigateTo('contact')}
+                style={{ background: '#0066FF', color: 'white', padding: '12px 24px', borderRadius: '10px', fontSize: '0.88rem', fontWeight: 600, border: 'none', cursor: 'pointer' }}
               >
-                <MessageCircle size={18} />
-                <span>WhatsApp-da danışaq</span>
-              </a>
-              <div style={{ fontSize: '0.72rem', color: '#9CA6B5', marginTop: '8px', fontFamily: 'monospace' }}>✓ 010 601 12 01 • Operativ cavab</div>
+                Təklif al →
+              </button>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* 8. Process Section */}
-      <section id="process" style={{ padding: '80px 0', background: '#080C14', borderTop: '1px solid #162032' }}>
-        <div className="container">
-          <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
-            <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-              BİZİM İŞ PROSESİMİZ
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Sayt necə hazırlanır?</h2>
-            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Fəaliyyətimiz boyu gördüyümüz bütün işləri şəffaf və mərhələli prinsiplərlə icra edirik.</p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '14px' }}>
-            {[
-              { num: '01', title: 'Araşdırma və Məsləhət', desc: 'Biznesinizin hədəflərini, fəaliyyət sahənizi və auditoriyanızı öyrənirik.' },
-              { num: '02', title: 'Planlama və Dizayn', desc: 'Saytın strukturunu, bölmələrini və müasir görünüşünü hazırlayırıq.' },
-              { num: '03', title: 'Yığılma və Proqramlaşdırma', desc: 'Dizaynı funksional, sürətli və mobilə tam uyğun işləyən sayta çeviririk.' },
-              { num: '04', title: 'Test və Yoxlama', desc: 'Bütün telefonlarda, kompüterlərdə düymələri və formaları yoxlayırıq.' },
-              { num: '05', title: 'Təhvil və Canlıya Çıxarış', desc: 'Saytı domeninizə bağlayırıq, yayımlayırıq və hazır təhvil veririk.' },
-            ].map((st) => (
-              <div key={st.num} style={{ background: '#05070B', border: '1px solid #162032', padding: '20px', borderRadius: '16px' }}>
-                <span style={{ fontSize: '1rem', fontFamily: 'monospace', color: '#0066FF', fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{st.num}</span>
-                <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '6px' }}>{st.title}</h4>
-                <p style={{ fontSize: '0.75rem', color: '#9CA6B5', lineHeight: 1.5 }}>{st.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 9. About Section */}
-      <section id="about" style={{ padding: '80px 0', borderTop: '1px solid #162032' }}>
-        <div className="container">
-          <div style={{ maxWidth: '680px' }}>
-            <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-              HAQQIMIZDA
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '16px' }}>Codex Studio haqqında</h2>
-            <p style={{ fontSize: '1.05rem', color: '#F5F7FA', lineHeight: 1.6, marginBottom: '24px' }}>
-              Codex Studio bizneslər üçün müasir, yüksək performanslı və satış yönümlü veb saytların hazırlanması ilə məşğul olan rəqəmsal studiyadır. Əsas məqsədimiz şirkətinizin bazarda rəqiblərindən fərqlənməsi və müştərilərinizdə güclü etibar yaratmasıdır.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
-            <div style={{ background: '#080C14', border: '1px solid #162032', padding: '20px', borderRadius: '14px' }}>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '6px' }}>Aydın və Səmimi Ünsiyyət</h4>
-              <p style={{ fontSize: '0.8rem', color: '#9CA6B5' }}>Mürəkkəb texniki terminlərlə vaxt itirmədən, biznesiniz üçün həqiqətən nəyin faydalı olduğunu aydın izah edirik.</p>
+      {/* ======================================================== */}
+      {/* PAGE: FAQ */}
+      {/* ======================================================== */}
+      {currentRoute === 'faq' && (
+        <section style={{ padding: '60px 0 80px' }}>
+          <div className="container">
+            <div style={{ maxWidth: '680px', marginBottom: '40px' }}>
+              <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
+                SUAL-CAVAB
+              </span>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>Tez-tez verilən suallar</h1>
+              <p style={{ color: '#9CA6B5', fontSize: '1rem', lineHeight: 1.6 }}>Veb saytların hazırlanması və əməkdaşlıq prosesi ilə bağlı sualların cavabları.</p>
             </div>
-            <div style={{ background: '#080C14', border: '1px solid #162032', padding: '20px', borderRadius: '14px' }}>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '6px' }}>Şəffaf və Dəqiq Qrafik</h4>
-              <p style={{ fontSize: '0.8rem', color: '#9CA6B5' }}>Layihənin ilk günündən təhvil tarixinə qədər bütün mərhələlər planlı və vaxtında həyata keçirilir.</p>
-            </div>
-            <div style={{ background: '#080C14', border: '1px solid #162032', padding: '20px', borderRadius: '14px' }}>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '6px' }}>Davamlı Texniki Tərəfdaşlıq</h4>
-              <p style={{ fontSize: '0.8rem', color: '#9CA6B5' }}>Sayt təhvil verildikdən sonra da server, domen və gələcək yenilənmələrinizdə daimi dəstək göstəririk.</p>
+
+            <div style={{ maxWidth: '800px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {faqs.map((f, idx) => (
+                <div key={idx} style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '14px', overflow: 'hidden' }}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                    style={{ width: '100%', padding: '18px 20px', textAlign: 'left', background: 'none', border: 'none', color: '#F5F7FA', fontSize: '0.95rem', fontWeight: 700, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
+                  >
+                    <span>{f.q}</span>
+                    <ChevronDown size={16} color="#0066FF" style={{ transform: openFaq === idx ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
+                  </button>
+                  {openFaq === idx && (
+                    <div style={{ padding: '0 20px 18px', fontSize: '0.85rem', color: '#9CA6B5', lineHeight: 1.6, borderTop: '1px solid #162032', paddingTop: '12px' }}>
+                      {f.a}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* 10. FAQ Section */}
-      <section id="faq" style={{ padding: '80px 0', background: '#080C14', borderTop: '1px solid #162032' }}>
-        <div className="container">
-          <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
-            <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-              SUALLAR VƏ CAVABLAR
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Ən çox verilən suallar</h2>
-            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Sayt sifarişi prosesi ilə bağlı müştərilərimizin ən çox maraqlandığı məqamlar.</p>
-          </div>
+      {/* ======================================================== */}
+      {/* PAGE: CONTACT */}
+      {/* ======================================================== */}
+      {currentRoute === 'contact' && (
+        <section style={{ padding: '60px 0 80px' }}>
+          <div className="container">
+            <div className="contact-grid">
+              <div>
+                <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
+                  BİZİMLƏ ƏLAQƏ
+                </span>
+                <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>Bizimlə əlaqə</h1>
+                <p style={{ color: '#9CA6B5', fontSize: '0.95rem', marginBottom: '24px', lineHeight: 1.6 }}>
+                  Layihəniz haqqında qısa məlumat göndərin. Ehtiyacınıza uyğun həlli birlikdə müəyyən edək.
+                </p>
 
-          <div style={{ maxWidth: '780px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            {faqs.map((f, idx) => (
-              <div key={idx} style={{ background: '#05070B', border: '1px solid #162032', borderRadius: '14px', overflow: 'hidden' }}>
-                <button
-                  type="button"
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  style={{ width: '100%', padding: '18px 20px', textAlign: 'left', background: 'none', border: 'none', color: '#F5F7FA', fontSize: '0.95rem', fontWeight: 700, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
+                <a
+                  href={`https://wa.me/994106011201?text=${encodeURIComponent('Salam. Biznesim üçün sayt hazırlatmaq istəyirəm. Ətraflı məlumat ala bilərəm?')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ background: '#0066FF', color: 'white', padding: '14px 24px', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '24px', boxShadow: '0 6px 20px rgba(0,102,255,0.3)' }}
                 >
-                  <span>{f.q}</span>
-                  <ChevronDown size={16} color="#0066FF" style={{ transform: openFaq === idx ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
-                </button>
-                {openFaq === idx && (
-                  <div style={{ padding: '0 20px 18px', fontSize: '0.85rem', color: '#9CA6B5', lineHeight: 1.6, borderTop: '1px solid #162032', paddingTop: '12px' }}>
-                    {f.a}
+                  <MessageCircle size={18} />
+                  <span>WhatsApp ilə əlaqə</span>
+                </a>
+
+                <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '16px', padding: '20px', fontFamily: 'monospace', fontSize: '0.82rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid #162032' }}>
+                    <span style={{ color: '#9CA6B5' }}>Telefon / Zəng:</span>
+                    <a href="tel:0106011201" style={{ color: '#F5F7FA', textDecoration: 'none', fontWeight: 'bold' }}>010 601 12 01</a>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid #162032' }}>
+                    <span style={{ color: '#9CA6B5' }}>WhatsApp:</span>
+                    <a href="https://wa.me/994106011201" target="_blank" rel="noopener noreferrer" style={{ color: '#0066FF', textDecoration: 'none', fontWeight: 'bold' }}>010 601 12 01</a>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid #162032' }}>
+                    <span style={{ color: '#9CA6B5' }}>Qəbul Emaili:</span>
+                    <a href="mailto:emin.imanverdievv@gmail.com" style={{ color: '#0066FF', textDecoration: 'none', fontWeight: 'bold' }}>emin.imanverdievv@gmail.com</a>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ color: '#9CA6B5' }}>Rəsmi Ünvan:</span>
+                    <span style={{ color: '#F5F7FA' }}>Bakı, Azərbaycan</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '22px', padding: '28px', boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px' }}>Sayt sifarişi üçün müraciət edin</h3>
+                <p style={{ fontSize: '0.82rem', color: '#9CA6B5', marginBottom: '20px' }}>Məlumatlarınızı qeyd edin, ən qısa zamanda sizinlə əlaqə saxlayaq.</p>
+
+                {!isSuccess ? (
+                  <form onSubmit={handleEmailSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                    <div className="grid-two-col" style={{ gap: '14px' }}>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Adınız və Soyadınız *</label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="Rəşad Əliyev"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem' }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Telefon / WhatsApp *</label>
+                        <input
+                          type="tel"
+                          required
+                          placeholder="050 000 00 00"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem' }}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid-two-col" style={{ gap: '14px' }}>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Biznes sahəsi</label>
+                        <input
+                          type="text"
+                          placeholder="Məsələn: Tibb, Təhsil, Mebel"
+                          value={business}
+                          onChange={(e) => setBusiness(e.target.value)}
+                          style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem' }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Sayt növü</label>
+                        <select
+                          value={siteType}
+                          onChange={(e) => setSiteType(e.target.value)}
+                          style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem' }}
+                        >
+                          <option value="Veb saytların hazırlanması">Veb saytların hazırlanması</option>
+                          <option value="Landing Page hazırlanması">Landing Page hazırlanması</option>
+                          <option value="Korporativ saytların hazırlanması">Korporativ saytların hazırlanması</option>
+                          <option value="E-commerce saytların hazırlanması">E-commerce saytların hazırlanması</option>
+                          <option value="Veb dizayn (UI/UX)">Veb dizayn (UI/UX)</option>
+                          <option value="Texniki dəstək">Texniki dəstək</option>
+                          <option value="SEO optimizasiyası">SEO optimizasiyası</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Sayt haqqında qısa məlumat / İstəkləriniz</label>
+                      <textarea
+                        rows={3}
+                        placeholder="Saytınızda olmasını istədiyiniz əsas məqamlar..."
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem', resize: 'none' }}
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      style={{
+                        background: '#0066FF',
+                        color: 'white',
+                        border: 'none',
+                        padding: '14px',
+                        borderRadius: '10px',
+                        fontWeight: 700,
+                        fontSize: '0.9rem',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '8px',
+                        boxShadow: '0 6px 20px rgba(0, 102, 255, 0.35)'
+                      }}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 size={16} className="animate-spin" />
+                          <span>Göndərilir...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send size={16} />
+                          <span>Təklif al</span>
+                        </>
+                      )}
+                    </button>
+                  </form>
+                ) : (
+                  <div style={{ textAlign: 'center', padding: '30px 10px' }}>
+                    <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(0, 102, 255, 0.2)', color: '#0066FF', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
+                      <CheckCircle2 size={28} />
+                    </div>
+                    <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '6px' }}>Müraciətiniz qəbul olundu!</h3>
+                    <p style={{ color: '#9CA6B5', fontSize: '0.85rem', marginBottom: '18px' }}>
+                      Məlumatlar <strong style={{ color: '#0066FF' }}>emin.imanverdievv@gmail.com</strong> poçtuna çatdırıldı.
+                    </p>
+                    <button
+                      onClick={handleWhatsAppSend}
+                      style={{ background: '#0066FF', color: 'white', border: 'none', padding: '12px 20px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontSize: '0.85rem' }}
+                    >
+                      WhatsApp ilə təsdiqləyin
+                    </button>
                   </div>
                 )}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 11. Contact & Final CTA Section */}
-      <section id="contact" style={{ padding: '80px 0', borderTop: '1px solid #162032' }}>
-        <div className="container">
-          <div className="contact-grid">
-            
-            <div>
-              <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-                ƏLAQƏ & SİFARİŞ
-              </span>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '12px' }}>Biznesiniz üçün yeni sayt sifarişi.</h2>
-              <p style={{ color: '#9CA6B5', fontSize: '0.92rem', marginBottom: '24px', lineHeight: 1.6 }}>
-                Bizə bir zəng və ya mesaj qədər yaxınsınız. Biznesiniz barədə qısa məlumat göndərin, sizə ən uyğun həlli təklif edək.
-              </p>
-
-              <a
-                href={`https://wa.me/994106011201?text=${encodeURIComponent('Salam. Biznesim üçün sayt hazırlatmaq istəyirəm. Ətraflı məlumat ala bilərəm?')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ background: '#0066FF', color: 'white', padding: '14px 24px', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '24px', boxShadow: '0 6px 20px rgba(0,102,255,0.3)' }}
-              >
-                <MessageCircle size={18} />
-                <span>WhatsApp-dan birbaşa yazın</span>
-              </a>
-
-              <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '16px', padding: '20px', fontFamily: 'monospace', fontSize: '0.82rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid #162032' }}>
-                  <span style={{ color: '#9CA6B5' }}>Telefon / Zəng:</span>
-                  <a href="tel:0106011201" style={{ color: '#F5F7FA', textDecoration: 'none', fontWeight: 'bold' }}>010 601 12 01</a>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid #162032' }}>
-                  <span style={{ color: '#9CA6B5' }}>WhatsApp:</span>
-                  <a href="https://wa.me/994106011201" target="_blank" rel="noopener noreferrer" style={{ color: '#0066FF', textDecoration: 'none', fontWeight: 'bold' }}>010 601 12 01</a>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid #162032' }}>
-                  <span style={{ color: '#9CA6B5' }}>Qəbul Emaili:</span>
-                  <a href="mailto:emin.imanverdievv@gmail.com" style={{ color: '#0066FF', textDecoration: 'none', fontWeight: 'bold' }}>emin.imanverdievv@gmail.com</a>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#9CA6B5' }}>Rəsmi Ünvan:</span>
-                  <span style={{ color: '#F5F7FA' }}>Bakı, Azərbaycan</span>
-                </div>
-              </div>
             </div>
-
-            <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '22px', padding: '28px', boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)' }}>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px' }}>Sayt sifarişi üçün müraciət edin</h3>
-              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', marginBottom: '20px' }}>Məlumatlarınızı qeyd edin, sizə ən qısa zamanda təklif göndərək.</p>
-
-              {!isSuccess ? (
-                <form onSubmit={handleEmailSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                  <div className="grid-two-col" style={{ gap: '14px' }}>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Adınız və Soyadınız *</label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="Rəşad Əliyev"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem' }}
-                      />
-                    </div>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Telefon / WhatsApp *</label>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="050 000 00 00"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem' }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid-two-col" style={{ gap: '14px' }}>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Biznes / Fəaliyyət Sahəniz</label>
-                      <input
-                        type="text"
-                        placeholder="Məsələn: Tibb, Təhsil, Mebel"
-                        value={business}
-                        onChange={(e) => setBusiness(e.target.value)}
-                        style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem' }}
-                      />
-                    </div>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Sayt Növü</label>
-                      <select
-                        value={siteType}
-                        onChange={(e) => setSiteType(e.target.value)}
-                        style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem' }}
-                      >
-                        <option value="Korporativ sayt">Korporativ Şirkət Saytı</option>
-                        <option value="Landing Page">Landing Page (Təqdimat Saytı)</option>
-                        <option value="E-commerce">E-commerce (Onlayn Mağaza)</option>
-                        <option value="Fərdi layihə">Fərdi və Tibbi Veb Portal</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Sayt haqqında qısa istəkləriniz</label>
-                    <textarea
-                      rows={3}
-                      placeholder="Saytınızda olmasını istədiyiniz əsas məqamlar..."
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem', resize: 'none' }}
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    style={{
-                      background: '#0066FF',
-                      color: 'white',
-                      border: 'none',
-                      padding: '14px',
-                      borderRadius: '10px',
-                      fontWeight: 700,
-                      fontSize: '0.9rem',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px',
-                      boxShadow: '0 6px 20px rgba(0, 102, 255, 0.35)'
-                    }}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 size={16} className="animate-spin" />
-                        <span>Göndərilir...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send size={16} />
-                        <span>Təklif üçün müraciət göndər</span>
-                      </>
-                    )}
-                  </button>
-                </form>
-              ) : (
-                <div style={{ textAlign: 'center', padding: '30px 10px' }}>
-                  <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(0, 102, 255, 0.2)', color: '#0066FF', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
-                    <CheckCircle2 size={28} />
-                  </div>
-                  <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '6px' }}>Müraciətiniz qəbul olundu!</h3>
-                  <p style={{ color: '#9CA6B5', fontSize: '0.85rem', marginBottom: '18px' }}>
-                    Məlumatlar <strong style={{ color: '#0066FF' }}>emin.imanverdievv@gmail.com</strong> poçtuna çatdırıldı.
-                  </p>
-                  <button
-                    onClick={handleWhatsAppSend}
-                    style={{ background: '#0066FF', color: 'white', border: 'none', padding: '12px 20px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontSize: '0.85rem' }}
-                  >
-                    WhatsApp ilə təsdiqləyin
-                  </button>
-                </div>
-              )}
-            </div>
-
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Footer */}
       <footer style={{ background: '#05070B', borderTop: '1px solid #162032', padding: '36px 0 20px', fontSize: '0.82rem', color: '#9CA6B5' }}>
@@ -1131,6 +1202,14 @@ export default function App() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <img src="/logo.png" alt="CodeX Studio" style={{ width: '24px', height: '24px', borderRadius: '6px' }} />
             <strong style={{ color: '#F5F7FA' }}>Code<span style={{ color: '#0066FF' }}>X</span> Studio</strong>
+          </div>
+          <div style={{ display: 'flex', gap: '16px', fontSize: '0.78rem' }}>
+            <button onClick={() => navigateTo('home')} style={{ background: 'none', border: 'none', color: '#9CA6B5', cursor: 'pointer' }}>Ana səhifə</button>
+            <button onClick={() => navigateTo('services')} style={{ background: 'none', border: 'none', color: '#9CA6B5', cursor: 'pointer' }}>Xidmətlər</button>
+            <button onClick={() => navigateTo('works')} style={{ background: 'none', border: 'none', color: '#9CA6B5', cursor: 'pointer' }}>İşlərimiz</button>
+            <button onClick={() => navigateTo('about')} style={{ background: 'none', border: 'none', color: '#9CA6B5', cursor: 'pointer' }}>Haqqımızda</button>
+            <button onClick={() => navigateTo('faq')} style={{ background: 'none', border: 'none', color: '#9CA6B5', cursor: 'pointer' }}>FAQ</button>
+            <button onClick={() => navigateTo('contact')} style={{ background: 'none', border: 'none', color: '#9CA6B5', cursor: 'pointer' }}>Bizimlə əlaqə</button>
           </div>
           <div>© 2026 Codex Studio. Bütün hüquqlar qorunur.</div>
         </div>
@@ -1162,7 +1241,7 @@ export default function App() {
         title="WhatsApp ilə əlaqə"
       >
         <MessageCircle size={18} />
-        <span className="hidden sm:inline">WhatsApp</span>
+        <span className="hidden sm:inline">WhatsApp ilə əlaqə</span>
       </a>
     </div>
   )
