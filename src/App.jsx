@@ -3,7 +3,8 @@ import {
   MessageCircle, Send, ArrowRight, Laptop, Globe, ShoppingBag,
   Zap, Smartphone, CheckCircle2, ChevronDown, X, Sun, Moon,
   Mail, ExternalLink, Loader2, ArrowUpRight, ShieldCheck, Menu,
-  Code2, Palette, Headphones, Search, Phone, ChevronLeft, ChevronRight
+  Code2, Palette, Headphones, Search, Phone, ChevronLeft, ChevronRight,
+  MapPin, Check
 } from 'lucide-react'
 
 // Animated Interactive Tech Canvas
@@ -103,453 +104,230 @@ function TechCanvas() {
   )
 }
 
-const translations = {
-  az: {
-    nav: {
-      home: 'Ana səhifə',
-      services: 'Xidmətlər',
-      works: 'İşlərimiz',
-      process: 'İş prosesi',
-      about: 'Haqqımızda',
-      faq: 'Tez-tez verilən suallar',
-      contact: 'Bizimlə əlaqə',
-      getQuote: 'Təklif al'
-    },
-    hero: {
-      eyebrow: 'VEB SAYTLARIN HAZIRLANMASI',
-      heading: 'Biznesiniz üçün peşəkar veb sayt hazırlayırıq.',
-      desc: 'Landing Page, korporativ sayt və e-commerce layihələrinin dizaynı və hazırlanması.',
-      primaryBtn: 'Sayt sifarişi',
-      secondaryBtn: 'İşlərimizə bax',
-      trust1: 'Mobil uyğun',
-      trust2: 'SEO optimizasiyası',
-      trust3: 'Texniki dəstək',
-      tabLanding: 'Landing Page',
-      tabCorporate: 'Korporativ sayt',
-      tabEcommerce: 'E-commerce sayt',
-      previewTag: '✓ Canlı önizləmə'
-    },
-    trustStrip: {
-      items: [
-        'Veb saytların hazırlanması',
-        'Landing Page hazırlanması',
-        'Korporativ saytların hazırlanması',
-        'E-commerce saytların hazırlanması',
-        'Veb dizayn (UI/UX)',
-        'Texniki dəstək',
-        'SEO optimizasiyası'
-      ],
-      tag: 'Kiçik və böyük bizneslər üçün veb xidmətlər.'
-    },
-    services: {
-      badge: 'XİDMƏTLƏRİMİZ',
-      title: 'Xidmətlərimiz',
-      desc: 'Biznesinizin ehtiyacına uyğun veb saytların dizaynı və hazırlanması.',
-      moreBtn: 'Daha ətraflı',
-      quoteBtn: 'Təklif al',
-      items: [
-        {
-          id: 'web-dev',
-          num: '01',
-          title: 'Veb saytların hazırlanması',
-          desc: 'Biznesinizin fəaliyyətinə və ehtiyaclarına uyğun funksional veb saytların hazırlanması.',
-          icon: 'code'
-        },
-        {
-          id: 'landing',
-          num: '02',
-          title: 'Landing Page hazırlanması',
-          desc: 'Məhsul, xidmət və reklam kampaniyalarının təqdimatı üçün məqsədyönlü bir səhifəlik saytların hazırlanması.',
-          icon: 'globe'
-        },
-        {
-          id: 'corporate',
-          num: '03',
-          title: 'Korporativ saytların hazırlanması',
-          desc: 'Şirkətiniz, xidmətləriniz və fəaliyyətiniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi korporativ saytların hazırlanması.',
-          icon: 'laptop'
-        },
-        {
-          id: 'ecommerce',
-          num: '04',
-          title: 'E-commerce saytların hazırlanması',
-          desc: 'Məhsulların təqdimatı, sifariş və onlayn satış üçün e-commerce saytların hazırlanması.',
-          icon: 'shopping'
-        },
-        {
-          id: 'uiux',
-          num: '05',
-          title: 'Veb dizayn (UI/UX)',
-          desc: 'Saytın istifadəsini rahatlaşdıran, mobil cihazlara uyğun və müasir interfeys dizaynının hazırlanması.',
-          icon: 'palette'
-        },
-        {
-          id: 'support',
-          num: '06',
-          title: 'Texniki dəstək',
-          desc: 'Sayt istifadəyə verildikdən sonra texniki məsələlər, yenilənmələr və zəruri dəyişikliklər üzrə dəstək.',
-          icon: 'headphones'
-        },
-        {
-          id: 'seo',
-          num: '07',
-          title: 'SEO optimizasiyası',
-          desc: 'Saytın axtarış sistemləri tərəfindən daha düzgün oxunması üçün texniki və struktur SEO optimizasiyası.',
-          icon: 'search'
-        }
-      ]
-    },
-    finder: {
-      badge: 'SEÇİM KÖMƏKÇİSİ',
-      title: 'Hansı sayt sizə uyğundur?',
-      desc: '2 sadə suala cavab verin, biznesiniz üçün ən optimal formatı anında müəyyən edək.',
-      q1: '1. Saytı əsasən nə üçün istəyirsiniz?',
-      q1Opts: ['Xidmətimi təqdim etmək', 'Şirkətimi təqdim etmək', 'Onlayn satış etmək', 'Xüsusi sistem hazırlatmaq'],
-      q2: '2. Hansı funksiyalar sizə lazımdır?',
-      q2Opts: ['Əlaqə forması', 'WhatsApp düyməsi', 'Məhsul kataloqu', 'Onlayn kart ödənişi', 'Admin idarəetmə paneli', 'Rezervasiya / Qeydiyyat'],
-      recTag: 'TÖVSİYƏ OLUNAN FORMAT:',
-      recTitlePrefix: 'Biznesiniz üçün',
-      recTitleSuffix: 'formatı daha uyğundur.',
-      btn: 'Təklif al →'
-    },
-    works: {
-      badge: 'İŞLƏRİMİZ',
-      title: 'İşlərimiz',
-      desc: 'Müxtəlif fəaliyyət sahələrində olan şirkətlər və şəxslər üçün hazırladığımız veb layihələr.',
-      viewLive: 'Sayta bax',
-      orderSimilar: 'Bənzər sayt sifariş et',
-      items: [
-        {
-          id: '01',
-          name: 'Sinaps Med — Tibbi Avadanlıq & Səhiyyə Şirkəti',
-          type: 'Korporativ saytların hazırlanması',
-          desc: 'Tibbi avadanlıqlar, klinik məhsul kataloqu, distribütorluq və səhiyyə müəssisələri üçün çoxdilli rəsmi korporativ platforma.',
-          url: 'https://sinapsmed.com',
-          displayUrl: 'sinapsmed.com',
-          tags: ['Korporativ sayt', 'Məhsul kataloqu', 'Çoxdillilik', 'Partnyor əlaqələri']
-        },
-        {
-          id: '02',
-          name: 'Leyla Qasımova — Fizika və Elm Mərkəzi',
-          type: 'Landing Page və Fərdi Sayt',
-          desc: 'Təlim proqramları, video dərslər, tələbə nəticələri və birbaşa sınaq dərsinə qeydiyyat toplayan şəxsi brend platforması.',
-          url: 'https://leylagasimova.az',
-          displayUrl: 'leylagasimova.az',
-          tags: ['Landing Page', 'Kurs qeydiyyatı', 'Video təqdimat', 'WhatsApp inteqrasiyası']
-        },
-        {
-          id: '03',
-          name: 'Vektor Logistics & Holding',
-          type: 'Korporativ saytların hazırlanması',
-          desc: 'Beynəlxalq yükdaşıma, anbar xidmətləri və tərəfdaş şirkətlər üçün çoxsəhifəli, etibarlı korporativ veb portal.',
-          url: 'https://vektor-holding.codexstudio.az',
-          displayUrl: 'vektor-holding.az',
-          tags: ['Korporativ sayt', 'Xidmət kataloqu', 'Çoxdilli struktur', 'Sorğu sistemi']
-        },
-        {
-          id: '04',
-          name: 'Aura Home & Living',
-          type: 'E-commerce saytların hazırlanması',
-          desc: 'İnteryer mebeli və ev aksessuarları üçün müasir məhsul vitrini, kateqoriya filtri, səbət və bank kartı ilə ödəniş axını.',
-          url: 'https://aurahome.codexstudio.az',
-          displayUrl: 'aurahome.az',
-          tags: ['E-commerce', 'Səbət sistemi', 'Kartla ödəniş', 'Mobil uyğun dizayn']
-        }
-      ]
-    },
-    process: {
-      badge: 'İŞ PROSESİ',
-      title: 'Saytın hazırlanması prosesi',
-      desc: 'Layihənizin vaxtında və keyfiyyətlə təhvil verilməsi üçün mərhələli iş planı.',
-      steps: [
-        { num: '01', title: 'Tələblərin müəyyən edilməsi', desc: 'Layihənin məqsədi, saytın strukturu və tələb olunan funksiyalar müəyyən edilir.' },
-        { num: '02', title: 'Dizayn', desc: 'Saytın vizual görünüşü və istifadəçi interfeysi hazırlanır.' },
-        { num: '03', title: 'Proqramlaşdırma', desc: 'Təsdiqlənmiş dizayn əsasında saytın hazırlanmasına başlanılır.' },
-        { num: '04', title: 'Test', desc: 'Sayt müxtəlif ekran ölçülərində və cihazlarda yoxlanılır.' },
-        { num: '05', title: 'Təhvil', desc: 'Yekun yoxlamadan sonra sayt istifadəyə verilir.' }
-      ]
-    },
-    about: {
-      badge: 'HAQQIMIZDA',
-      title: 'Haqqımızda',
-      desc: 'Codex Studio bizneslər üçün veb saytların dizaynı və hazırlanması üzrə ixtisaslaşmış komandadır. Məqsədimiz şirkətinizin fəaliyyətini internetdə düzgün, peşəkar və etibarlı şəkildə təqdim edən veb saytlar hazırlamaqdır.',
-      values: [
-        { title: 'Sadə və anlaşılan ünsiyyət', desc: 'Texniki çətinliklər yaratmadan, layihəniz üçün nəyin lazım olduğunu aydın şəkildə müzakirə edirik.' },
-        { title: 'Dəqiq iş qrafiki', desc: 'Hər bir mərhələ razılaşdırılmış vaxt çərçivəsində və planlı şəkildə icra olunur.' },
-        { title: 'Daimi texniki dəstək', desc: 'Sayt təhvil verildikdən sonra da server, domen və texniki məsələlərdə dəstəyimizi davam etdiririk.' }
-      ]
-    },
-    faq: {
-      badge: 'SUAL-CAVAB',
-      title: 'Tez-tez verilən suallar',
-      desc: 'Veb saytların hazırlanması və əməkdaşlıq prosesi ilə bağlı sualların cavabları.',
-      items: [
-        { q: 'Saytın hazırlanması neçə gün çəkir?', a: 'Müddət layihənin növündən asılıdır: Tək səhifəlik Landing Page adətən bir neçə günə, korporativ saytlar və e-commerce layihələri isə orta hesabla 1-3 həftəyə tam hazır vəziyyətə gətirilir.' },
-        { q: 'Qiymət necə müəyyən olunur?', a: 'Qiymət saytın növünə (Landing Page, Korporativ, E-commerce), səhifə sayına və tələb olunan funksionallığa (onlayn ödəniş, çoxdillilik və s.) görə şəffaf şəkildə hesablanır.' },
-        { q: 'Domen və hosting qiymətə daxildirmi?', a: 'Bəli, istəyinizə uyğun olaraq .az və ya beynəlxalq domenlərin seçilməsi, sürətli serverin quraşdırılması və SSL təhlükəsizlik sertifikatının aktivləşdirilməsi tərəfimizdən təmin edilir.' },
-        { q: 'Sayt mobil cihazlara uyğun olacaq?', a: 'Bəli, 100%. Hazırladığımız bütün saytlar mobil cihazlara uyğunlaşdırılır və smartfon, planşet və kompüter ekranlarında qüsursuz işləyir.' },
-        { q: 'Sonradan saytda dəyişiklik etmək mümkündür?', a: 'Bəli. Saytın strukturu elə qurulur ki, gələcəkdə yeni səhifələr, məhsullar, xidmətlər və ya yeni funksiyalar asanlıqla əlavə oluna bilsin.' },
-        { q: 'Onlayn ödəniş sistemi qoşmaq olar?', a: 'Bəli. E-commerce və sifariş saytlarınıza yerli bankların kartla ödəniş sistemlərini (Kapital Bank, Paşa Bank və s.) təhlükəsiz şəkildə inteqrasiya edirik.' },
-        { q: 'Sayt hazır olduqdan sonra texniki dəstək verirsiniz?', a: 'Bəli. Sayt təhvil verildikdən sonra da serverin fasiləsiz işləməsi, domen və texniki suallarınız üzrə dəstəyimiz davam edir.' }
-      ]
-    },
-    finalCta: {
-      badge: 'SAYT SİFARİŞİ',
-      title: 'Veb sayt sifariş etmək istəyirsiniz?',
-      desc: 'Layihəniz haqqında qısa məlumat göndərin. Ehtiyacınıza uyğun həlli birlikdə müəyyən edək.',
-      primaryBtn: 'Təklif al',
-      whatsappBtn: 'WhatsApp ilə əlaqə'
-    },
-    contact: {
-      badge: 'BİZİMLƏ ƏLAQƏ',
-      title: 'Bizimlə əlaqə',
-      desc: 'Layihəniz haqqında qısa məlumat göndərin. Ehtiyacınıza uyğun həlli birlikdə müəyyən edək.',
-      phoneLabel: 'Telefon / Zəng:',
-      whatsappLabel: 'WhatsApp:',
-      emailLabel: 'Qəbul Emaili:',
-      addressLabel: 'Rəsmi Ünvan:',
-      formTitle: 'Sayt sifarişi üçün müraciət edin',
-      formDesc: 'Məlumatlarınızı qeyd edin, ən qısa zamanda sizinlə əlaqə saxlayaq.',
-      nameLabel: 'Adınız və Soyadınız *',
-      phoneInputLabel: 'Telefon / WhatsApp *',
-      businessLabel: 'Biznes sahəsi',
-      siteTypeLabel: 'Sayt növü',
-      messageLabel: 'Sayt haqqında qısa məlumat / İstəkləriniz',
-      submitBtn: 'Təklif al',
-      submitting: 'Göndərilir...',
-      successTitle: 'Müraciətiniz qəbul olundu!',
-      successDesc: 'Məlumatlar email poçtuna çatdırıldı.',
-      confirmWhatsApp: 'WhatsApp ilə təsdiqləyin'
-    },
-    footer: {
-      rights: '© 2026 Codex Studio. Bütün hüquqlar qorunur.'
-    }
-  },
-  en: {
-    nav: {
-      home: 'Home',
-      services: 'Services',
-      works: 'Our Works',
-      process: 'Process',
-      about: 'About',
-      faq: 'FAQ',
-      contact: 'Contact Us',
-      getQuote: 'Get a Quote'
-    },
-    hero: {
-      eyebrow: 'WEB DEVELOPMENT SERVICES',
-      heading: 'We build professional websites for your business.',
-      desc: 'Design and development of landing pages, corporate websites, and e-commerce projects.',
-      primaryBtn: 'Request a website',
-      secondaryBtn: 'View our works',
-      trust1: 'Mobile responsive',
-      trust2: 'SEO optimization',
-      trust3: 'Technical support',
-      tabLanding: 'Landing Page',
-      tabCorporate: 'Corporate website',
-      tabEcommerce: 'E-commerce website',
-      previewTag: '✓ Live preview'
-    },
-    trustStrip: {
-      items: [
-        'Web development',
-        'Landing Page development',
-        'Corporate website development',
-        'E-commerce development',
-        'UI/UX Web design',
-        'Technical support',
-        'SEO optimization'
-      ],
-      tag: 'Web development solutions for growing businesses.'
-    },
-    services: {
-      badge: 'SERVICES',
-      title: 'Our Services',
-      desc: 'Design and development of websites tailored to your business needs.',
-      moreBtn: 'Learn more',
-      quoteBtn: 'Get a quote',
-      items: [
-        {
-          id: 'web-dev',
-          num: '01',
-          title: 'Web development',
-          desc: 'Development of functional websites tailored to your business operations and needs.',
-          icon: 'code'
-        },
-        {
-          id: 'landing',
-          num: '02',
-          title: 'Landing Page development',
-          desc: 'Development of single-page targeted websites for presenting products, services, and promotional campaigns.',
-          icon: 'globe'
-        },
-        {
-          id: 'corporate',
-          num: '03',
-          title: 'Corporate website development',
-          desc: 'Development of corporate websites that professionally present information about your company, services, and operations.',
-          icon: 'laptop'
-        },
-        {
-          id: 'ecommerce',
-          num: '04',
-          title: 'E-commerce development',
-          desc: 'Development of e-commerce websites for product presentation, ordering, and online sales.',
-          icon: 'shopping'
-        },
-        {
-          id: 'uiux',
-          num: '05',
-          title: 'UI/UX Web design',
-          desc: 'Design of modern, mobile-compatible interfaces that make website navigation intuitive and smooth.',
-          icon: 'palette'
-        },
-        {
-          id: 'support',
-          num: '06',
-          title: 'Technical support',
-          desc: 'Ongoing support for technical matters, updates, and necessary changes after website launch.',
-          icon: 'headphones'
-        },
-        {
-          id: 'seo',
-          num: '07',
-          title: 'SEO optimization',
-          desc: 'Technical and structural SEO optimization so search engines can accurately index and read your website.',
-          icon: 'search'
-        }
-      ]
-    },
-    finder: {
-      badge: 'PROJECT ADVISOR',
-      title: 'Which website fits your business?',
-      desc: 'Answer 2 simple questions to immediately discover the optimal website format for your business.',
-      q1: '1. What is the primary purpose of your website?',
-      q1Opts: ['Present my services', 'Showcase my company', 'Sell products online', 'Build a custom system'],
-      q2: '2. Which features do you need?',
-      q2Opts: ['Contact form', 'WhatsApp button', 'Product catalog', 'Online card payments', 'Admin control panel', 'Booking / Registration'],
-      recTag: 'RECOMMENDED FORMAT:',
-      recTitlePrefix: 'A',
-      recTitleSuffix: 'format is the best fit for your requirements.',
-      btn: 'Get a quote →'
-    },
-    works: {
-      badge: 'OUR WORKS',
-      title: 'Our Works',
-      desc: 'Web projects and client solutions we have developed across diverse business industries.',
-      viewLive: 'View website',
-      orderSimilar: 'Order a similar website',
-      items: [
-        {
-          id: '01',
-          name: 'Sinaps Med — Medical Equipment & Healthcare Platform',
-          type: 'Corporate website development',
-          desc: 'Medical devices, clinical gynecology equipment catalog, international distribution services, and enterprise healthcare platform.',
-          url: 'https://sinapsmed.com',
-          displayUrl: 'sinapsmed.com',
-          tags: ['Corporate website', 'Product catalog', 'Multilingual', 'Partner network']
-        },
-        {
-          id: '02',
-          name: 'Leyla Gasimova — Physics & Science Academy',
-          type: 'Landing Page & Personal Website',
-          desc: 'Course programs, video presentations, student testimonials, and direct trial lesson registrations.',
-          url: 'https://leylagasimova.az',
-          displayUrl: 'leylagasimova.az',
-          tags: ['Landing Page', 'Course signups', 'Video showcase', 'WhatsApp integration']
-        },
-        {
-          id: '03',
-          name: 'Vektor Logistics & Holding',
-          type: 'Corporate website development',
-          desc: 'Global shipping routes, warehousing capabilities, and multi-page structured corporate presentation.',
-          url: 'https://vektor-holding.codexstudio.az',
-          displayUrl: 'vektor-holding.az',
-          tags: ['Corporate website', 'Service catalog', 'Multilingual', 'Inquiry pipeline']
-        },
-        {
-          id: '04',
-          name: 'Aura Home & Living',
-          type: 'E-commerce development',
-          desc: 'Designer furniture and home decor catalog with instant filters, cart checkout, and bank card payments.',
-          url: 'https://aurahome.codexstudio.az',
-          displayUrl: 'aurahome.az',
-          tags: ['E-commerce', 'Cart system', 'Card payment', 'Mobile responsive']
-        }
-      ]
-    },
-    process: {
-      badge: 'DEVELOPMENT PROCESS',
-      title: 'Development Process',
-      desc: 'A structured, predictable milestone roadmap for delivering your project on time and with quality.',
-      steps: [
-        { num: '01', title: 'Requirement definition', desc: 'Project goals, website structure, and required functions are defined.' },
-        { num: '02', title: 'Design', desc: 'Visual look and user interface of the website are designed.' },
-        { num: '03', title: 'Development', desc: 'Website coding begins based on the approved design.' },
-        { num: '04', title: 'Testing', desc: 'The website is tested across various screen sizes and devices.' },
-        { num: '05', title: 'Delivery', desc: 'After final review, the website is launched and delivered.' }
-      ]
-    },
-    about: {
-      badge: 'ABOUT US',
-      title: 'About Us',
-      desc: 'Codex Studio is a web studio specialized in the design and development of websites for businesses. Our mission is to build websites that present your company online with authority, clarity, and professionalism.',
-      values: [
-        { title: 'Clear communication', desc: 'We explain straightforwardly what your business needs without unnecessary technical jargon.' },
-        { title: 'Structured schedule', desc: 'Every phase is executed on time and according to an agreed plan.' },
-        { title: 'Ongoing support', desc: 'We continue assisting with hosting, domain, and technical updates after delivery.' }
-      ]
-    },
-    faq: {
-      badge: 'FAQ',
-      title: 'Frequently Asked Questions',
-      desc: 'Answers to common questions regarding website development and collaboration.',
-      items: [
-        { q: 'How long does it take to build a website?', a: 'It depends on the project: Single-page landing pages take a few days, while multi-page corporate and e-commerce projects take on average 1 to 3 weeks.' },
-        { q: 'How is pricing determined?', a: 'Pricing is calculated transparently based on website type, page count, and required functionality.' },
-        { q: 'Are domain and hosting included?', a: 'Yes. We assist with domain selection, high-speed hosting setup, and automated SSL security certificates.' },
-        { q: 'Will the website work on mobile devices?', a: 'Yes, 100%. Every website is responsive across all smartphones, tablets, and computers.' },
-        { q: 'Can changes be made later?', a: 'Yes. The structure allows new pages, products, services, and features to be easily added.' },
-        { q: 'Can an online payment system be integrated?', a: 'Yes. We integrate secure bank card payment gateways for online stores and booking platforms.' },
-        { q: 'Do you provide support after launch?', a: 'Yes. We remain available for server monitoring, domain management, and technical guidance.' }
-      ]
-    },
-    finalCta: {
-      badge: 'ORDER A WEBSITE',
-      title: 'Do you want to order a website?',
-      desc: 'Send us brief information about your project. Let’s determine the right solution together.',
-      primaryBtn: 'Get a quote',
-      whatsappBtn: 'Contact via WhatsApp'
-    },
-    contact: {
-      badge: 'CONTACT US',
-      title: 'Contact Us',
-      desc: 'Send us brief information about your project. Let’s determine the right solution together.',
-      phoneLabel: 'Phone / Direct call:',
-      whatsappLabel: 'WhatsApp:',
-      emailLabel: 'Inquiry Email:',
-      addressLabel: 'Official Address:',
-      formTitle: 'Request a website project',
-      formDesc: 'Please fill in your details, and we will contact you shortly.',
-      nameLabel: 'Full Name *',
-      phoneInputLabel: 'Phone / WhatsApp *',
-      businessLabel: 'Business / Industry',
-      siteTypeLabel: 'Website Type',
-      messageLabel: 'Brief project details / Requirements',
-      submitBtn: 'Get a quote',
-      submitting: 'Sending...',
-      successTitle: 'Inquiry Received!',
-      successDesc: 'Your details have been delivered to our inbox.',
-      confirmWhatsApp: 'Confirm via WhatsApp'
-    },
-    footer: {
-      rights: '© 2026 Codex Studio. All rights reserved.'
-    }
+// Security Robot Captcha
+function RobotCaptcha({ isVerified, onVerify }) {
+  const [loading, setLoading] = useState(false)
+
+  const handleCheck = () => {
+    if (isVerified || loading) return
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      onVerify(true)
+    }, 600)
   }
+
+  return (
+    <div
+      onClick={handleCheck}
+      style={{
+        padding: '12px 16px',
+        borderRadius: '12px',
+        background: 'var(--bg-input)',
+        border: '1px solid var(--border-color)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        cursor: 'pointer',
+        userSelect: 'none',
+        maxWidth: '320px'
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div
+          style={{
+            width: '24px',
+            height: '24px',
+            borderRadius: '6px',
+            border: isVerified ? '1px solid #10B981' : '1px solid var(--border-color)',
+            background: isVerified ? '#10B981' : 'var(--bg-card)',
+            color: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'all 0.2s ease'
+          }}
+        >
+          {loading ? (
+            <Loader2 size={14} className="animate-spin" color="var(--accent-blue)" />
+          ) : isVerified ? (
+            <Check size={16} strokeWidth={3} />
+          ) : null}
+        </div>
+        <span style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-main)' }}>
+          {isVerified ? 'Mən robot deyiləm ✓' : 'Mən robot deyiləm'}
+        </span>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', opacity: 0.7 }}>
+        <ShieldCheck size={18} color="var(--accent-blue)" />
+        <span style={{ fontSize: '9px', fontFamily: 'monospace', color: 'var(--text-sub)', marginTop: '2px' }}>reCAPTCHA</span>
+      </div>
+    </div>
+  )
 }
+
+const detailedServices = [
+  {
+    id: 'web-dev',
+    slug: 'veb-saytlarin-hazirlanmasi',
+    num: '01',
+    title: 'Veb saytların hazırlanması',
+    shortDesc: 'Biznesinizin fəaliyyətinə və ehtiyaclarına uyğun funksional veb saytların hazırlanması.',
+    fullDesc: 'Müasir kodlaşdırma standartları, sürətli server arxitekturası, mobil və kompüter ekranlarına tam uyğunluq ilə istənilən mürəkkəblikdə saytların yığılması.',
+    whatWeOffer: [
+      'Mobile-first və adaptiv dizayn strukturu',
+      'Sürətli və optimallaşdırılmış kod arxitekturası',
+      'Domen və hosting quraşdırılması, SSL sertifikatı',
+      'Axtarış sistemləri (Google) üçün texniki SEO uyğunluğu',
+      'Təhlükəsizlik və məlumatların qorunması'
+    ],
+    whoNeeds: [
+      'Yeni fəaliyyətə başlayan və ya mövcud biznesini yeniləmək istəyən şirkətlər',
+      'Müştərilərinə 24/7 xidmət və məhsul təqdim etmək istəyən brendlər',
+      'İnternetdə etibarlı və peşəkar imic formalaşdırmaq istəyən sahibkarlar'
+    ],
+    tags: ['Veb sayt', 'Sayt sifarişi', 'Responsive dizayn', 'Sürətli sayt'],
+    icon: 'code'
+  },
+  {
+    id: 'landing',
+    slug: 'landing-page-hazirlanmasi',
+    num: '02',
+    title: 'Landing Page hazırlanması',
+    shortDesc: 'Məhsul, xidmət və reklam kampaniyalarının təqdimatı üçün məqsədyönlü bir səhifəlik saytların hazırlanması.',
+    fullDesc: 'Ziyarətçiləri birbaşa əlaqəyə, WhatsApp sifarişinə və ya zəngə yönləndirən, reklam büdcənizin səmərəliliyini artıran tək səhifəlik saytlar.',
+    whatWeOffer: [
+      'Satış yönümlü və güclü Call-to-Action (CTA) strukturu',
+      'Birbaşa WhatsApp və zəng inteqrasiyası',
+      'Sürətli müraciət forması və bildiriş sistemi',
+      'Instagram, Google və TikTok reklamları üçün optimizasiya',
+      'Mobil telefonlarda ani açılış sürəti'
+    ],
+    whoNeeds: [
+      'Konkret bir xidmət və ya məhsulu reklam edənlər',
+      'Təlim, kurs və ya konsaltinq təqdimatı edən mütəxəssislər',
+      'Qısa zamanda yeni layihəni bazara çıxarmaq istəyənlər'
+    ],
+    tags: ['Landing page', 'Tək səhifəlik sayt', 'Satış saytı', 'WhatsApp sifariş'],
+    icon: 'globe'
+  },
+  {
+    id: 'corporate',
+    slug: 'korporativ-saytlarin-hazirlanmasi',
+    num: '03',
+    title: 'Korporativ saytların hazırlanması',
+    shortDesc: 'Şirkətiniz, xidmətləriniz və fəaliyyətiniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi korporativ saytların hazırlanması.',
+    fullDesc: 'Şirkətinizin brendini və etibarını gücləndirən, xidmətlər kataloqu, komanda, tərəfdaşlar və çoxdilli (AZ/EN/RU) struktura malik rəsmi korporativ saytlar.',
+    whatWeOffer: [
+      'Çoxsəhifəli zərif korporativ naviqasiya',
+      'Xidmətlər və fəaliyyət sahələri kataloqu',
+      'Çoxdilli dəstək (Azərbaycan, İngilis, Rus)',
+      'Şirkət tarixi, komanda və tərəfdaşlar bölməsi',
+      'Rəsmi korporativ email və sorğu sistemi'
+    ],
+    whoNeeds: [
+      'Holdinqlər, logistika, tibb və inşaat şirkətləri',
+      'B2B və dövlət layihələri ilə çalışan qurumlar',
+      'Beynəlxalq tərəfdaşlarla işləyən təşkilatlar'
+    ],
+    tags: ['Korporativ sayt', 'Şirkət saytı', 'B2B portal', 'Çoxdilli sayt'],
+    icon: 'laptop'
+  },
+  {
+    id: 'ecommerce',
+    slug: 'e-commerce-saytlarin-hazirlanmasi',
+    num: '04',
+    title: 'E-commerce saytların hazırlanması',
+    shortDesc: 'Məhsulların təqdimatı, sifariş və onlayn satış üçün e-commerce saytların hazırlanması.',
+    fullDesc: 'Məhsul kataloqu, dəqiq axtarış və kateqoriya filtrləri, səbət sistemi və Azərbaycan banklarının kartları ilə təhlükəsiz onlayn ödəniş axını.',
+    whatWeOffer: [
+      'Məhsul kataloqu, çeşidlər, ölçülər və filtrlər',
+      'Səbət və 1 addımlı rahat sifariş sistemi',
+      'Azərbaycan bankları ilə kartla onlayn ödəniş (Kapital, Paşa və s.)',
+      'Məhsulları və sifarişləri asanlıqla idarə etmək üçün Admin panel',
+      'Müştəriyə və mağaza sahibinə avtomatik sifariş bildirişləri'
+    ],
+    whoNeeds: [
+      'Geyim, mebel, elektronika və aksesuar mağazaları',
+      'Fiziki mağazasını internetə daşımaq istəyənlər',
+      'Öz brend məhsullarını onlayn satmaq istəyən istehsalçılar'
+    ],
+    tags: ['E-commerce', 'Onlayn mağaza', 'Kartla ödəniş', 'Səbət sistemi'],
+    icon: 'shopping'
+  },
+  {
+    id: 'uiux',
+    slug: 'veb-dizayn-ui-ux',
+    num: '05',
+    title: 'Veb dizayn (UI/UX)',
+    shortDesc: 'Saytın istifadəsini rahatlaşdıran, mobil cihazlara uyğun və müasir interfeys dizaynının hazırlanması.',
+    fullDesc: 'Müştərilərin saytda axtardıqları məlumatı asanlıqla tapmasını təmin edən, oxunaqlı, zövqlü və konversiya yönümlü vizual interfeys arxitekturası.',
+    whatWeOffer: [
+      'İstifadəçi vərdişlərinə uyğun erqonomik UX tədqiqatı',
+      'Müasir, estetik və korporativ UI vizual dizayn',
+      'Bütün telefon və planşet ölçüləri üçün adaptiv maketlər',
+      'Tipoqrafika, rəng balansı və mikro-interaksiyalar',
+      'Figma prototipləri və dizayn sistemi'
+    ],
+    whoNeeds: [
+      'Köhnəlmiş saytının görünüşünü yeniləmək istəyən bizneslər',
+      'Müştərilərin saytda qalma müddətini artırmaq istəyənlər',
+      'Brendini müasir və premium təqdim etmək istəyənlər'
+    ],
+    tags: ['UI/UX dizayn', 'Veb dizayn', 'Figma', 'Mobil interfeys'],
+    icon: 'palette'
+  },
+  {
+    id: 'support',
+    slug: 'texniki-destek',
+    num: '06',
+    title: 'Texniki dəstək',
+    shortDesc: 'Sayt istifadəyə verildikdən sonra texniki məsələlər, yenilənmələr və zəruri dəyişikliklər üzrə dəstək.',
+    fullDesc: 'Saytın serverdə fasiləsiz işləməsi, təhlükəsizlik yenilənmələri, domen/SSL nəzarəti və biznesinizin tələbinə uyğun yeni məlumatların əlavə edilməsi.',
+    whatWeOffer: [
+      'Serverin və saytın fasiləsiz 24/7 işləməsinə nəzarət',
+      'SSL təhlükəsizlik sertifikatının və domenin vaxtında yenilənməsi',
+      'Mətn, şəkil və yeni xidmətlərin sayta əlavə edilməsi',
+      'Ehtiyat nüsxələmə (Backup) və məlumatların bərpası',
+      'Sürət və texniki xətaların aradan qaldırılması'
+    ],
+    whoNeeds: [
+      'Saytının təhlükəsiz və fasiləsiz işləməsini istəyən bizneslər',
+      'Daim yeni məlumatlar və xidmətlər yerləşdirən şirkətlər',
+      'Daxili IT mütəxəssisi saxlamaq istəməyən sahibkarlar'
+    ],
+    tags: ['Texniki dəstək', 'Server nəzarəti', 'SSL təhlükəsizlik'],
+    icon: 'headphones'
+  },
+  {
+    id: 'seo',
+    slug: 'seo-optimizasiyasi',
+    num: '07',
+    title: 'SEO optimizasiyası',
+    shortDesc: 'Saytın axtarış sistemləri tərəfindən daha düzgün oxunması üçün texniki və struktur SEO optimizasiyası.',
+    fullDesc: 'Google axtarış sisteminin saytınızın səhifələrini, başlıqlarını və mətnlərini düzgün indeksləməsi üçün texniki struktur, meta teqlər və sitemap tənzimləmələri.',
+    whatWeOffer: [
+      'Meta başlıqlar (Title), təsvirlər (Description) və H1-H6 hero iyerarxiyası',
+      'XML Sitemap və Robots.txt konfiqurasiyası',
+      'Şəkillərin sıxılması və ALT teqlərinin qeyd edilməsi',
+      'Google Search Console və Analytics inteqrasiyası',
+      'Saytın mobil uyğunluq və yüklənmə sürəti optimizasiyası'
+    ],
+    whoNeeds: [
+      'Axtarış sistemlərində daha səliqəli və düzgün görünmək istəyən saytlar',
+      'Yeni istifadəyə verilmiş və ya indekslənmə problemi olan layihələr',
+      'Orqanik axtarışdan hədəf müştərilər cəlb etmək istəyənlər'
+    ],
+    tags: ['SEO xidməti', 'Google axtarış', 'Meta teqlər', 'Texniki SEO'],
+    icon: 'search'
+  }
+]
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState('home')
+  const [selectedServiceSlug, setSelectedServiceSlug] = useState('veb-saytlarin-hazirlanmasi')
+  const [isPageLoading, setIsPageLoading] = useState(false)
   const [lang, setLang] = useState(() => localStorage.getItem('codex_lang') || 'az')
   const [theme, setTheme] = useState(() => localStorage.getItem('codex_theme') || 'dark')
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -569,43 +347,43 @@ export default function App() {
   const [business, setBusiness] = useState('')
   const [siteType, setSiteType] = useState('Korporativ saytların hazırlanması')
   const [message, setMessage] = useState('')
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState(false)
+  const [captchaError, setCaptchaError] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
-  const t = translations[lang] || translations.az
-
   const heroSlides = [
     {
-      badge: t.hero.eyebrow,
-      heading: t.hero.heading,
-      desc: t.hero.desc,
-      btn1: t.hero.primaryBtn,
-      btn2: t.hero.secondaryBtn,
+      badge: 'VEB SAYTLARIN HAZIRLANMASI',
+      heading: 'Biznesiniz üçün peşəkar veb sayt hazırlayırıq.',
+      desc: 'Landing Page, korporativ sayt və e-commerce layihələrinin dizaynı və hazırlanması.',
+      btn1: 'Sayt sifarişi',
+      btn2: 'İşlərimizə bax',
       targetRoute: 'contact'
     },
     {
-      badge: lang === 'az' ? 'KORPORATİV VƏ E-COMMERCE' : 'CORPORATE & E-COMMERCE',
-      heading: lang === 'az' ? 'Siz sadəcə biznesinizi böyüdün, veb saytınızı bizə həvalə edin.' : 'Focus on growing your business, leave website development to us.',
-      desc: lang === 'az' ? 'Şirkətinizin fəaliyyətini, xidmətlərini və məhsullarını peşəkar şəkildə təqdim edən müasir həllər.' : 'Modern solutions that professionally present your company, services, and online catalog.',
-      btn1: lang === 'az' ? 'Təklif al' : 'Get a quote',
-      btn2: lang === 'az' ? 'Xidmətlərimiz' : 'Our services',
+      badge: 'KORPORATİV VƏ E-COMMERCE',
+      heading: 'Siz sadəcə biznesinizi böyüdün, veb saytınızı bizə həvalə edin.',
+      desc: 'Şirkətinizin fəaliyyətini, xidmətlərini və məhsullarını peşəkar şəkildə təqdim edən müasir həllər.',
+      btn1: 'Təklif al',
+      btn2: 'Xidmətlərimiz',
       targetRoute: 'services'
     },
     {
-      badge: lang === 'az' ? '100% MOBİL VƏ TEXNİKİ DƏSTƏK' : '100% RESPONSIVE & SUPPORT',
-      heading: lang === 'az' ? 'Saytınız internetdə brendinizin ən güclü vizit kartıdır.' : 'Your website is the most powerful digital showcase for your brand.',
-      desc: lang === 'az' ? 'Aydın naviqasiya, SEO optimizasiyası və sayt təhvil verildikdən sonra daimi texniki dəstək.' : 'Intuitive navigation, technical SEO structure, and ongoing maintenance after launch.',
-      btn1: lang === 'az' ? 'WhatsApp ilə əlaqə' : 'Contact via WhatsApp',
-      btn2: lang === 'az' ? 'İşlərimizə bax' : 'View our works',
+      badge: '100% MOBİL VƏ TEXNİKİ DƏSTƏK',
+      heading: 'Saytınız internetdə brendinizin ən güclü vizit kartıdır.',
+      desc: 'Aydın naviqasiya, SEO optimizasiyası və sayt təhvil verildikdən sonra daimi texniki dəstək.',
+      btn1: 'WhatsApp ilə əlaqə',
+      btn2: 'İşlərimizə bax',
       targetRoute: 'works'
     }
   ]
 
-  // Auto rotate hero slides every 5.5s
+  // Auto rotate hero slides every 7.5 seconds (slower & calmer)
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
-    }, 5500)
+    }, 7500)
     return () => clearInterval(timer)
   }, [heroSlides.length])
 
@@ -637,10 +415,6 @@ export default function App() {
     }
   }, [mobileMenuOpen])
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [currentRoute])
-
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
 
   const toggleQuizFeature = (index) => {
@@ -654,32 +428,50 @@ export default function App() {
   const getQuizRecommendation = () => {
     if (quizPurpose === 2 || quizFeatures.includes(3) || quizFeatures.includes(2)) {
       return {
-        type: lang === 'az' ? 'E-commerce saytların hazırlanması' : 'E-commerce development',
-        desc: lang === 'az' ? 'Məhsulların təqdimatı, sifariş və onlayn satış üçün e-commerce saytların hazırlanması.' : 'Development of e-commerce websites for product presentation, ordering, and online sales.'
+        type: 'E-commerce saytların hazırlanması',
+        desc: 'Məhsulların təqdimatı, sifariş və onlayn satış üçün e-commerce saytların hazırlanması.'
       }
     }
     if (quizPurpose === 0) {
       return {
-        type: lang === 'az' ? 'Landing Page hazırlanması' : 'Landing Page development',
-        desc: lang === 'az' ? 'Məhsul, xidmət və reklam kampaniyalarının təqdimatı üçün məqsədyönlü bir səhifəlik saytların hazırlanması.' : 'Development of single-page targeted websites for presenting products, services, and promotional campaigns.'
+        type: 'Landing Page hazırlanması',
+        desc: 'Məhsul, xidmət və reklam kampaniyalarının təqdimatı üçün məqsədyönlü bir səhifəlik saytların hazırlanması.'
       }
     }
     if (quizPurpose === 3 || quizFeatures.includes(4) || quizFeatures.includes(5)) {
       return {
-        type: lang === 'az' ? 'Fərdi veb layihələrin hazırlanması' : 'Custom web portal development',
-        desc: lang === 'az' ? 'Biznesinizin unikal tələblərinə uyğun xüsusi kalkulyatorlar, rezervasiya modulları və fərdi idarəetmə sistemi.' : 'Custom booking calculators, management modules and specialized systems.'
+        type: 'Fərdi veb layihələrin hazırlanması',
+        desc: 'Biznesinizin unikal tələblərinə uyğun xüsusi kalkulyatorlar, rezervasiya modulları və fərdi idarəetmə sistemi.'
       }
     }
     return {
-      type: lang === 'az' ? 'Korporativ saytların hazırlanması' : 'Corporate website development',
-      desc: lang === 'az' ? 'Şirkətiniz, xidmətləriniz və fəaliyyətiniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi korporativ saytların hazırlanması.' : 'Development of corporate websites that professionally present information about your company, services, and operations.'
+      type: 'Korporativ saytların hazırlanması',
+      desc: 'Şirkətiniz, xidmətləriniz və fəaliyyətiniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi korporativ saytların hazırlanması.'
     }
   }
 
   const quizRec = getQuizRecommendation()
 
+  const navigateTo = (route, serviceSlug = null) => {
+    setIsPageLoading(true)
+    setMobileMenuOpen(false)
+    if (serviceSlug) {
+      setSelectedServiceSlug(serviceSlug)
+    }
+    setTimeout(() => {
+      setCurrentRoute(route)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setIsPageLoading(false)
+    }, 280)
+  }
+
   const handleEmailSubmit = async (e) => {
     e.preventDefault()
+    if (!isCaptchaVerified) {
+      setCaptchaError(true)
+      return
+    }
+    setCaptchaError(false)
     setIsSubmitting(true)
     const id = 'CODEX-' + Date.now().toString().slice(-6)
 
@@ -735,15 +527,76 @@ export default function App() {
     }
   }
 
-  const navigateTo = (route) => {
-    setCurrentRoute(route)
-    setMobileMenuOpen(false)
-  }
+  const works = [
+    {
+      id: '01',
+      name: 'Sinaps Med — Tibbi Avadanlıq & Səhiyyə Şirkəti',
+      type: 'Korporativ saytların hazırlanması',
+      desc: 'Tibbi avadanlıqlar, klinik məhsul kataloqu, distribütorluq və səhiyyə müəssisələri üçün çoxdilli rəsmi korporativ platforma.',
+      url: 'https://sinapsmed.com',
+      displayUrl: 'sinapsmed.com',
+      tags: ['Korporativ sayt', 'Məhsul kataloqu', 'Çoxdillilik', 'Partnyor əlaqələri']
+    },
+    {
+      id: '02',
+      name: 'Leyla Qasımova — Fizika və Elm Mərkəzi',
+      type: 'Landing Page və Fərdi Sayt',
+      desc: 'Təlim proqramları, video dərslər, tələbə nəticələri və birbaşa sınaq dərsinə qeydiyyat toplayan şəxsi brend platforması.',
+      url: 'https://leylagasimova.az',
+      displayUrl: 'leylagasimova.az',
+      tags: ['Landing Page', 'Kurs qeydiyyatı', 'Video təqdimat', 'WhatsApp inteqrasiyası']
+    },
+    {
+      id: '03',
+      name: 'Vektor Logistics & Holding',
+      type: 'Korporativ saytların hazırlanması',
+      desc: 'Beynəlxalq yükdaşıma, anbar xidmətləri və tərəfdaş şirkətlər üçün çoxsəhifəli, etibarlı korporativ veb portal.',
+      url: 'https://vektor-holding.codexstudio.az',
+      displayUrl: 'vektor-holding.az',
+      tags: ['Korporativ sayt', 'Xidmət kataloqu', 'Çoxdilli struktur', 'Sorğu sistemi']
+    },
+    {
+      id: '04',
+      name: 'Aura Home & Living',
+      type: 'E-commerce saytların hazırlanması',
+      desc: 'İnteryer mebeli və ev aksessuarları üçün müasir məhsul vitrini, kateqoriya filtri, səbət və bank kartı ilə ödəniş axını.',
+      url: 'https://aurahome.codexstudio.az',
+      displayUrl: 'aurahome.az',
+      tags: ['E-commerce', 'Səbət sistemi', 'Kartla ödəniş', 'Mobil uyğun dizayn']
+    }
+  ]
+
+  const faqs = [
+    { q: 'Saytın hazırlanması neçə gün çəkir?', a: 'Müddət layihənin növündən asılıdır: Tək səhifəlik Landing Page adətən bir neçə günə, korporativ saytlar və e-commerce layihələri isə orta hesabla 1-3 həftəyə tam hazır vəziyyətə gətirilir.' },
+    { q: 'Qiymət necə müəyyən olunur?', a: 'Qiymət saytın növünə (Landing Page, Korporativ, E-commerce), səhifə sayına və tələb olunan funksionallığa (onlayn ödəniş, çoxdillilik və s.) görə şəffaf şəkildə hesablanır.' },
+    { q: 'Domen və hosting qiymətə daxildirmi?', a: 'Bəli, istəyinizə uyğun olaraq .az və ya beynəlxalq domenlərin seçilməsi, sürətli serverin quraşdırılması və SSL təhlükəsizlik sertifikatının aktivləşdirilməsi tərəfimizdən təmin edilir.' },
+    { q: 'Sayt mobil cihazlara uyğun olacaq?', a: 'Bəli, 100%. Hazırladığımız bütün saytlar mobil cihazlara uyğunlaşdırılır və smartfon, planşet və kompüter ekranlarında qüsursuz işləyir.' },
+    { q: 'Sonradan saytda dəyişiklik etmək mümkündür?', a: 'Bəli. Saytın strukturu elə qurulur ki, gələcəkdə yeni səhifələr, məhsullar, xidmətlər və ya yeni funksiyalar asanlıqla əlavə oluna bilsin.' },
+    { q: 'Onlayn ödəniş sistemi qoşmaq olar?', a: 'Bəli. E-commerce və sifariş saytlarınıza yerli bankların kartla ödəniş sistemlərini (Kapital Bank, Paşa Bank və s.) təhlükəsiz şəkildə inteqrasiya edirik.' },
+    { q: 'Sayt hazır olduqdan sonra texniki dəstək verirsiniz?', a: 'Bəli. Sayt təhvil verildikdən sonra da serverin fasiləsiz işləməsi, domen və texniki suallarınız üzrə dəstəyimiz davam edir.' }
+  ]
 
   const curSlide = heroSlides[currentSlide]
+  const currentServiceDetail = detailedServices.find(s => s.slug === selectedServiceSlug) || detailedServices[0]
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: 'var(--bg-page)', color: 'var(--text-main)', overflowX: 'hidden' }}>
+      
+      {/* Top Loading Progress & Spinner Indicator */}
+      {isPageLoading && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '3px',
+          background: 'var(--accent-blue)',
+          zIndex: 9999,
+          boxShadow: '0 0 10px var(--accent-blue)',
+          animation: 'marquee-scroll 0.5s ease infinite'
+        }} />
+      )}
+
       {/* Scroll Progress Line */}
       <div
         style={{
@@ -801,37 +654,37 @@ export default function App() {
               onClick={() => navigateTo('home')}
               style={{ background: 'none', border: 'none', color: currentRoute === 'home' ? 'var(--text-main)' : 'var(--text-sub)', fontWeight: currentRoute === 'home' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
             >
-              {t.nav.home}
+              Ana səhifə
             </button>
             <button
               onClick={() => navigateTo('services')}
-              style={{ background: 'none', border: 'none', color: currentRoute === 'services' ? 'var(--text-main)' : 'var(--text-sub)', fontWeight: currentRoute === 'services' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
+              style={{ background: 'none', border: 'none', color: currentRoute === 'services' || currentRoute === 'service-detail' ? 'var(--text-main)' : 'var(--text-sub)', fontWeight: currentRoute === 'services' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
             >
-              {t.nav.services}
+              Xidmətlər
             </button>
             <button
               onClick={() => navigateTo('works')}
               style={{ background: 'none', border: 'none', color: currentRoute === 'works' ? 'var(--text-main)' : 'var(--text-sub)', fontWeight: currentRoute === 'works' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
             >
-              {t.nav.works}
+              İşlərimiz
             </button>
             <button
               onClick={() => navigateTo('about')}
               style={{ background: 'none', border: 'none', color: currentRoute === 'about' ? 'var(--text-main)' : 'var(--text-sub)', fontWeight: currentRoute === 'about' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
             >
-              {t.nav.about}
+              Haqqımızda
             </button>
             <button
               onClick={() => navigateTo('faq')}
               style={{ background: 'none', border: 'none', color: currentRoute === 'faq' ? 'var(--text-main)' : 'var(--text-sub)', fontWeight: currentRoute === 'faq' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
             >
-              {t.nav.faq}
+              Tez-tez verilən suallar
             </button>
             <button
               onClick={() => navigateTo('contact')}
               style={{ background: 'none', border: 'none', color: currentRoute === 'contact' ? 'var(--text-main)' : 'var(--text-sub)', fontWeight: currentRoute === 'contact' ? 700 : 500, fontSize: '0.88rem', cursor: 'pointer' }}
             >
-              {t.nav.contact}
+              Bizimlə əlaqə
             </button>
           </nav>
 
@@ -878,7 +731,7 @@ export default function App() {
                 whiteSpace: 'nowrap'
               }}
             >
-              <span>{t.nav.getQuote}</span>
+              <span>Təklif al</span>
               <ArrowRight size={14} />
             </button>
 
@@ -910,12 +763,12 @@ export default function App() {
           overflowY: 'auto'
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <button onClick={() => navigateTo('home')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)' }}>01. {t.nav.home}</button>
-            <button onClick={() => navigateTo('services')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)' }}>02. {t.nav.services}</button>
-            <button onClick={() => navigateTo('works')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)' }}>03. {t.nav.works}</button>
-            <button onClick={() => navigateTo('about')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)' }}>04. {t.nav.about}</button>
-            <button onClick={() => navigateTo('faq')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)' }}>05. {t.nav.faq}</button>
-            <button onClick={() => navigateTo('contact')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)' }}>06. {t.nav.contact}</button>
+            <button onClick={() => navigateTo('home')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)' }}>01. Ana səhifə</button>
+            <button onClick={() => navigateTo('services')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)' }}>02. Xidmətlər</button>
+            <button onClick={() => navigateTo('works')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)' }}>03. İşlərimiz</button>
+            <button onClick={() => navigateTo('about')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)' }}>04. Haqqımızda</button>
+            <button onClick={() => navigateTo('faq')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)' }}>05. Tez-tez verilən suallar</button>
+            <button onClick={() => navigateTo('contact')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)' }}>06. Bizimlə əlaqə</button>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '24px' }}>
@@ -923,7 +776,7 @@ export default function App() {
               onClick={() => navigateTo('contact')}
               style={{ background: 'var(--accent-blue)', color: 'white', padding: '14px', borderRadius: '12px', textAlign: 'center', fontWeight: 600, border: 'none', fontSize: '0.95rem', cursor: 'pointer' }}
             >
-              {t.hero.primaryBtn} →
+              Sayt sifarişi verin →
             </button>
             <a
               href="https://wa.me/994106011201"
@@ -942,7 +795,7 @@ export default function App() {
       {/* ======================================================== */}
       {currentRoute === 'home' && (
         <>
-          {/* Hero Section with Auto Slider and Tech Canvas */}
+          {/* Hero Section with Calmer Auto-Slider & Tech Canvas */}
           <section id="hero" style={{ position: 'relative', padding: '60px 0 70px', overflow: 'hidden', backgroundColor: 'var(--bg-page)' }}>
             <TechCanvas />
 
@@ -1065,24 +918,24 @@ export default function App() {
                         onClick={() => setHeroTab('landing')}
                         style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: heroTab === 'landing' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'landing' ? 'white' : 'var(--text-sub)', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
                       >
-                        {t.hero.tabLanding}
+                        Landing Page
                       </button>
                       <button
                         onClick={() => setHeroTab('corporate')}
                         style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: heroTab === 'corporate' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'corporate' ? 'white' : 'var(--text-sub)', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
                       >
-                        {t.hero.tabCorporate}
+                        Korporativ sayt
                       </button>
                       <button
                         onClick={() => setHeroTab('ecommerce')}
                         style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: heroTab === 'ecommerce' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'ecommerce' ? 'white' : 'var(--text-sub)', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
                       >
-                        {t.hero.tabEcommerce}
+                        E-commerce sayt
                       </button>
                     </div>
 
                     <div style={{ fontSize: '0.72rem', color: '#10B981', fontFamily: 'monospace', padding: '4px 10px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '8px' }}>
-                      {t.hero.previewTag}
+                      ✓ Canlı önizləmə
                     </div>
                   </div>
 
@@ -1110,9 +963,9 @@ export default function App() {
                           <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>LANDING PAGE</div>
                           <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Leyla Qasımova — Fizika Mərkəzi</h3>
                           <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>
-                            {lang === 'az' ? 'Məhsul, xidmət və kursların təqdimatı üçün məqsədyönlü bir səhifəlik sayt.' : 'Targeted single-page platform for presenting courses and student registrations.'}
+                            Məhsul, xidmət və kursların təqdimatı üçün məqsədyönlü bir səhifəlik sayt.
                           </p>
-                          <a href="https://leylagasimova.az" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>{t.works.viewLive} →</a>
+                          <a href="https://leylagasimova.az" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>Sayta bax →</a>
                         </div>
                       )}
 
@@ -1121,9 +974,9 @@ export default function App() {
                           <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>CORPORATE PORTAL</div>
                           <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Sinaps Med — Tibbi Avadanlıq & Səhiyyə</h3>
                           <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>
-                            {lang === 'az' ? 'Şirkətiniz və xidmətləriniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi rəsmi sayt.' : 'Official enterprise healthcare portal presenting equipment catalogs and distribution services.'}
+                            Şirkətiniz və xidmətləriniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi rəsmi sayt.
                           </p>
-                          <a href="https://sinapsmed.com" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>{t.works.viewLive} →</a>
+                          <a href="https://sinapsmed.com" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>Sayta bax →</a>
                         </div>
                       )}
 
@@ -1132,9 +985,9 @@ export default function App() {
                           <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>E-COMMERCE STORE</div>
                           <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Aura Home & Living</h3>
                           <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>
-                            {lang === 'az' ? 'Məhsulların təqdimatı, səbət və onlayn ödəniş sistemi ilə təchiz olunmuş onlayn mağaza.' : 'Online furniture and interior store with product filters, cart, and card payment gateway.'}
+                            Məhsulların təqdimatı, səbət və onlayn ödəniş sistemi ilə təchiz olunmuş onlayn mağaza.
                           </p>
-                          <button onClick={() => navigateTo('contact')} style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, border: 'none', cursor: 'pointer' }}>{t.nav.getQuote} →</button>
+                          <button onClick={() => navigateTo('contact')} style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, border: 'none', cursor: 'pointer' }}>Təklif al →</button>
                         </div>
                       )}
 
@@ -1153,11 +1006,13 @@ export default function App() {
           <section style={{ padding: '24px 0', background: 'var(--bg-card)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
             <div className="container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '12px' }}>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', fontSize: '0.85rem', fontWeight: 600 }}>
-                {t.trustStrip.items.slice(0, 5).map((item, i) => (
-                  <div key={i}><span style={{ color: 'var(--accent-blue)' }}>•</span> {item}</div>
-                ))}
+                <div><span style={{ color: 'var(--accent-blue)' }}>•</span> Veb saytların hazırlanması</div>
+                <div><span style={{ color: 'var(--accent-blue)' }}>•</span> Landing Page</div>
+                <div><span style={{ color: 'var(--accent-blue)' }}>•</span> Korporativ saytlar</div>
+                <div><span style={{ color: 'var(--accent-blue)' }}>•</span> E-commerce</div>
+                <div><span style={{ color: 'var(--accent-blue)' }}>•</span> Texniki dəstək</div>
               </div>
-              <div style={{ fontSize: '0.78rem', color: 'var(--text-sub)' }}>{t.trustStrip.tag}</div>
+              <div style={{ fontSize: '0.78rem', color: 'var(--text-sub)' }}>Kiçik və böyük bizneslər üçün veb xidmətlər.</div>
             </div>
           </section>
 
@@ -1166,20 +1021,17 @@ export default function App() {
             <div className="container">
               <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
                 <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-                  {t.services.badge}
+                  XİDMƏTLƏRİMİZ
                 </span>
-                <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>{t.services.title}</h2>
-                <p style={{ color: 'var(--text-sub)', fontSize: '0.92rem' }}>{t.services.desc}</p>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Xidmətlərimiz</h2>
+                <p style={{ color: 'var(--text-sub)', fontSize: '0.92rem' }}>Biznesinizin ehtiyacına uyğun veb saytların dizaynı və hazırlanması.</p>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-                {t.services.items.map((s) => (
+                {detailedServices.map((s) => (
                   <div
                     key={s.id}
-                    onClick={() => {
-                      setSiteType(s.title)
-                      navigateTo('contact')
-                    }}
+                    onClick={() => navigateTo('service-detail', s.slug)}
                     style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '18px', padding: '26px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', cursor: 'pointer' }}
                   >
                     <div>
@@ -1190,10 +1042,10 @@ export default function App() {
                         <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--text-sub)' }}>{s.num}</span>
                       </div>
                       <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '8px' }}>{s.title}</h3>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '20px' }}>{s.desc}</p>
+                      <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '20px' }}>{s.shortDesc}</p>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--accent-blue)', fontSize: '0.82rem', fontWeight: 700 }}>
-                      <span>{t.services.moreBtn}</span>
+                      <span>Daha ətraflı</span>
                       <ArrowRight size={14} />
                     </div>
                   </div>
@@ -1207,17 +1059,17 @@ export default function App() {
             <div className="container">
               <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 40px' }}>
                 <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-                  {t.finder.badge}
+                  SEÇİM KÖMƏKÇİSİ
                 </span>
-                <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>{t.finder.title}</h2>
-                <p style={{ color: 'var(--text-sub)', fontSize: '0.92rem' }}>{t.finder.desc}</p>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Hansı sayt sizə uyğundur?</h2>
+                <p style={{ color: 'var(--text-sub)', fontSize: '0.92rem' }}>2 sadə suala cavab verin, biznesiniz üçün ən optimal formatı anında müəyyən edək.</p>
               </div>
 
               <div style={{ background: 'var(--bg-page)', border: '1px solid var(--border-color)', borderRadius: '22px', padding: '28px', maxWidth: '840px', margin: '0 auto' }}>
                 <div style={{ marginBottom: '24px' }}>
-                  <div style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: '12px' }}>{t.finder.q1}</div>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: '12px' }}>1. Saytı əsasən nə üçün istəyirsiniz?</div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px' }}>
-                    {t.finder.q1Opts.map((p, idx) => (
+                    {['Xidmətimi təqdim etmək', 'Şirkətimi təqdim etmək', 'Onlayn satış etmək', 'Xüsusi sistem hazırlatmaq'].map((p, idx) => (
                       <button
                         key={idx}
                         type="button"
@@ -1240,9 +1092,9 @@ export default function App() {
                 </div>
 
                 <div style={{ marginBottom: '28px' }}>
-                  <div style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: '12px' }}>{t.finder.q2}</div>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: '12px' }}>2. Hansı funksiyalar sizə lazımdır?</div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '10px' }}>
-                    {t.finder.q2Opts.map((f, idx) => (
+                    {['Əlaqə forması', 'WhatsApp düyməsi', 'Məhsul kataloqu', 'Onlayn kart ödənişi', 'Admin idarəetmə paneli', 'Rezervasiya / Qeydiyyat'].map((f, idx) => (
                       <button
                         key={idx}
                         type="button"
@@ -1269,8 +1121,8 @@ export default function App() {
 
                 <div style={{ padding: '20px', background: 'var(--bg-card)', border: '1px solid var(--accent-blue)', borderRadius: '16px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
                   <div>
-                    <span style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)' }}>{t.finder.recTag}</span>
-                    <h4 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0' }}>{t.finder.recTitlePrefix} <span style={{ color: 'var(--accent-blue)' }}>{quizRec.type}</span> {t.finder.recTitleSuffix}</h4>
+                    <span style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)' }}>TÖVSİYƏ OLUNAN FORMAT:</span>
+                    <h4 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0' }}>Biznesiniz üçün <span style={{ color: 'var(--accent-blue)' }}>{quizRec.type}</span> formatı daha uyğundur.</h4>
                     <p style={{ fontSize: '0.78rem', color: 'var(--text-sub)', maxWidth: '480px' }}>{quizRec.desc}</p>
                   </div>
                   <button
@@ -1280,7 +1132,7 @@ export default function App() {
                     }}
                     style={{ background: 'var(--accent-blue)', color: 'white', padding: '12px 20px', borderRadius: '10px', fontSize: '0.85rem', fontWeight: 600, border: 'none', cursor: 'pointer' }}
                   >
-                    {t.finder.btn}
+                    Təklif al →
                   </button>
                 </div>
               </div>
@@ -1292,14 +1144,20 @@ export default function App() {
             <div className="container">
               <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
                 <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-                  {t.process.badge}
+                  İŞ PROSESİ
                 </span>
-                <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>{t.process.title}</h2>
-                <p style={{ color: 'var(--text-sub)', fontSize: '0.92rem' }}>{t.process.desc}</p>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Saytın hazırlanması prosesi</h2>
+                <p style={{ color: 'var(--text-sub)', fontSize: '0.92rem' }}>Layihənizin vaxtında və keyfiyyətlə təhvil verilməsi üçün mərhələli iş planı.</p>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '14px' }}>
-                {t.process.steps.map((st) => (
+                {[
+                  { num: '01', title: 'Tələblərin müəyyən edilməsi', desc: 'Layihənin məqsədi, saytın strukturu və tələb olunan funksiyalar müəyyən edilir.' },
+                  { num: '02', title: 'Dizayn', desc: 'Saytın vizual görünüşü və istifadəçi interfeysi hazırlanır.' },
+                  { num: '03', title: 'Proqramlaşdırma', desc: 'Təsdiqlənmiş dizayn əsasında saytın hazırlanmasına başlanılır.' },
+                  { num: '04', title: 'Test', desc: 'Sayt müxtəlif ekran ölçülərində və cihazlarda yoxlanılır.' },
+                  { num: '05', title: 'Təhvil', desc: 'Yekun yoxlamadan sonra sayt istifadəyə verilir.' },
+                ].map((st) => (
                   <div key={st.num} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', padding: '20px', borderRadius: '16px' }}>
                     <span style={{ fontSize: '1rem', fontFamily: 'monospace', color: 'var(--accent-blue)', fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{st.num}</span>
                     <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '6px' }}>{st.title}</h4>
@@ -1315,16 +1173,16 @@ export default function App() {
             <div className="container">
               <div style={{ background: 'var(--bg-page)', border: '1px solid var(--border-color)', borderRadius: '24px', padding: '36px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', alignItems: 'center' }}>
                 <div>
-                  <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>{t.finalCta.badge}</span>
-                  <h3 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '8px' }}>{t.finalCta.title}</h3>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-sub)', lineHeight: 1.6 }}>{t.finalCta.desc}</p>
+                  <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>SAYT SİFARİŞİ</span>
+                  <h3 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '8px' }}>Veb sayt sifariş etmək istəyirsiniz?</h3>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-sub)', lineHeight: 1.6 }}>Layihəniz haqqında qısa məlumat göndərin. Ehtiyacınıza uyğun həlli birlikdə müəyyən edək.</p>
                 </div>
                 <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
                   <button
                     onClick={() => navigateTo('contact')}
                     style={{ background: 'var(--accent-blue)', color: 'white', padding: '14px 28px', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 600, border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 6px 20px var(--accent-glow)' }}
                   >
-                    <span>{t.finalCta.primaryBtn}</span>
+                    <span>Təklif al</span>
                     <ArrowRight size={16} />
                   </button>
                   <a
@@ -1334,7 +1192,7 @@ export default function App() {
                     style={{ color: 'var(--text-sub)', fontSize: '0.82rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}
                   >
                     <MessageCircle size={14} color="var(--accent-blue)" />
-                    <span>{t.finalCta.whatsappBtn}: 010 601 12 01</span>
+                    <span>WhatsApp ilə əlaqə: 010 601 12 01</span>
                   </a>
                 </div>
               </div>
@@ -1344,7 +1202,7 @@ export default function App() {
       )}
 
       {/* ======================================================== */}
-      {/* PAGE: XİDMƏTLƏR */}
+      {/* PAGE: XİDMƏTLƏR (List View) */}
       {/* ======================================================== */}
       {currentRoute === 'services' && (
         <>
@@ -1352,22 +1210,22 @@ export default function App() {
             <TechCanvas />
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', marginBottom: '12px', fontFamily: 'monospace' }}>
-                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
+                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>Ana səhifə</span>
                 <span style={{ color: 'var(--accent-blue)' }}>»</span>
-                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.services}</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>Xidmətlər</span>
               </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-                {t.services.badge}
+                XİDMƏTLƏRİMİZ
               </span>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.services.title}</h1>
-              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>{t.services.desc}</p>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>Xidmətlərimiz</h1>
+              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>Biznesinizin ehtiyacına uyğun veb saytların dizaynı və hazırlanması.</p>
             </div>
           </div>
 
           <section style={{ padding: '60px 0 80px' }}>
             <div className="container">
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-                {t.services.items.map((s) => (
+                {detailedServices.map((s) => (
                   <div key={s.id} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '28px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                     <div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
@@ -1377,20 +1235,197 @@ export default function App() {
                         <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--accent-blue)', fontWeight: 'bold' }}>{s.num}</span>
                       </div>
                       <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '10px' }}>{s.title}</h3>
-                      <p style={{ fontSize: '0.88rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '24px' }}>{s.desc}</p>
+                      <p style={{ fontSize: '0.88rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '24px' }}>{s.shortDesc}</p>
+                    </div>
+                    <div style={{ display: 'flex', gap: '10px' }}>
+                      <button
+                        onClick={() => navigateTo('service-detail', s.slug)}
+                        style={{ flex: 1, background: 'var(--bg-surface)', border: '1px solid var(--border-color)', color: 'var(--text-main)', padding: '12px', borderRadius: '10px', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+                      >
+                        <span>Daha ətraflı</span>
+                        <ArrowRight size={14} color="var(--accent-blue)" />
+                      </button>
+                      <button
+                        onClick={() => {
+                          setSiteType(s.title)
+                          navigateTo('contact')
+                        }}
+                        style={{ background: 'var(--accent-blue)', color: 'white', padding: '12px 18px', borderRadius: '10px', border: 'none', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer' }}
+                      >
+                        Təklif al
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* ======================================================== */}
+      {/* PAGE: SERVICE DETAIL (ERAsoft style dedicated page) */}
+      {/* ======================================================== */}
+      {currentRoute === 'service-detail' && (
+        <>
+          <div style={{ position: 'relative', padding: '70px 0 50px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
+            <TechCanvas />
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+              <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', marginBottom: '12px', fontFamily: 'monospace' }}>
+                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>Ana səhifə</span>
+                <span style={{ color: 'var(--accent-blue)' }}>»</span>
+                <span onClick={() => navigateTo('services')} style={{ cursor: 'pointer' }}>Xidmətlər</span>
+                <span style={{ color: 'var(--accent-blue)' }}>»</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{currentServiceDetail.title}</span>
+              </div>
+              <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
+                XİDMƏTLƏRİMİZ
+              </span>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{currentServiceDetail.title}</h1>
+              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>{currentServiceDetail.shortDesc}</p>
+            </div>
+          </div>
+
+          <section style={{ padding: '60px 0 80px' }}>
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '36px', alignItems: 'start' }}>
+                
+                {/* Main Content */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                  <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '32px' }}>
+                    <h2 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '12px' }}>{currentServiceDetail.title} haqqında</h2>
+                    <p style={{ color: 'var(--text-sub)', fontSize: '0.95rem', lineHeight: 1.7 }}>{currentServiceDetail.fullDesc}</p>
+                  </div>
+
+                  <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '32px' }}>
+                    <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <CheckCircle2 size={20} color="var(--accent-blue)" />
+                      <span>Xidmət nələri əhatə edir?</span>
+                    </h3>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                      {currentServiceDetail.whatWeOffer.map((item, idx) => (
+                        <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.9rem', color: 'var(--text-main)' }}>
+                          <span style={{ color: 'var(--accent-blue)', fontWeight: 'bold' }}>✓</span>
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '32px' }}>
+                    <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <Zap size={20} color="var(--accent-blue)" />
+                      <span>Bu xidmət kimlər üçün uyğundur?</span>
+                    </h3>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                      {currentServiceDetail.whoNeeds.map((item, idx) => (
+                        <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: 'var(--text-sub)' }}>
+                          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-blue)' }} />
+                          <span style={{ color: 'var(--text-main)' }}>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div style={{ background: 'var(--bg-card)', border: '1px solid var(--accent-blue)', borderRadius: '20px', padding: '32px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
+                    <div>
+                      <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '4px' }}>Bu xidmət üzrə təklif almaq istəyirsiniz?</h3>
+                      <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)' }}>Bizə yazın, layihənizi birlikdə müzakirə edək.</p>
                     </div>
                     <button
                       onClick={() => {
-                        setSiteType(s.title)
+                        setSiteType(currentServiceDetail.title)
                         navigateTo('contact')
                       }}
-                      style={{ background: 'var(--accent-blue)', color: 'white', padding: '12px', borderRadius: '10px', border: 'none', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+                      style={{ background: 'var(--accent-blue)', color: 'white', padding: '14px 26px', borderRadius: '12px', fontSize: '0.9rem', fontWeight: 600, border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
                     >
-                      <span>{t.services.quoteBtn}</span>
-                      <ArrowRight size={14} />
+                      <span>Təklif al</span>
+                      <ArrowRight size={16} />
                     </button>
                   </div>
-                ))}
+                </div>
+
+                {/* Right Sidebar */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', position: 'sticky', top: '100px' }}>
+                  
+                  {/* Other Services */}
+                  <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '24px' }}>
+                    <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '14px', borderBottom: '1px solid var(--border-color)', paddingBottom: '10px' }}>
+                      Bütün Xidmətlər
+                    </h4>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {detailedServices.map((srv) => (
+                        <button
+                          key={srv.id}
+                          onClick={() => navigateTo('service-detail', srv.slug)}
+                          style={{
+                            padding: '10px 14px',
+                            borderRadius: '10px',
+                            background: srv.slug === selectedServiceSlug ? 'var(--bg-surface)' : 'transparent',
+                            border: `1px solid ${srv.slug === selectedServiceSlug ? 'var(--accent-blue)' : 'transparent'}`,
+                            color: srv.slug === selectedServiceSlug ? 'var(--text-main)' : 'var(--text-sub)',
+                            fontWeight: srv.slug === selectedServiceSlug ? 700 : 500,
+                            textAlign: 'left',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            cursor: 'pointer',
+                            fontSize: '0.84rem'
+                          }}
+                        >
+                          <span>{srv.title}</span>
+                          <ChevronRight size={14} color="var(--accent-blue)" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tags */}
+                  <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '24px' }}>
+                    <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '14px', borderBottom: '1px solid var(--border-color)', paddingBottom: '10px' }}>
+                      Açar sözlər
+                    </h4>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                      {currentServiceDetail.tags.map((tg, idx) => (
+                        <span key={idx} style={{ fontSize: '0.75rem', background: 'var(--bg-surface)', border: '1px solid var(--border-color)', padding: '4px 10px', borderRadius: '8px', color: 'var(--text-sub)' }}>
+                          #{tg}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Direct Contact Card */}
+                  <div style={{ background: 'var(--bg-card)', border: '1px solid var(--accent-blue)', borderRadius: '20px', padding: '24px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)' }}>
+                      <ShieldCheck size={14} />
+                      <span>SÜRƏTLİ ƏLAQƏ</span>
+                    </div>
+                    <h4 style={{ fontSize: '1.15rem', fontWeight: 700 }}>Biznesinizi bizimlə inkişaf etdirin</h4>
+                    <p style={{ fontSize: '0.8rem', color: 'var(--text-sub)' }}>Sayt sifarişi və suallarınız üçün bizimlə birbaşa əlaqə saxlayın.</p>
+                    
+                    <a href="tel:0106011201" style={{ padding: '10px', borderRadius: '10px', background: 'var(--bg-surface)', border: '1px solid var(--border-color)', color: 'var(--text-main)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 'bold' }}>
+                      <Phone size={14} color="var(--accent-blue)" />
+                      <span>010 601 12 01</span>
+                    </a>
+
+                    <a href="https://wa.me/994106011201" target="_blank" rel="noopener noreferrer" style={{ padding: '10px', borderRadius: '10px', background: 'var(--bg-surface)', border: '1px solid var(--border-color)', color: 'var(--accent-blue)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 'bold' }}>
+                      <MessageCircle size={14} />
+                      <span>WhatsApp ilə yazın</span>
+                    </a>
+
+                    <button
+                      onClick={() => {
+                        setSiteType(currentServiceDetail.title)
+                        navigateTo('contact')
+                      }}
+                      style={{ background: 'var(--accent-blue)', color: 'white', border: 'none', padding: '12px', borderRadius: '10px', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer' }}
+                    >
+                      Təklif al
+                    </button>
+                  </div>
+
+                </div>
+
               </div>
             </div>
           </section>
@@ -1406,22 +1441,22 @@ export default function App() {
             <TechCanvas />
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', marginBottom: '12px', fontFamily: 'monospace' }}>
-                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
+                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>Ana səhifə</span>
                 <span style={{ color: 'var(--accent-blue)' }}>»</span>
-                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.works}</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>İşlərimiz</span>
               </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-                {t.works.badge}
+                İŞLƏRİMİZ
               </span>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.works.title}</h1>
-              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>{t.works.desc}</p>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>İşlərimiz</h1>
+              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>Müxtəlif fəaliyyət sahələrində olan şirkətlər və şəxslər üçün hazırladığımız veb layihələr.</p>
             </div>
           </div>
 
           <section style={{ padding: '60px 0 80px' }}>
             <div className="container">
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-                {t.works.items.map((w) => (
+                {works.map((w) => (
                   <div key={w.id} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '28px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                     <div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
@@ -1440,7 +1475,7 @@ export default function App() {
                     </div>
                     <div style={{ display: 'flex', gap: '8px' }}>
                       <a href={w.url} target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '10px 16px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                        <span>{t.works.viewLive}</span>
+                        <span>Sayta bax</span>
                         <ExternalLink size={14} />
                       </a>
                       <button
@@ -1450,7 +1485,7 @@ export default function App() {
                         }}
                         style={{ background: 'var(--bg-page)', border: '1px solid var(--border-color)', color: 'var(--text-main)', padding: '10px 16px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
                       >
-                        {t.works.orderSimilar}
+                        Bənzər sayt sifariş et
                       </button>
                     </div>
                   </div>
@@ -1470,16 +1505,16 @@ export default function App() {
             <TechCanvas />
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', marginBottom: '12px', fontFamily: 'monospace' }}>
-                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
+                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>Ana səhifə</span>
                 <span style={{ color: 'var(--accent-blue)' }}>»</span>
-                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.about}</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>Haqqımızda</span>
               </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-                {t.about.badge}
+                HAQQIMIZDA
               </span>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '16px' }}>{t.about.title}</h1>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '16px' }}>Haqqımızda</h1>
               <p style={{ fontSize: '1.05rem', color: 'var(--text-main)', lineHeight: 1.6, maxWidth: '680px' }}>
-                {t.about.desc}
+                Codex Studio bizneslər üçün veb saytların dizaynı və hazırlanması üzrə ixtisaslaşmış komandadır. Məqsədimiz şirkətinizin fəaliyyətini internetdə düzgün, peşəkar və etibarlı şəkildə təqdim edən veb saytlar hazırlamaqdır.
               </p>
             </div>
           </div>
@@ -1487,7 +1522,11 @@ export default function App() {
           <section style={{ padding: '60px 0 80px' }}>
             <div className="container">
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', marginBottom: '40px' }}>
-                {t.about.values.map((val, idx) => (
+                {[
+                  { title: 'Sadə və anlaşılan ünsiyyət', desc: 'Texniki çətinliklər yaratmadan, layihəniz üçün nəyin lazım olduğunu aydın şəkildə müzakirə edirik.' },
+                  { title: 'Dəqiq iş qrafiki', desc: 'Hər bir mərhələ razılaşdırılmış vaxt çərçivəsində və planlı şəkildə icra olunur.' },
+                  { title: 'Daimi texniki dəstək', desc: 'Sayt təhvil verildikdən sonra da server, domen və texniki məsələlərdə dəstəyimizi davam etdiririk.' }
+                ].map((val, idx) => (
                   <div key={idx} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', padding: '24px', borderRadius: '16px' }}>
                     <h4 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '8px' }}>{val.title}</h4>
                     <p style={{ fontSize: '0.82rem', color: 'var(--text-sub)', lineHeight: 1.6 }}>{val.desc}</p>
@@ -1497,14 +1536,14 @@ export default function App() {
 
               <div style={{ background: 'var(--bg-card)', border: '1px solid var(--accent-blue)', borderRadius: '20px', padding: '28px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
                 <div>
-                  <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '4px' }}>{t.finalCta.title}</h3>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)' }}>{t.finalCta.desc}</p>
+                  <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '4px' }}>Veb sayt sifariş etmək istəyirsiniz?</h3>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)' }}>Layihəniz haqqında qısa məlumat göndərin. Ehtiyacınıza uyğun həlli birlikdə müəyyən edək.</p>
                 </div>
                 <button
                   onClick={() => navigateTo('contact')}
                   style={{ background: 'var(--accent-blue)', color: 'white', padding: '12px 24px', borderRadius: '10px', fontSize: '0.88rem', fontWeight: 600, border: 'none', cursor: 'pointer' }}
                 >
-                  {t.finalCta.primaryBtn} →
+                  Təklif al →
                 </button>
               </div>
             </div>
@@ -1521,22 +1560,22 @@ export default function App() {
             <TechCanvas />
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', marginBottom: '12px', fontFamily: 'monospace' }}>
-                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
+                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>Ana səhifə</span>
                 <span style={{ color: 'var(--accent-blue)' }}>»</span>
-                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.faq}</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>Tez-tez verilən suallar</span>
               </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-                {t.faq.badge}
+                SUAL-CAVAB
               </span>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.faq.title}</h1>
-              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>{t.faq.desc}</p>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>Tez-tez verilən suallar</h1>
+              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>Veb saytların hazırlanması və əməkdaşlıq prosesi ilə bağlı sualların cavabları.</p>
             </div>
           </div>
 
           <section style={{ padding: '60px 0 80px' }}>
             <div className="container">
               <div style={{ maxWidth: '800px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {t.faq.items.map((f, idx) => (
+                {faqs.map((f, idx) => (
                   <div key={idx} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '14px', overflow: 'hidden' }}>
                     <button
                       type="button"
@@ -1568,23 +1607,23 @@ export default function App() {
             <TechCanvas />
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', marginBottom: '12px', fontFamily: 'monospace' }}>
-                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
+                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>Ana səhifə</span>
                 <span style={{ color: 'var(--accent-blue)' }}>»</span>
-                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.contact}</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>Bizimlə əlaqə</span>
               </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-                {t.contact.badge}
+                BİZİMLƏ ƏLAQƏ
               </span>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.contact.title}</h1>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>Bizimlə əlaqə</h1>
               <p style={{ color: 'var(--text-sub)', fontSize: '0.95rem', maxWidth: '680px', lineHeight: 1.6 }}>
-                {t.contact.desc}
+                Layihəniz haqqında qısa məlumat göndərin. Ehtiyacınıza uyğun həlli birlikdə müəyyən edək.
               </p>
             </div>
           </div>
 
           <section style={{ padding: '60px 0 80px' }}>
             <div className="container">
-              <div className="contact-grid">
+              <div className="contact-grid" style={{ marginBottom: '40px' }}>
                 <div>
                   <a
                     href={`https://wa.me/994106011201?text=${encodeURIComponent('Salam. Biznesim üçün sayt hazırlatmaq istəyirəm. Ətraflı məlumat ala bilərəm?')}`}
@@ -1593,38 +1632,38 @@ export default function App() {
                     style={{ background: 'var(--accent-blue)', color: 'white', padding: '14px 24px', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '24px', boxShadow: '0 6px 20px var(--accent-glow)' }}
                   >
                     <MessageCircle size={18} />
-                    <span>{t.finalCta.whatsappBtn}</span>
+                    <span>WhatsApp ilə əlaqə</span>
                   </a>
 
                   <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '16px', padding: '20px', fontFamily: 'monospace', fontSize: '0.82rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid var(--border-color)' }}>
-                      <span style={{ color: 'var(--text-sub)' }}>{t.contact.phoneLabel}</span>
+                      <span style={{ color: 'var(--text-sub)' }}>Telefon / Zəng:</span>
                       <a href="tel:0106011201" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 'bold' }}>010 601 12 01</a>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid var(--border-color)' }}>
-                      <span style={{ color: 'var(--text-sub)' }}>{t.contact.whatsappLabel}</span>
+                      <span style={{ color: 'var(--text-sub)' }}>WhatsApp:</span>
                       <a href="https://wa.me/994106011201" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue)', textDecoration: 'none', fontWeight: 'bold' }}>010 601 12 01</a>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid var(--border-color)' }}>
-                      <span style={{ color: 'var(--text-sub)' }}>{t.contact.emailLabel}</span>
+                      <span style={{ color: 'var(--text-sub)' }}>Qəbul Emaili:</span>
                       <a href="mailto:emin.imanverdievv@gmail.com" style={{ color: 'var(--accent-blue)', textDecoration: 'none', fontWeight: 'bold' }}>emin.imanverdievv@gmail.com</a>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <span style={{ color: 'var(--text-sub)' }}>{t.contact.addressLabel}</span>
+                      <span style={{ color: 'var(--text-sub)' }}>Rəsmi Ünvan:</span>
                       <span style={{ color: 'var(--text-main)' }}>Bakı, Azərbaycan</span>
                     </div>
                   </div>
                 </div>
 
                 <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '22px', padding: '28px', boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)' }}>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px' }}>{t.contact.formTitle}</h3>
-                  <p style={{ fontSize: '0.82rem', color: 'var(--text-sub)', marginBottom: '20px' }}>{t.contact.formDesc}</p>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px' }}>Sayt sifarişi üçün müraciət edin</h3>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-sub)', marginBottom: '20px' }}>Məlumatlarınızı qeyd edin, ən qısa zamanda sizinlə əlaqə saxlayaq.</p>
 
                   {!isSuccess ? (
                     <form onSubmit={handleEmailSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                       <div className="grid-two-col">
                         <div>
-                          <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.nameLabel}</label>
+                          <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>Adınız və Soyadınız *</label>
                           <input
                             type="text"
                             required
@@ -1635,7 +1674,7 @@ export default function App() {
                           />
                         </div>
                         <div>
-                          <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.phoneInputLabel}</label>
+                          <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>Telefon / WhatsApp *</label>
                           <input
                             type="tel"
                             required
@@ -1649,7 +1688,7 @@ export default function App() {
 
                       <div className="grid-two-col">
                         <div>
-                          <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.businessLabel}</label>
+                          <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>Biznes sahəsi</label>
                           <input
                             type="text"
                             placeholder="Məsələn: Tibb, Təhsil, Mebel"
@@ -1659,13 +1698,13 @@ export default function App() {
                           />
                         </div>
                         <div>
-                          <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.siteTypeLabel}</label>
+                          <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>Sayt növü</label>
                           <select
                             value={siteType}
                             onChange={(e) => setSiteType(e.target.value)}
                             style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.85rem' }}
                           >
-                            {t.services.items.map((srv) => (
+                            {detailedServices.map((srv) => (
                               <option key={srv.id} value={srv.title}>{srv.title}</option>
                             ))}
                           </select>
@@ -1673,7 +1712,7 @@ export default function App() {
                       </div>
 
                       <div>
-                        <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.messageLabel}</label>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>Sayt haqqında qısa məlumat / İstəkləriniz</label>
                         <textarea
                           rows={3}
                           placeholder="Saytınızda olmasını istədiyiniz əsas məqamlar..."
@@ -1681,6 +1720,22 @@ export default function App() {
                           onChange={(e) => setMessage(e.target.value)}
                           style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.85rem', resize: 'none' }}
                         />
+                      </div>
+
+                      {/* Robot Captcha */}
+                      <div>
+                        <RobotCaptcha
+                          isVerified={isCaptchaVerified}
+                          onVerify={(val) => {
+                            setIsCaptchaVerified(val)
+                            if (val) setCaptchaError(false)
+                          }}
+                        />
+                        {captchaError && (
+                          <p style={{ color: '#FF5F56', fontSize: '0.75rem', marginTop: '6px' }}>
+                            Zəhmət olmasa "Mən robot deyiləm" xanasını təsdiqləyin.
+                          </p>
+                        )}
                       </div>
 
                       <button
@@ -1705,12 +1760,12 @@ export default function App() {
                         {isSubmitting ? (
                           <>
                             <Loader2 size={16} className="animate-spin" />
-                            <span>{t.contact.submitting}</span>
+                            <span>Göndərilir...</span>
                           </>
                         ) : (
                           <>
                             <Send size={16} />
-                            <span>{t.contact.submitBtn}</span>
+                            <span>Təklif al</span>
                           </>
                         )}
                       </button>
@@ -1720,18 +1775,41 @@ export default function App() {
                       <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'var(--accent-glow)', color: 'var(--accent-blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
                         <CheckCircle2 size={28} />
                       </div>
-                      <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '6px' }}>{t.contact.successTitle}</h3>
+                      <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '6px' }}>Müraciətiniz qəbul olundu!</h3>
                       <p style={{ color: 'var(--text-sub)', fontSize: '0.85rem', marginBottom: '18px' }}>
-                        {t.contact.successDesc}
+                        Məlumatlar <strong style={{ color: 'var(--accent-blue)' }}>emin.imanverdievv@gmail.com</strong> poçtuna çatdırıldı.
                       </p>
                       <button
                         onClick={handleWhatsAppSend}
                         style={{ background: 'var(--accent-blue)', color: 'white', border: 'none', padding: '12px 20px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontSize: '0.85rem' }}
                       >
-                        {t.contact.confirmWhatsApp}
+                        WhatsApp ilə təsdiqləyin
                       </button>
                     </div>
                   )}
+                </div>
+              </div>
+
+              {/* Embedded Google Map */}
+              <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}>
+                <div style={{ padding: '16px 20px', background: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-main)' }}>
+                    <MapPin size={16} color="var(--accent-blue)" />
+                    <span>Xəritədə yerləşməmiz: Bakı, Azərbaycan</span>
+                  </div>
+                  <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--text-sub)' }}>010 601 12 01</span>
+                </div>
+                <div style={{ width: '100%', height: '340px' }}>
+                  <iframe
+                    title="Google Maps Baku Location"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194473.42999496733!2d49.69014902143493!3d40.39473700767137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d6bd6211cf9%3A0x343f6b5e7ae56c6b!2sBaku%2C%20Azerbaijan!5e0!3m2!1sen!2saz!4v1700000000000!5m2!1sen!2saz"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%)' }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
               </div>
             </div>
@@ -1747,14 +1825,14 @@ export default function App() {
             <strong style={{ color: 'var(--text-main)' }}>Code<span style={{ color: 'var(--accent-blue)' }}>X</span> Studio</strong>
           </div>
           <div style={{ display: 'flex', gap: '16px', fontSize: '0.78rem' }}>
-            <button onClick={() => navigateTo('home')} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>{t.nav.home}</button>
-            <button onClick={() => navigateTo('services')} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>{t.nav.services}</button>
-            <button onClick={() => navigateTo('works')} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>{t.nav.works}</button>
-            <button onClick={() => navigateTo('about')} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>{t.nav.about}</button>
-            <button onClick={() => navigateTo('faq')} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>{t.nav.faq}</button>
-            <button onClick={() => navigateTo('contact')} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>{t.nav.contact}</button>
+            <button onClick={() => navigateTo('home')} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>Ana səhifə</button>
+            <button onClick={() => navigateTo('services')} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>Xidmətlər</button>
+            <button onClick={() => navigateTo('works')} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>İşlərimiz</button>
+            <button onClick={() => navigateTo('about')} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>Haqqımızda</button>
+            <button onClick={() => navigateTo('faq')} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>FAQ</button>
+            <button onClick={() => navigateTo('contact')} style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer' }}>Bizimlə əlaqə</button>
           </div>
-          <div>{t.footer.rights}</div>
+          <div>© 2026 Codex Studio. Bütün hüquqlar qorunur.</div>
         </div>
       </footer>
 
