@@ -358,7 +358,7 @@ export default function App() {
     return () => clearInterval(timer)
   }, [])
 
-  // Calm Page Transition Navigation
+  // Calm Page Transition Navigation (approx 2s duration)
   const navigateTo = (route, serviceSlug = null) => {
     if (serviceSlug) {
       setSelectedServiceSlug(serviceSlug)
@@ -369,7 +369,7 @@ export default function App() {
 
     let current = 0
     const navTimer = setInterval(() => {
-      current += 16
+      current += 5
       if (current >= 100) {
         current = 100
         setInitialProgress(100)
@@ -381,11 +381,11 @@ export default function App() {
           setTimeout(() => {
             setInitialLoading(false)
           }, 250)
-        }, 180)
+        }, 150)
       } else {
         setInitialProgress(current)
       }
-    }, 65)
+    }, 95) // 20 steps * 95ms = ~1.9s - 2.0s calm duration
   }
 
   const handleEmailSubmit = async (e) => {
