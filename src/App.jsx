@@ -70,20 +70,20 @@ export default function App() {
     }
     if (quizPurpose === 0) {
       return {
-        type: 'Landing Page',
+        type: 'Landing Page (Təqdimat Saytı)',
         desc: 'Bir xidmət və ya məhsulun təqdimatı üçün yüksək təsirli, dərhal müştəri müraciəti toplayan tək səhifəlik sayt.',
         badge: 'Təqdimat & Satış'
       }
     }
     if (quizPurpose === 3 || quizFeatures.includes(4) || quizFeatures.includes(5)) {
       return {
-        type: 'Fərdi Veb Layihə',
+        type: 'Fərdi və Tibbi Veb Portal',
         desc: 'Biznesinizin unikal tələblərinə uyğun xüsusi kalkulyatorlar, rezervasiya modulları və fərdi idarəetmə sistemi.',
         badge: 'Xüsusi Həll'
       }
     }
     return {
-      type: 'Korporativ Veb Sayt',
+      type: 'Korporativ Şirkət Saytı',
       desc: 'Şirkətinizi, xidmətlərinizi və etibarınızı çoxsəhifəli sistemdə peşəkar şəkildə təqdim edən rəsmi sayt.',
       badge: 'Şirkət Etibarı'
     }
@@ -140,15 +140,15 @@ export default function App() {
       id: '01',
       name: 'Sinaps Med — Tibbi Avadanlıq & Səhiyyə Şirkəti',
       type: 'Tibbi & Korporativ Veb Portal',
-      desc: 'Tibbi avadanlıqlar, ginekoloji və klinik məhsullar, beynəlxalq distribütorluq və tərəfdaşlar üçün geniş korporativ veb platforma.',
+      desc: 'Tibbi cihazlar, klinik və ginekoloji məhsullar, beynəlxalq distribütorluq və xəstəxanalar üçün çoxdilli geniş korporativ sayt.',
       url: 'https://sinapsmed.com',
       displayUrl: 'sinapsmed.com',
-      tags: ['Tibbi avadanlıq', 'Məhsul kataloqu', 'Korporativ struktur', 'Partnyor əlaqələri']
+      tags: ['Tibbi avadanlıq', 'Məhsul kataloqu', 'Korporativ arxitektura', 'Partnyor əlaqələri']
     },
     {
       id: '02',
       name: 'Leyla Qasımova — Fizika və Elm Mərkəzi',
-      type: 'Müəllim / Şəxsi Brend üçün sayt',
+      type: 'Müəllim / Təhsil üçün Şəxsi Brend Saytı',
       desc: 'Təlim proqramları, video dərslər, tələbə nəticələri və birbaşa sınaq dərsinə qeydiyyat toplayan şəxsi brend platforması.',
       url: 'https://leylagasimova.az',
       displayUrl: 'leylagasimova.az',
@@ -179,7 +179,7 @@ export default function App() {
   const faqs = [
     {
       q: 'Saytın hazırlanması neçə gün çəkir?',
-      a: 'Müddət saytın növündən asılıdır: Tək səhifəlik Landing page adətən bir neçə günə, korporativ və e-commerce (onlayn mağaza) layihələri isə orta hesabla 1-3 həftəyə tam hazır vəziyyətə gətirilir.'
+      a: 'Müddət layihənin növündən asılıdır: Tək səhifəlik Landing page adətən bir neçə günə, korporativ şirkət saytları və onlayn mağazalar isə orta hesabla 1-3 həftəyə tam hazır vəziyyətə gətirilir.'
     },
     {
       q: 'Qiymət necə müəyyən olunur?',
@@ -190,19 +190,19 @@ export default function App() {
       a: 'Bəli, istəyinizə uyğun olaraq .az və ya beynəlxalq domenlərin seçilməsi, sürətli serverin quraşdırılması və SSL təhlükəsizlik sertifikatının aktivləşdirilməsi tərəfimizdən təmin edilir.'
     },
     {
-      q: 'Sayt telefonda işləyəcək?',
-      a: 'Bəli, 100%. Hazırladığımız bütün saytlar Mobile-First prinsipi ilə kodlaşdırılır və bütün iPhone, Android smartfon və planşet ekranlarında qüsursuz və rahat açılır.'
+      q: 'Sayt telefonda və planşetdə rahat açılacaq?',
+      a: 'Bəli, 100%. Hazırladığımız bütün saytlar Mobile-First prinsipi ilə yığılır və bütün iPhone, Android smartfon və planşet ekranlarında qüsursuz və rahat açılır.'
     },
     {
-      q: 'Sonradan saytda dəyişiklik etmək mümkündür?',
-      a: 'Bəli. Saytın strukturu elə qurulur ki, gələcəkdə yeni səhifələr, məhsullar, xidmətlər və ya yeni funksiyalar asanlıqla əlavə oluna bilsin.'
+      q: 'Sonradan saytda dəyişiklik və əlavələr etmək mümkündür?',
+      a: 'Bəli. Saytın arxitekturası elə qurulur ki, gələcəkdə yeni səhifələr, məhsullar, xidmətlər və ya yeni funksiyalar asanlıqla əlavə oluna bilsin.'
     },
     {
-      q: 'Onlayn ödəniş sistemi əlavə etmək olar?',
+      q: 'Onlayn bank kartı ilə ödəniş sistemi qoşmaq olar?',
       a: 'Bəli. E-commerce və ya sifariş saytlarınıza Azərbaycanın aparıcı banklarının kartla ödəniş sistemlərini (Kapital Bank, Paşa Bank və s.) təhlükəsiz şəkildə inteqrasiya edirik.'
     },
     {
-      q: 'Sayt hazır olduqdan sonra dəstək verirsiniz?',
+      q: 'Sayt hazır olduqdan sonra texniki dəstək verirsiniz?',
       a: 'Bəli. Sayt təhvil verildikdən sonra da serverin fasiləsiz işləməsi, texniki suallarınız və istənilən yenilənmələrdə dəstəyimiz davam edir.'
     }
   ]
@@ -262,9 +262,9 @@ export default function App() {
             <a href="#hero" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>Ana səhifə</a>
             <a href="#services" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>Xidmətlər</a>
             <a href="#works" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>İşlərimiz</a>
-            <a href="#process" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>Proses</a>
+            <a href="#process" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>İş prosesi</a>
             <a href="#about" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>Haqqımızda</a>
-            <a href="#faq" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>FAQ</a>
+            <a href="#faq" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>Sual-Cavab</a>
             <a href="#contact" style={{ color: '#9CA6B5', textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500 }}>Əlaqə</a>
           </nav>
 
@@ -310,7 +310,7 @@ export default function App() {
                 whiteSpace: 'nowrap'
               }}
             >
-              <span>Sayt sifarişi</span>
+              <span>Təklif al</span>
               <ArrowRight size={14} />
             </a>
 
@@ -345,9 +345,9 @@ export default function App() {
             <a href="#hero" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>01. Ana səhifə</a>
             <a href="#services" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>02. Xidmətlər</a>
             <a href="#works" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>03. İşlərimiz</a>
-            <a href="#process" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>04. Proses</a>
+            <a href="#process" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>04. İş prosesi</a>
             <a href="#about" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>05. Haqqımızda</a>
-            <a href="#faq" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>06. FAQ</a>
+            <a href="#faq" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>06. Sual-Cavab</a>
             <a href="#contact" onClick={() => setMobileMenuOpen(false)} style={{ color: '#F5F7FA', textDecoration: 'none', fontSize: '1.2rem', padding: '12px 0', borderBottom: '1px solid #162032' }}>07. Əlaqə</a>
           </div>
 
@@ -392,16 +392,16 @@ export default function App() {
                 marginBottom: '16px'
               }}>
                 <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#0066FF', boxShadow: '0 0 8px #0066FF' }}></span>
-                <span>CODEX STUDIO • PEŞƏKAR VEB SAYTLAR</span>
+                <span>CODEX STUDIO • VEB SAYTLARIN HAZIRLANMASI</span>
               </div>
 
               <h1 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', lineHeight: 1.14, fontWeight: 800, marginBottom: '18px', letterSpacing: '-0.02em' }}>
-                Biznesinizə uyğun <br />
-                <span style={{ color: '#0066FF' }}>veb sayt hazırlayırıq.</span>
+                Biznesiniz üçün işləyən və <br />
+                <span style={{ color: '#0066FF' }}>müştəri qazandıran saytlar.</span>
               </h1>
 
               <p style={{ color: '#9CA6B5', fontSize: 'clamp(0.92rem, 2vw, 1.1rem)', lineHeight: 1.6, maxWidth: '540px', marginBottom: '28px' }}>
-                Landing page, korporativ sayt və e-commerce layihələri — mobil uyğun, istifadəsi rahat və biznesinizə uyğun şəkildə hazırlanır.
+                Landing page, korporativ şirkət saytları və onlayn mağazalar — sürətli, mobil cihazlara tam uyğun və biznesinizi bazarda ən yaxşı şəkildə təqdim edən peşəkar veb həllər.
               </p>
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', marginBottom: '28px' }}>
@@ -438,14 +438,14 @@ export default function App() {
                     textDecoration: 'none'
                   }}
                 >
-                  <span>İşlərimizə bax</span>
+                  <span>Son işlərimizə bax</span>
                 </a>
               </div>
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', fontSize: '0.82rem', color: '#9CA6B5', borderTop: '1px solid #162032', paddingTop: '16px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="#0066FF" /><span style={{ color: '#F5F7FA' }}>Mobil uyğun</span></div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="#0066FF" /><span style={{ color: '#F5F7FA' }}>Sürətli işləmə</span></div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="#0066FF" /><span style={{ color: '#F5F7FA' }}>SEO üçün düzgün struktur</span></div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="#0066FF" /><span style={{ color: '#F5F7FA' }}>100% Mobil uyğunluq</span></div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="#0066FF" /><span style={{ color: '#F5F7FA' }}>Yüksək yüklənmə sürəti</span></div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="#0066FF" /><span style={{ color: '#F5F7FA' }}>Google və SEO strukturu</span></div>
               </div>
             </div>
 
@@ -574,12 +574,13 @@ export default function App() {
       <section style={{ padding: '24px 0', background: '#080C14', borderTop: '1px solid #162032', borderBottom: '1px solid #162032' }}>
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '12px' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', fontSize: '0.85rem', fontWeight: 600 }}>
+            <div><span style={{ color: '#0066FF' }}>•</span> Korporativ saytlar</div>
             <div><span style={{ color: '#0066FF' }}>•</span> Landing Page</div>
-            <div><span style={{ color: '#0066FF' }}>•</span> Korporativ sayt</div>
-            <div><span style={{ color: '#0066FF' }}>•</span> E-commerce</div>
-            <div><span style={{ color: '#0066FF' }}>•</span> Fərdi veb layihələr</div>
+            <div><span style={{ color: '#0066FF' }}>•</span> E-commerce mağazalar</div>
+            <div><span style={{ color: '#0066FF' }}>•</span> Tibbi & Fərdi portallar</div>
+            <div><span style={{ color: '#0066FF' }}>•</span> Texniki dəstək</div>
           </div>
-          <div style={{ fontSize: '0.78rem', color: '#9CA6B5' }}>Kiçik və böyük bizneslər üçün.</div>
+          <div style={{ fontSize: '0.78rem', color: '#9CA6B5' }}>Azərbaycan və xarici bazarda fəaliyyət göstərən bizneslər üçün etibarlı tərəfdaş.</div>
         </div>
       </section>
 
@@ -590,42 +591,42 @@ export default function App() {
             <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
               XİDMƏTLƏRİMİZ
             </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Sizə hansı sayt lazımdır?</h2>
-            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Ehtiyacınıza uyğun formatı birlikdə müəyyən edə bilərik.</p>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Biznesiniz üçün hansı veb sayt lazımdır?</h2>
+            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Fəaliyyət sahənizə və satış hədəflərinizə uyğun ən optimal sayt formatını birlikdə seçirik.</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
             
             <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '18px', padding: '24px' }}>
-              <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '8px' }}>01 // TƏQDİMAT & SATIŞ</div>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '8px' }}>Landing Page</h3>
-              <p style={{ fontSize: '0.85rem', color: '#F5F7FA', marginBottom: '8px' }}>Bir xidmət, məhsul və ya kampaniyanı təqdim etmək üçün.</p>
-              <p style={{ fontSize: '0.78rem', color: '#9CA6B5', lineHeight: 1.5, marginBottom: '16px' }}>Ziyarətçini yayındırmayan, dərhal əlaqə və müraciət toplayan yüksək təsirli tək səhifəlik sayt.</p>
-              <a href="#contact" style={{ color: '#0066FF', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>Sifariş et →</a>
+              <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '8px' }}>01 // ŞİRKƏT ETİBARI</div>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '8px' }}>Korporativ Şirkət Saytları</h3>
+              <p style={{ fontSize: '0.85rem', color: '#F5F7FA', marginBottom: '8px' }}>Şirkətinizi, xidmətlərinizi və etibarınızı peşəkar səviyyədə təqdim etmək üçün.</p>
+              <p style={{ fontSize: '0.78rem', color: '#9CA6B5', lineHeight: 1.5, marginBottom: '16px' }}>Şirkətinizin fəaliyyətini, xidmət kataloqunu, komandasını və tərəfdaşlarını əks etdirən rəsmi saytlar.</p>
+              <a href="#contact" style={{ color: '#0066FF', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>Təklif al →</a>
             </div>
 
             <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '18px', padding: '24px' }}>
-              <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '8px' }}>02 // ŞİRKƏT ETİBARI</div>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '8px' }}>Korporativ sayt</h3>
-              <p style={{ fontSize: '0.85rem', color: '#F5F7FA', marginBottom: '8px' }}>Şirkətinizi, xidmətlərinizi və fəaliyyətinizi tam təqdim etmək üçün.</p>
-              <p style={{ fontSize: '0.78rem', color: '#9CA6B5', lineHeight: 1.5, marginBottom: '16px' }}>Şirkət etibarını artıran çoxsəhifəli peşəkar struktur, xidmətlər bölməsi və partnyorlar kataloqu.</p>
-              <a href="#contact" style={{ color: '#0066FF', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>Sifariş et →</a>
+              <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '8px' }}>02 // TƏQDİMAT & SATIŞ</div>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '8px' }}>Landing Page (Təqdimat Saytı)</h3>
+              <p style={{ fontSize: '0.85rem', color: '#F5F7FA', marginBottom: '8px' }}>Bir xidmət, məhsul və ya kampaniyadan birbaşa müştəri toplamaq üçün.</p>
+              <p style={{ fontSize: '0.78rem', color: '#9CA6B5', lineHeight: 1.5, marginBottom: '16px' }}>Ziyarətçini yayındırmadan birbaşa hədəfə aparan, WhatsApp və müraciət formaları ilə dərhal sifariş toplayan saytlar.</p>
+              <a href="#contact" style={{ color: '#0066FF', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>Təklif al →</a>
             </div>
 
             <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '18px', padding: '24px' }}>
               <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '8px' }}>03 // ONLAYN SATIŞ</div>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '8px' }}>E-commerce</h3>
-              <p style={{ fontSize: '0.85rem', color: '#F5F7FA', marginBottom: '8px' }}>Məhsullarınızı internet üzərindən təqdim etmək və satmaq üçün.</p>
-              <p style={{ fontSize: '0.78rem', color: '#9CA6B5', lineHeight: 1.5, marginBottom: '16px' }}>Rahat məhsul kataloqu, filtrasiya, səbət sistemi və bank kartı ilə onlayn ödəniş axını.</p>
-              <a href="#contact" style={{ color: '#0066FF', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>Sifariş et →</a>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '8px' }}>E-commerce (Onlayn Mağaza)</h3>
+              <p style={{ fontSize: '0.85rem', color: '#F5F7FA', marginBottom: '8px' }}>Məhsullarınızı internet üzərindən 24/7 təqdim etmək və onlayn satmaq üçün.</p>
+              <p style={{ fontSize: '0.78rem', color: '#9CA6B5', lineHeight: 1.5, marginBottom: '16px' }}>Məhsul kataloqu, filtrlər, səbət sistemi və Azərbaycan banklarının kartları ilə təhlükəsiz onlayn ödəniş axını.</p>
+              <a href="#contact" style={{ color: '#0066FF', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>Təklif al →</a>
             </div>
 
             <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '18px', padding: '24px' }}>
               <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '8px' }}>04 // XÜSUSİ HƏLL</div>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '8px' }}>Fərdi veb layihə</h3>
-              <p style={{ fontSize: '0.85rem', color: '#F5F7FA', marginBottom: '8px' }}>Standart saytdan fərqli funksionallığa ehtiyacınız varsa.</p>
-              <p style={{ fontSize: '0.78rem', color: '#9CA6B5', lineHeight: 1.5, marginBottom: '16px' }}>Biznesinizin unikal tələblərinə uyğun xüsusi kalkulyatorlar, rezervasiya modulları və fərdi inteqrasiyalar.</p>
-              <a href="#contact" style={{ color: '#0066FF', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>Sifariş et →</a>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '8px' }}>Fərdi və Tibbi Veb Portallar</h3>
+              <p style={{ fontSize: '0.85rem', color: '#F5F7FA', marginBottom: '8px' }}>Klinikalar, təhsil mərkəzləri, logistika və xüsusi funksionallıq tələb edən layihələr üçün.</p>
+              <p style={{ fontSize: '0.78rem', color: '#9CA6B5', lineHeight: 1.5, marginBottom: '16px' }}>Biznesinizin unikal tələblərinə uyğunlaşdırılmış rezervasiya, kalkulyatorlar və fərdi idarəetmə sistemləri.</p>
+              <a href="#contact" style={{ color: '#0066FF', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>Təklif al →</a>
             </div>
 
           </div>
@@ -673,7 +674,7 @@ export default function App() {
             <div style={{ marginBottom: '28px' }}>
               <div style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: '12px' }}>2. Hansı funksiyalar sizə lazımdır?</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '10px' }}>
-                {['Əlaqə forması', 'WhatsApp', 'Məhsul kataloqu', 'Onlayn ödəniş', 'Admin panel', 'Rezervasiya / qeydiyyat'].map((f, idx) => (
+                {['Əlaqə forması', 'WhatsApp düyməsi', 'Məhsul kataloqu', 'Onlayn kart ödənişi', 'Admin idarəetmə paneli', 'Rezervasiya / Qeydiyyat'].map((f, idx) => (
                   <button
                     key={idx}
                     type="button"
@@ -701,14 +702,14 @@ export default function App() {
             <div style={{ padding: '20px', background: '#080C14', border: '1px solid #0066FF', borderRadius: '16px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
               <div>
                 <span style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#0066FF' }}>TÖVSİYƏ OLUNAN SEÇİM:</span>
-                <h4 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0' }}>Sizə <span style={{ color: '#0066FF' }}>{quizRec.type}</span> daha uyğun görünür.</h4>
+                <h4 style={{ fontSize: '1.25rem', fontWeight: 800, margin: '4px 0' }}>Biznesiniz üçün <span style={{ color: '#0066FF' }}>{quizRec.type}</span> formatı daha uyğundur.</h4>
                 <p style={{ fontSize: '0.78rem', color: '#9CA6B5', maxWidth: '480px' }}>{quizRec.desc}</p>
               </div>
               <a
                 href="#contact"
                 style={{ background: '#0066FF', color: 'white', padding: '12px 20px', borderRadius: '10px', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}
               >
-                Bu layihəni danışaq →
+                Bu layihə üçün təklif alın →
               </a>
             </div>
 
@@ -716,15 +717,15 @@ export default function App() {
         </div>
       </section>
 
-      {/* 5. Works / Portfolio Section (With Sinaps Med & Leyla Qasımova) */}
+      {/* 5. Works / Portfolio Section */}
       <section id="works" style={{ padding: '80px 0', borderTop: '1px solid #162032' }}>
         <div className="container">
           <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
             <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-              İŞLƏRİMİZ
+              İŞLƏRİMİZ & PORTFOLİO
             </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Hazırladığımız və üzərində işlədiyimiz layihələr</h2>
-            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Hər bir layihə müasir dizayn standartları və biznesin real ehtiyaclarına uyğun fərdi şəkildə hazırlanır.</p>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Son əl işlərimiz və layihələrimiz</h2>
+            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Fərqli sahələrdən olan şirkətlər, təhsil mərkəzləri və brendlər üçün hazırladığımız rəsmi veb layihələr.</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px', marginBottom: '30px' }}>
@@ -775,7 +776,7 @@ export default function App() {
                     rel="noopener noreferrer"
                     style={{ background: '#0066FF', color: 'white', padding: '10px 20px', borderRadius: '8px', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                   >
-                    <span>Sayta baxın</span>
+                    <span>Sayta daxil olun</span>
                     <ExternalLink size={14} />
                   </a>
 
@@ -810,31 +811,31 @@ export default function App() {
         <div className="container">
           <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
             <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-              BİZİM YANAŞMA
+              BİZİM YANAŞMAMIZ
             </span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Sayt gözəl görünməklə bitmir.</h2>
-            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Biznes sahibi üçün əsas məsələ saytın rahat açılması, telefonlarda problemsiz işləməsi və müştərini əlaqəyə gətirməsidir.</p>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Sayt yalnız gözəl görünməməli, biznesinizə real gəlir gətirməlidir.</h2>
+            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Biznes sahibi üçün əsas məsələ saytın rahat açılması, telefonlarda problemsiz işləməsi və ziyarətçini real müştəriyə çevirməsidir.</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
             <div style={{ background: '#05070B', border: '1px solid #162032', padding: '24px', borderRadius: '16px' }}>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>Sürət</h4>
-              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.5 }}>İstifadəçi səhifənin açılmasını gözləməməlidir.</p>
+              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>Sürətli və Rahat Açılış</h4>
+              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.5 }}>İstifadəçi saytın açılmasını gözləməməlidir. Yüngül və optimallaşdırılmış kod sayəsində səhifələr anında açılır.</p>
             </div>
 
             <div style={{ background: '#05070B', border: '1px solid #162032', padding: '24px', borderRadius: '16px' }}>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>Mobil uyğunluq</h4>
-              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.5 }}>Sayt telefonda da rahat istifadə olunmalıdır.</p>
+              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>100% Mobil Uyğunluq</h4>
+              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.5 }}>Sayt ziyarətçilərinin 80%-dən çoxu telefondan daxil olur. Bütün smartfon və planşetlərdə qüsursuz işləyir.</p>
             </div>
 
             <div style={{ background: '#05070B', border: '1px solid #162032', padding: '24px', borderRadius: '16px' }}>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>Aydın struktur</h4>
-              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.5 }}>Müştəri axtardığını tez tapmalıdır.</p>
+              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>Aydın və Rahat Struktur</h4>
+              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.5 }}>Müştəri axtardığı xidməti, qiyməti və ya əlaqə nömrəsini bir neçə saniyəyə tapır, vaxt itirmir.</p>
             </div>
 
             <div style={{ background: '#05070B', border: '1px solid #162032', padding: '24px', borderRadius: '16px' }}>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>Dəstək</h4>
-              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.5 }}>Təhvildən sonra da texniki məsələlərdə yanınızdayıq.</p>
+              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>Təhvildən Sonra Dəstək</h4>
+              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', lineHeight: 1.5 }}>Sayt təhvil verildikdən sonra da serverin fasiləsiz işləməsi, domen və texniki suallarınızda yanınızda oluruq.</p>
             </div>
           </div>
         </div>
@@ -847,7 +848,7 @@ export default function App() {
             <div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', display: 'block', marginBottom: '6px' }}>RAHAT BAŞLANĞIC</span>
               <h3 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '8px' }}>Sayt sifariş etmək çətin proses deyil.</h3>
-              <p style={{ fontSize: '0.9rem', color: '#9CA6B5', lineHeight: 1.6 }}>Nə istədiyinizi tam bilmirsinizsə, problem deyil. Biznesiniz haqqında qısa məlumat verin, sizə uyğun sayt strukturunu birlikdə müəyyən edək.</p>
+              <p style={{ fontSize: '0.9rem', color: '#9CA6B5', lineHeight: 1.6 }}>Nə istədiyinizi tam dəqiqləşdirməmisinizsə, narahat olmayın. Biznesiniz haqqında qısa məlumat verin, sizə ən uyğun sayt strukturunu birlikdə müəyyən edək.</p>
             </div>
             <div style={{ textAlign: 'center' }}>
               <a
@@ -870,19 +871,19 @@ export default function App() {
         <div className="container">
           <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
             <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-              İŞ PROSESİ
+              BİZİM İŞ PROSESİMİZ
             </span>
             <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '10px' }}>Sayt necə hazırlanır?</h2>
-            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Sadə, aydın və mərhələli 5 addım.</p>
+            <p style={{ color: '#9CA6B5', fontSize: '0.92rem' }}>Fəaliyyətimiz boyu gördüyümüz bütün işləri şəffaf və mərhələli prinsiplərlə icra edirik.</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '14px' }}>
             {[
-              { num: '01', title: 'Danışırıq', desc: 'Biznesinizi və ehtiyacınızı öyrənirik.' },
-              { num: '02', title: 'Strukturu hazırlayırıq', desc: 'Saytın necə görünəcəyini və bölmələrini müəyyən edirik.' },
-              { num: '03', title: 'Saytı yığırıq', desc: 'Dizayn funksional və sürətli veb sayta çevrilir.' },
-              { num: '04', title: 'Yoxlayırıq', desc: 'Telefon, planşet və kompüterdə test edirik.' },
-              { num: '05', title: 'Təhvil veririk', desc: 'Saytı yayımlayırıq və istifadəyə hazır edirik.' },
+              { num: '01', title: 'Araşdırma və Məsləhət', desc: 'Biznesinizin hədəflərini, fəaliyyət sahənizi və auditoriyanızı öyrənirik.' },
+              { num: '02', title: 'Planlama və Dizayn', desc: 'Saytın strukturunu, bölmələrini və müasir görünüşünü hazırlayırıq.' },
+              { num: '03', title: 'Yığılma və Proqramlaşdırma', desc: 'Dizaynı funksional, sürətli və mobilə tam uyğun işləyən sayta çeviririk.' },
+              { num: '04', title: 'Test və Yoxlama', desc: 'Bütün telefonlarda, kompüterlərdə düymələri və formaları yoxlayırıq.' },
+              { num: '05', title: 'Təhvil və Canlıya Çıxarış', desc: 'Saytı domeninizə bağlayırıq, yayımlayırıq və hazır təhvil veririk.' },
             ].map((st) => (
               <div key={st.num} style={{ background: '#05070B', border: '1px solid #162032', padding: '20px', borderRadius: '16px' }}>
                 <span style={{ fontSize: '1rem', fontFamily: 'monospace', color: '#0066FF', fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{st.num}</span>
@@ -903,22 +904,22 @@ export default function App() {
             </span>
             <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '16px' }}>Codex Studio haqqında</h2>
             <p style={{ fontSize: '1.05rem', color: '#F5F7FA', lineHeight: 1.6, marginBottom: '24px' }}>
-              Codex Studio bizneslər üçün veb saytların hazırlanmasına fokuslanan veb studiyadır. Məqsədimiz sadəcə gözəl görünən deyil, istifadəsi rahat və biznesinizi düzgün təqdim edən saytlar hazırlamaqdır.
+              Codex Studio bizneslər üçün müasir, yüksək performanslı və satış yönümlü veb saytların hazırlanması ilə məşğul olan rəqəmsal studiyadır. Əsas məqsədimiz şirkətinizin bazarda rəqiblərindən fərqlənməsi və müştərilərinizdə güclü etibar yaratmasıdır.
             </p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
             <div style={{ background: '#080C14', border: '1px solid #162032', padding: '20px', borderRadius: '14px' }}>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '6px' }}>Aydın və səmimi ünsiyyət</h4>
-              <p style={{ fontSize: '0.8rem', color: '#9CA6B5' }}>Qəliz texniki sözlərlə vaxt itirmədən, biznesiniz üçün həqiqətən nəyin faydalı olduğunu müzakirə edirik.</p>
+              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '6px' }}>Aydın və Səmimi Ünsiyyət</h4>
+              <p style={{ fontSize: '0.8rem', color: '#9CA6B5' }}>Mürəkkəb texniki terminlərlə vaxt itirmədən, biznesiniz üçün həqiqətən nəyin faydalı olduğunu aydın izah edirik.</p>
             </div>
             <div style={{ background: '#080C14', border: '1px solid #162032', padding: '20px', borderRadius: '14px' }}>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '6px' }}>Şəffaf iş qrafiki</h4>
-              <p style={{ fontSize: '0.8rem', color: '#9CA6B5' }}>Layihənin ilk günündən təhvilinə qədər hər mərhələ planlı şəkildə həyata keçirilir.</p>
+              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '6px' }}>Şəffaf və Dəqiq Qrafik</h4>
+              <p style={{ fontSize: '0.8rem', color: '#9CA6B5' }}>Layihənin ilk günündən təhvil tarixinə qədər bütün mərhələlər planlı və vaxtında həyata keçirilir.</p>
             </div>
             <div style={{ background: '#080C14', border: '1px solid #162032', padding: '20px', borderRadius: '14px' }}>
-              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '6px' }}>Davamlı texniki dəstək</h4>
-              <p style={{ fontSize: '0.8rem', color: '#9CA6B5' }}>Sayt istifadəyə verildikdən sonra da suallarınız və gələcək yeniliklərinizdə yanınızda oluruq.</p>
+              <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '6px' }}>Davamlı Texniki Tərəfdaşlıq</h4>
+              <p style={{ fontSize: '0.8rem', color: '#9CA6B5' }}>Sayt təhvil verildikdən sonra da server, domen və gələcək yenilənmələrinizdə daimi dəstək göstəririk.</p>
             </div>
           </div>
         </div>
@@ -964,11 +965,11 @@ export default function App() {
             
             <div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-                ƏLAQƏ & MÜRACİƏT
+                ƏLAQƏ & SİFARİŞ
               </span>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '12px' }}>Saytınız haqqında danışaq.</h2>
+              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 800, marginBottom: '12px' }}>Biznesiniz üçün yeni sayt sifarişi.</h2>
               <p style={{ color: '#9CA6B5', fontSize: '0.92rem', marginBottom: '24px', lineHeight: 1.6 }}>
-                Biznesiniz barədə qısa məlumat göndərin. Sizə uyğun variantı birlikdə müəyyən edək.
+                Bizə bir zəng və ya mesaj qədər yaxınsınız. Biznesiniz barədə qısa məlumat göndərin, sizə ən uyğun həlli təklif edək.
               </p>
 
               <a
@@ -978,7 +979,7 @@ export default function App() {
                 style={{ background: '#0066FF', color: 'white', padding: '14px 24px', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '24px', boxShadow: '0 6px 20px rgba(0,102,255,0.3)' }}
               >
                 <MessageCircle size={18} />
-                <span>WhatsApp-dan yazın</span>
+                <span>WhatsApp-dan birbaşa yazın</span>
               </a>
 
               <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '16px', padding: '20px', fontFamily: 'monospace', fontSize: '0.82rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -1003,7 +1004,7 @@ export default function App() {
 
             <div style={{ background: '#080C14', border: '1px solid #162032', borderRadius: '22px', padding: '28px', boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)' }}>
               <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px' }}>Sayt sifarişi üçün müraciət edin</h3>
-              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', marginBottom: '20px' }}>Məlumatlarınızı qeyd edin, operativ əlaqə saxlayaq.</p>
+              <p style={{ fontSize: '0.82rem', color: '#9CA6B5', marginBottom: '20px' }}>Məlumatlarınızı qeyd edin, sizə ən qısa zamanda təklif göndərək.</p>
 
               {!isSuccess ? (
                 <form onSubmit={handleEmailSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -1034,10 +1035,10 @@ export default function App() {
 
                   <div className="grid-two-col" style={{ gap: '14px' }}>
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Biznes Sahəsi</label>
+                      <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Biznes / Fəaliyyət Sahəniz</label>
                       <input
                         type="text"
-                        placeholder="Məsələn: Təhsil, Mebel, Klinika"
+                        placeholder="Məsələn: Tibb, Təhsil, Mebel"
                         value={business}
                         onChange={(e) => setBusiness(e.target.value)}
                         style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem' }}
@@ -1050,19 +1051,19 @@ export default function App() {
                         onChange={(e) => setSiteType(e.target.value)}
                         style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem' }}
                       >
-                        <option value="Landing Page">Landing Page (Təqdimat & Satış)</option>
-                        <option value="Korporativ sayt">Korporativ sayt (Şirkət Portalı)</option>
+                        <option value="Korporativ sayt">Korporativ Şirkət Saytı</option>
+                        <option value="Landing Page">Landing Page (Təqdimat Saytı)</option>
                         <option value="E-commerce">E-commerce (Onlayn Mağaza)</option>
-                        <option value="Fərdi layihə">Fərdi veb layihə (Xüsusi Funksionallıq)</option>
+                        <option value="Fərdi layihə">Fərdi və Tibbi Veb Portal</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Qısa məlumat və ya istəkləriniz</label>
+                    <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', marginBottom: '4px' }}>Sayt haqqında qısa istəkləriniz</label>
                     <textarea
                       rows={3}
-                      placeholder="Sayt haqqında əsas istəkləriniz..."
+                      placeholder="Saytınızda olmasını istədiyiniz əsas məqamlar..."
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: '#05070B', border: '1px solid #162032', color: 'white', fontSize: '0.85rem', resize: 'none' }}
@@ -1096,7 +1097,7 @@ export default function App() {
                     ) : (
                       <>
                         <Send size={16} />
-                        <span>Müraciət göndər</span>
+                        <span>Təklif üçün müraciət göndər</span>
                       </>
                     )}
                   </button>
