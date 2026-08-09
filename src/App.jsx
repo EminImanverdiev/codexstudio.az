@@ -764,7 +764,7 @@ export default function App() {
   const [initialLoading, setInitialLoading] = useState(true)
   const [initialProgress, setInitialProgress] = useState(0)
   const [lang, setLang] = useState(() => localStorage.getItem('codex_lang') || 'az')
-  const [theme, setTheme] = useState(() => localStorage.getItem('codex_theme') || 'light')
+  const [theme, setTheme] = useState(() => localStorage.getItem('codex_theme') || 'dark')
   const [scrollProgress, setScrollProgress] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [heroTab, setHeroTab] = useState('landing')
