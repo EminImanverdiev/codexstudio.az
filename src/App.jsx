@@ -1061,6 +1061,17 @@ export default function App() {
     },
     {
       id: '03',
+      name: 'JetEvimiz — Əmlak & Onlayn Elan Portalı',
+      type: lang === 'az' ? 'E-ticarət və Onlayn Elan Platforması' : 'E-commerce & Classified Marketplace Platform',
+      desc: lang === 'az'
+        ? 'Tap.az tipli daşınmaz əmlak və alqı-satqı platforması. Kateqoriyalar üzrə rahat axtarış, filtrasiya, şəxsi istifadəçi kabineti və elan yerləşdirmə sistemi.'
+        : 'Tap.az-style real estate and classified marketplace platform with smart filters, user dashboards, and instant ad posting.',
+      url: 'https://jetevimiz.az',
+      displayUrl: 'jetevimiz.az',
+      tags: ['Onlayn elanlar', 'Tap.az tipli portal', 'Axtarış və filtrlər', 'İstifadəçi kabineti']
+    },
+    {
+      id: '04',
       name: 'Sinaps Med — Tibbi Avadanlıq & Səhiyyə Şirkəti',
       type: lang === 'az' ? 'Korporativ şirkət saytı' : 'Corporate website development',
       desc: lang === 'az' 
@@ -1071,7 +1082,7 @@ export default function App() {
       tags: ['Korporativ sayt', 'Məhsul kataloqu', 'Çoxdillilik', 'Partnyor əlaqələri']
     },
     {
-      id: '04',
+      id: '05',
       name: 'Aura Home & Living',
       type: lang === 'az' ? 'Onlayn mağaza (E-ticarət)' : 'Online store & E-commerce',
       desc: lang === 'az'
@@ -1082,7 +1093,7 @@ export default function App() {
       tags: ['Onlayn mağaza', 'Səbət sistemi', 'Kartla ödəniş', 'Mobil uyğun dizayn']
     },
     {
-      id: '05',
+      id: '06',
       name: 'Vektor Logistics & Holding',
       type: lang === 'az' ? 'Korporativ şirkət saytı və logistika portalı' : 'Corporate website and logistics portal',
       desc: lang === 'az'
@@ -1607,7 +1618,7 @@ export default function App() {
                         onClick={() => setHeroTab('ecommerce')}
                         style={{ padding: '8px 10px', borderRadius: '8px', border: 'none', background: heroTab === 'ecommerce' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'ecommerce' ? 'white' : 'var(--text-sub)', fontSize: '0.78rem', fontWeight: 600, cursor: 'pointer', textAlign: 'center' }}
                       >
-                        {lang === 'az' ? 'Onlayn mağaza' : 'Online store'}
+                        {lang === 'az' ? 'Elan & E-ticarət' : 'Marketplace & Shop'}
                       </button>
                     </div>
                   </div>
@@ -1625,7 +1636,7 @@ export default function App() {
                           {heroTab === 'landing' && 'eminimanverdiyev.site'}
                           {heroTab === 'erp' && 'app.encode-soft.com'}
                           {heroTab === 'corporate' && 'sinapsmed.com'}
-                          {heroTab === 'ecommerce' && 'aurahome.az'}
+                          {heroTab === 'ecommerce' && 'jetevimiz.az'}
                         </span>
                       </div>
                       <div style={{ fontSize: '0.68rem', color: '#10B981', fontFamily: 'monospace' }}>
@@ -1676,13 +1687,13 @@ export default function App() {
                       {heroTab === 'ecommerce' && (
                         <div>
                           <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>
-                            {lang === 'az' ? 'ONLAYN MAĞAZA (E-TİCARƏT)' : 'E-COMMERCE STORE'}
+                            {lang === 'az' ? 'ONLAYN ELAN VƏ ALQI-SATQI PLATFORMASI' : 'CLASSIFIED ADS & MARKETPLACE'}
                           </div>
-                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Aura Home & Living</h3>
+                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>JetEvimiz — Əmlak & Elan Portalı</h3>
                           <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>
-                            {lang === 'az' ? 'Məhsulların təqdimatı, səbət və onlayn ödəniş sistemi ilə təchiz olunmuş onlayn mağaza.' : 'Online furniture and interior store with product filters, cart, and card payment gateway.'}
+                            {lang === 'az' ? 'Tap.az tipli daşınmaz əmlak və alqı-satqı platforması. Kateqoriyalar üzrə axtarış, filtrasiya, istifadəçi kabineti və elan yerləşdirmə sistemi.' : 'Tap.az-style real estate and classified marketplace platform with smart filters and instant ad posting.'}
                           </p>
-                          <button onClick={() => navigateTo('contact')} style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, border: 'none', cursor: 'pointer' }}>{t.nav.getQuote} →</button>
+                          <a href="https://jetevimiz.az" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>{t.works.viewLive} →</a>
                         </div>
                       )}
 
