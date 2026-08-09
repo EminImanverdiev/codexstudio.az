@@ -334,7 +334,7 @@ export default function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('codex_theme') || 'light')
   const [scrollProgress, setScrollProgress] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [heroTab, setHeroTab] = useState('landing')
+  const [heroTab, setHeroTab] = useState('corporate')
   const [currentSlide, setCurrentSlide] = useState(0)
   const [activeWork, setActiveWork] = useState(0)
   const [openFaq, setOpenFaq] = useState(0)
@@ -1003,16 +1003,16 @@ export default function App() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                     <div style={{ display: 'flex', gap: '6px', padding: '4px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '10px' }}>
                       <button
-                        onClick={() => setHeroTab('landing')}
-                        style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: heroTab === 'landing' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'landing' ? 'white' : 'var(--text-sub)', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
-                      >
-                        Landing Page
-                      </button>
-                      <button
                         onClick={() => setHeroTab('corporate')}
                         style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: heroTab === 'corporate' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'corporate' ? 'white' : 'var(--text-sub)', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
                       >
                         Korporativ sayt
+                      </button>
+                      <button
+                        onClick={() => setHeroTab('landing')}
+                        style={{ padding: '6px 12px', borderRadius: '6px', border: 'none', background: heroTab === 'landing' ? 'var(--accent-blue)' : 'transparent', color: heroTab === 'landing' ? 'white' : 'var(--text-sub)', fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer' }}
+                      >
+                        Landing Page
                       </button>
                       <button
                         onClick={() => setHeroTab('ecommerce')}
