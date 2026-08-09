@@ -1,10 +1,107 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {
   MessageCircle, Send, ArrowRight, Laptop, Globe, ShoppingBag,
   Zap, Smartphone, CheckCircle2, ChevronDown, X, Sun, Moon,
   Mail, ExternalLink, Loader2, ArrowUpRight, ShieldCheck, Menu,
-  Code2, Palette, Headphones, Search, Phone
+  Code2, Palette, Headphones, Search, Phone, ChevronLeft, ChevronRight
 } from 'lucide-react'
+
+// Animated Interactive Tech Canvas
+function TechCanvas() {
+  const canvasRef = useRef(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    let animationFrameId
+    let width = (canvas.width = canvas.parentElement?.offsetWidth || window.innerWidth)
+    let height = (canvas.height = canvas.parentElement?.offsetHeight || 300)
+
+    const handleResize = () => {
+      if (!canvas.parentElement) return
+      width = canvas.width = canvas.parentElement.offsetWidth
+      height = canvas.height = canvas.parentElement.offsetHeight
+    }
+    window.addEventListener('resize', handleResize)
+
+    const nodeCount = Math.floor(width / 38)
+    const nodes = []
+
+    for (let i = 0; i < nodeCount; i++) {
+      nodes.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 2 + 1
+      })
+    }
+
+    const draw = () => {
+      ctx.clearRect(0, 0, width, height)
+
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x
+          const dy = nodes[i].y - nodes[j].y
+          const dist = Math.sqrt(dx * dx + dy * dy)
+
+          if (dist < 110) {
+            const alpha = (1 - dist / 110) * 0.25
+            ctx.strokeStyle = `rgba(0, 102, 255, ${alpha})`
+            ctx.lineWidth = 1
+            ctx.beginPath()
+            ctx.moveTo(nodes[i].x, nodes[i].y)
+            ctx.lineTo(nodes[j].x, nodes[j].y)
+            ctx.stroke()
+          }
+        }
+      }
+
+      for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i]
+        node.x += node.vx
+        node.y += node.vy
+
+        if (node.x < 0 || node.x > width) node.vx *= -1
+        if (node.y < 0 || node.y > height) node.vy *= -1
+
+        ctx.fillStyle = 'rgba(0, 102, 255, 0.6)'
+        ctx.beginPath()
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2)
+        ctx.fill()
+      }
+
+      animationFrameId = requestAnimationFrame(draw)
+    }
+
+    draw()
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      cancelAnimationFrame(animationFrameId)
+    }
+  }, [])
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        opacity: 0.65,
+        zIndex: 0
+      }}
+    />
+  )
+}
 
 const translations = {
   az: {
@@ -458,6 +555,7 @@ export default function App() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [heroTab, setHeroTab] = useState('landing')
+  const [currentSlide, setCurrentSlide] = useState(0)
   const [activeWork, setActiveWork] = useState(0)
   const [openFaq, setOpenFaq] = useState(0)
 
@@ -475,6 +573,41 @@ export default function App() {
   const [isSuccess, setIsSuccess] = useState(false)
 
   const t = translations[lang] || translations.az
+
+  const heroSlides = [
+    {
+      badge: t.hero.eyebrow,
+      heading: t.hero.heading,
+      desc: t.hero.desc,
+      btn1: t.hero.primaryBtn,
+      btn2: t.hero.secondaryBtn,
+      targetRoute: 'contact'
+    },
+    {
+      badge: lang === 'az' ? 'KORPORATİV VƏ E-COMMERCE' : 'CORPORATE & E-COMMERCE',
+      heading: lang === 'az' ? 'Siz sadəcə biznesinizi böyüdün, veb saytınızı bizə həvalə edin.' : 'Focus on growing your business, leave website development to us.',
+      desc: lang === 'az' ? 'Şirkətinizin fəaliyyətini, xidmətlərini və məhsullarını peşəkar şəkildə təqdim edən müasir həllər.' : 'Modern solutions that professionally present your company, services, and online catalog.',
+      btn1: lang === 'az' ? 'Təklif al' : 'Get a quote',
+      btn2: lang === 'az' ? 'Xidmətlərimiz' : 'Our services',
+      targetRoute: 'services'
+    },
+    {
+      badge: lang === 'az' ? '100% MOBİL VƏ TEXNİKİ DƏSTƏK' : '100% RESPONSIVE & SUPPORT',
+      heading: lang === 'az' ? 'Saytınız internetdə brendinizin ən güclü vizit kartıdır.' : 'Your website is the most powerful digital showcase for your brand.',
+      desc: lang === 'az' ? 'Aydın naviqasiya, SEO optimizasiyası və sayt təhvil verildikdən sonra daimi texniki dəstək.' : 'Intuitive navigation, technical SEO structure, and ongoing maintenance after launch.',
+      btn1: lang === 'az' ? 'WhatsApp ilə əlaqə' : 'Contact via WhatsApp',
+      btn2: lang === 'az' ? 'İşlərimizə bax' : 'View our works',
+      targetRoute: 'works'
+    }
+  ]
+
+  // Auto rotate hero slides every 5.5s
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+    }, 5500)
+    return () => clearInterval(timer)
+  }, [heroSlides.length])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -607,7 +740,7 @@ export default function App() {
     setMobileMenuOpen(false)
   }
 
-  const currentWork = t.works.items[activeWork] || t.works.items[0]
+  const curSlide = heroSlides[currentSlide]
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: 'var(--bg-page)', color: 'var(--text-main)', overflowX: 'hidden' }}>
@@ -809,11 +942,15 @@ export default function App() {
       {/* ======================================================== */}
       {currentRoute === 'home' && (
         <>
-          {/* Hero Section */}
-          <section id="hero" style={{ padding: '60px 0 70px' }}>
-            <div className="container">
+          {/* Hero Section with Auto Slider and Tech Canvas */}
+          <section id="hero" style={{ position: 'relative', padding: '60px 0 70px', overflow: 'hidden', backgroundColor: 'var(--bg-page)' }}>
+            <TechCanvas />
+
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
               <div className="hero-grid">
-                <div>
+                
+                {/* Left: Dynamic Carousel Slide */}
+                <div style={{ minHeight: '380px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <div style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -825,21 +962,22 @@ export default function App() {
                     fontSize: '0.72rem',
                     fontFamily: 'monospace',
                     color: 'var(--text-sub)',
-                    marginBottom: '16px'
+                    marginBottom: '16px',
+                    width: 'fit-content'
                   }}>
                     <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-blue)', boxShadow: '0 0 8px var(--accent-blue)' }}></span>
-                    <span>{t.hero.eyebrow}</span>
+                    <span>{curSlide.badge}</span>
                   </div>
 
                   <h1 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', lineHeight: 1.14, fontWeight: 800, marginBottom: '18px', letterSpacing: '-0.02em', color: 'var(--text-main)' }}>
-                    {t.hero.heading}
+                    {curSlide.heading}
                   </h1>
 
                   <p style={{ color: 'var(--text-sub)', fontSize: 'clamp(0.92rem, 2vw, 1.1rem)', lineHeight: 1.6, maxWidth: '540px', marginBottom: '28px' }}>
-                    {t.hero.desc}
+                    {curSlide.desc}
                   </p>
 
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', marginBottom: '28px' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', marginBottom: '24px' }}>
                     <button
                       onClick={() => navigateTo('contact')}
                       style={{
@@ -857,12 +995,12 @@ export default function App() {
                         gap: '6px'
                       }}
                     >
-                      <span>{t.hero.primaryBtn}</span>
+                      <span>{curSlide.btn1}</span>
                       <ArrowRight size={15} />
                     </button>
 
                     <button
-                      onClick={() => navigateTo('works')}
+                      onClick={() => navigateTo(curSlide.targetRoute)}
                       style={{
                         background: 'var(--bg-card)',
                         color: 'var(--text-main)',
@@ -874,15 +1012,49 @@ export default function App() {
                         cursor: 'pointer'
                       }}
                     >
-                      <span>{t.hero.secondaryBtn}</span>
+                      <span>{curSlide.btn2}</span>
                     </button>
                   </div>
 
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', fontSize: '0.82rem', color: 'var(--text-sub)', borderTop: '1px solid var(--border-color)', paddingTop: '16px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="var(--accent-blue)" /><span style={{ color: 'var(--text-main)' }}>{t.hero.trust1}</span></div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="var(--accent-blue)" /><span style={{ color: 'var(--text-main)' }}>{t.hero.trust2}</span></div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle2 size={15} color="var(--accent-blue)" /><span style={{ color: 'var(--text-main)' }}>{t.hero.trust3}</span></div>
+                  {/* Carousel Indicators & Controls */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ display: 'flex', gap: '6px' }}>
+                      {heroSlides.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentSlide(idx)}
+                          style={{
+                            height: '8px',
+                            width: currentSlide === idx ? '32px' : '8px',
+                            borderRadius: '4px',
+                            background: currentSlide === idx ? 'var(--accent-blue)' : 'var(--border-color)',
+                            border: 'none',
+                            cursor: 'pointer',
+                            transition: 'all 0.3s ease'
+                          }}
+                          aria-label={`Slide ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '4px' }}>
+                      <button
+                        onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+                        style={{ padding: '6px', borderRadius: '6px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-sub)', cursor: 'pointer' }}
+                        aria-label="Previous slide"
+                      >
+                        <ChevronLeft size={14} />
+                      </button>
+                      <button
+                        onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
+                        style={{ padding: '6px', borderRadius: '6px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-sub)', cursor: 'pointer' }}
+                        aria-label="Next slide"
+                      >
+                        <ChevronRight size={14} />
+                      </button>
+                    </div>
                   </div>
+
                 </div>
 
                 {/* Right: Mockup */}
@@ -1175,344 +1347,396 @@ export default function App() {
       {/* PAGE: XİDMƏTLƏR */}
       {/* ======================================================== */}
       {currentRoute === 'services' && (
-        <section style={{ padding: '60px 0 80px' }}>
-          <div className="container">
-            <div style={{ maxWidth: '680px', marginBottom: '40px' }}>
+        <>
+          <div style={{ position: 'relative', padding: '70px 0 50px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
+            <TechCanvas />
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+              <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', marginBottom: '12px', fontFamily: 'monospace' }}>
+                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
+                <span style={{ color: 'var(--accent-blue)' }}>»</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.services}</span>
+              </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
                 {t.services.badge}
               </span>
               <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.services.title}</h1>
-              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6 }}>{t.services.desc}</p>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-              {t.services.items.map((s) => (
-                <div key={s.id} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '28px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                  <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                      <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--bg-surface)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        {renderIcon(s.icon)}
-                      </div>
-                      <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--accent-blue)', fontWeight: 'bold' }}>{s.num}</span>
-                    </div>
-                    <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '10px' }}>{s.title}</h3>
-                    <p style={{ fontSize: '0.88rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '24px' }}>{s.desc}</p>
-                  </div>
-                  <button
-                    onClick={() => {
-                      setSiteType(s.title)
-                      navigateTo('contact')
-                    }}
-                    style={{ background: 'var(--accent-blue)', color: 'white', padding: '12px', borderRadius: '10px', border: 'none', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
-                  >
-                    <span>{t.services.quoteBtn}</span>
-                    <ArrowRight size={14} />
-                  </button>
-                </div>
-              ))}
+              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>{t.services.desc}</p>
             </div>
           </div>
-        </section>
+
+          <section style={{ padding: '60px 0 80px' }}>
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+                {t.services.items.map((s) => (
+                  <div key={s.id} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '28px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                    <div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                        <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'var(--bg-surface)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          {renderIcon(s.icon)}
+                        </div>
+                        <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--accent-blue)', fontWeight: 'bold' }}>{s.num}</span>
+                      </div>
+                      <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '10px' }}>{s.title}</h3>
+                      <p style={{ fontSize: '0.88rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '24px' }}>{s.desc}</p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setSiteType(s.title)
+                        navigateTo('contact')
+                      }}
+                      style={{ background: 'var(--accent-blue)', color: 'white', padding: '12px', borderRadius: '10px', border: 'none', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+                    >
+                      <span>{t.services.quoteBtn}</span>
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
       )}
 
       {/* ======================================================== */}
       {/* PAGE: İŞLƏRİMİZ */}
       {/* ======================================================== */}
       {currentRoute === 'works' && (
-        <section style={{ padding: '60px 0 80px' }}>
-          <div className="container">
-            <div style={{ maxWidth: '680px', marginBottom: '40px' }}>
+        <>
+          <div style={{ position: 'relative', padding: '70px 0 50px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
+            <TechCanvas />
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+              <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', marginBottom: '12px', fontFamily: 'monospace' }}>
+                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
+                <span style={{ color: 'var(--accent-blue)' }}>»</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.works}</span>
+              </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
                 {t.works.badge}
               </span>
               <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.works.title}</h1>
-              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6 }}>{t.works.desc}</p>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-              {t.works.items.map((w) => (
-                <div key={w.id} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '28px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                  <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                      <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)' }}>{w.type}</span>
-                      <span style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#10B981', background: 'var(--bg-page)', padding: '2px 8px', borderRadius: '4px', border: '1px solid rgba(16, 185, 129, 0.3)' }}>{w.displayUrl}</span>
-                    </div>
-                    <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px' }}>{w.name}</h3>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>{w.desc}</p>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '24px' }}>
-                      {w.tags.map((tg, idx) => (
-                        <span key={idx} style={{ fontSize: '0.72rem', background: 'var(--bg-surface)', border: '1px solid var(--border-color)', padding: '3px 8px', borderRadius: '6px' }}>
-                          ✓ {tg}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div style={{ display: 'flex', gap: '8px' }}>
-                    <a href={w.url} target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '10px 16px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                      <span>{t.works.viewLive}</span>
-                      <ExternalLink size={14} />
-                    </a>
-                    <button
-                      onClick={() => {
-                        setSiteType(`${w.name} (${w.type})`)
-                        navigateTo('contact')
-                      }}
-                      style={{ background: 'var(--bg-page)', border: '1px solid var(--border-color)', color: 'var(--text-main)', padding: '10px 16px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
-                    >
-                      {t.works.orderSimilar}
-                    </button>
-                  </div>
-                </div>
-              ))}
+              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>{t.works.desc}</p>
             </div>
           </div>
-        </section>
+
+          <section style={{ padding: '60px 0 80px' }}>
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+                {t.works.items.map((w) => (
+                  <div key={w.id} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '28px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                    <div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+                        <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)' }}>{w.type}</span>
+                        <span style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#10B981', background: 'var(--bg-page)', padding: '2px 8px', borderRadius: '4px', border: '1px solid rgba(16, 185, 129, 0.3)' }}>{w.displayUrl}</span>
+                      </div>
+                      <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px' }}>{w.name}</h3>
+                      <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>{w.desc}</p>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '24px' }}>
+                        {w.tags.map((tg, idx) => (
+                          <span key={idx} style={{ fontSize: '0.72rem', background: 'var(--bg-surface)', border: '1px solid var(--border-color)', padding: '3px 8px', borderRadius: '6px' }}>
+                            ✓ {tg}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      <a href={w.url} target="_blank" rel="noopener noreferrer" style={{ background: 'var(--accent-blue)', color: 'white', padding: '10px 16px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        <span>{t.works.viewLive}</span>
+                        <ExternalLink size={14} />
+                      </a>
+                      <button
+                        onClick={() => {
+                          setSiteType(`${w.name} (${w.type})`)
+                          navigateTo('contact')
+                        }}
+                        style={{ background: 'var(--bg-page)', border: '1px solid var(--border-color)', color: 'var(--text-main)', padding: '10px 16px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
+                      >
+                        {t.works.orderSimilar}
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
       )}
 
       {/* ======================================================== */}
       {/* PAGE: HAQQIMIZDA */}
       {/* ======================================================== */}
       {currentRoute === 'about' && (
-        <section style={{ padding: '60px 0 80px' }}>
-          <div className="container">
-            <div style={{ maxWidth: '680px', marginBottom: '40px' }}>
+        <>
+          <div style={{ position: 'relative', padding: '70px 0 50px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
+            <TechCanvas />
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+              <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', marginBottom: '12px', fontFamily: 'monospace' }}>
+                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
+                <span style={{ color: 'var(--accent-blue)' }}>»</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.about}</span>
+              </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
                 {t.about.badge}
               </span>
               <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '16px' }}>{t.about.title}</h1>
-              <p style={{ fontSize: '1.05rem', color: 'var(--text-main)', lineHeight: 1.6, marginBottom: '24px' }}>
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-main)', lineHeight: 1.6, maxWidth: '680px' }}>
                 {t.about.desc}
               </p>
             </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', marginBottom: '40px' }}>
-              {t.about.values.map((val, idx) => (
-                <div key={idx} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', padding: '24px', borderRadius: '16px' }}>
-                  <h4 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '8px' }}>{val.title}</h4>
-                  <p style={{ fontSize: '0.82rem', color: 'var(--text-sub)', lineHeight: 1.6 }}>{val.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ background: 'var(--bg-card)', border: '1px solid var(--accent-blue)', borderRadius: '20px', padding: '28px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
-              <div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '4px' }}>{t.finalCta.title}</h3>
-                <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)' }}>{t.finalCta.desc}</p>
-              </div>
-              <button
-                onClick={() => navigateTo('contact')}
-                style={{ background: 'var(--accent-blue)', color: 'white', padding: '12px 24px', borderRadius: '10px', fontSize: '0.88rem', fontWeight: 600, border: 'none', cursor: 'pointer' }}
-              >
-                {t.finalCta.primaryBtn} →
-              </button>
-            </div>
           </div>
-        </section>
+
+          <section style={{ padding: '60px 0 80px' }}>
+            <div className="container">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', marginBottom: '40px' }}>
+                {t.about.values.map((val, idx) => (
+                  <div key={idx} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', padding: '24px', borderRadius: '16px' }}>
+                    <h4 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '8px' }}>{val.title}</h4>
+                    <p style={{ fontSize: '0.82rem', color: 'var(--text-sub)', lineHeight: 1.6 }}>{val.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ background: 'var(--bg-card)', border: '1px solid var(--accent-blue)', borderRadius: '20px', padding: '28px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '4px' }}>{t.finalCta.title}</h3>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)' }}>{t.finalCta.desc}</p>
+                </div>
+                <button
+                  onClick={() => navigateTo('contact')}
+                  style={{ background: 'var(--accent-blue)', color: 'white', padding: '12px 24px', borderRadius: '10px', fontSize: '0.88rem', fontWeight: 600, border: 'none', cursor: 'pointer' }}
+                >
+                  {t.finalCta.primaryBtn} →
+                </button>
+              </div>
+            </div>
+          </section>
+        </>
       )}
 
       {/* ======================================================== */}
       {/* PAGE: FAQ */}
       {/* ======================================================== */}
       {currentRoute === 'faq' && (
-        <section style={{ padding: '60px 0 80px' }}>
-          <div className="container">
-            <div style={{ maxWidth: '680px', marginBottom: '40px' }}>
+        <>
+          <div style={{ position: 'relative', padding: '70px 0 50px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
+            <TechCanvas />
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+              <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', marginBottom: '12px', fontFamily: 'monospace' }}>
+                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
+                <span style={{ color: 'var(--accent-blue)' }}>»</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.faq}</span>
+              </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
                 {t.faq.badge}
               </span>
               <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.faq.title}</h1>
-              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6 }}>{t.faq.desc}</p>
-            </div>
-
-            <div style={{ maxWidth: '800px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {t.faq.items.map((f, idx) => (
-                <div key={idx} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '14px', overflow: 'hidden' }}>
-                  <button
-                    type="button"
-                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                    style={{ width: '100%', padding: '18px 20px', textAlign: 'left', background: 'none', border: 'none', color: 'var(--text-main)', fontSize: '0.95rem', fontWeight: 700, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
-                  >
-                    <span>{f.q}</span>
-                    <ChevronDown size={16} color="var(--accent-blue)" style={{ transform: openFaq === idx ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
-                  </button>
-                  {openFaq === idx && (
-                    <div style={{ padding: '0 20px 18px', fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, borderTop: '1px solid var(--border-color)', paddingTop: '12px' }}>
-                      {f.a}
-                    </div>
-                  )}
-                </div>
-              ))}
+              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>{t.faq.desc}</p>
             </div>
           </div>
-        </section>
+
+          <section style={{ padding: '60px 0 80px' }}>
+            <div className="container">
+              <div style={{ maxWidth: '800px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {t.faq.items.map((f, idx) => (
+                  <div key={idx} style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '14px', overflow: 'hidden' }}>
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                      style={{ width: '100%', padding: '18px 20px', textAlign: 'left', background: 'none', border: 'none', color: 'var(--text-main)', fontSize: '0.95rem', fontWeight: 700, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
+                    >
+                      <span>{f.q}</span>
+                      <ChevronDown size={16} color="var(--accent-blue)" style={{ transform: openFaq === idx ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
+                    </button>
+                    {openFaq === idx && (
+                      <div style={{ padding: '0 20px 18px', fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, borderTop: '1px solid var(--border-color)', paddingTop: '12px' }}>
+                        {f.a}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
       )}
 
       {/* ======================================================== */}
       {/* PAGE: CONTACT */}
       {/* ======================================================== */}
       {currentRoute === 'contact' && (
-        <section style={{ padding: '60px 0 80px' }}>
-          <div className="container">
-            <div className="contact-grid">
-              <div>
-                <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
-                  {t.contact.badge}
-                </span>
-                <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.contact.title}</h1>
-                <p style={{ color: 'var(--text-sub)', fontSize: '0.95rem', marginBottom: '24px', lineHeight: 1.6 }}>
-                  {t.contact.desc}
-                </p>
-
-                <a
-                  href={`https://wa.me/994106011201?text=${encodeURIComponent('Salam. Biznesim üçün sayt hazırlatmaq istəyirəm. Ətraflı məlumat ala bilərəm?')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ background: 'var(--accent-blue)', color: 'white', padding: '14px 24px', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '24px', boxShadow: '0 6px 20px var(--accent-glow)' }}
-                >
-                  <MessageCircle size={18} />
-                  <span>{t.finalCta.whatsappBtn}</span>
-                </a>
-
-                <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '16px', padding: '20px', fontFamily: 'monospace', fontSize: '0.82rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid var(--border-color)' }}>
-                    <span style={{ color: 'var(--text-sub)' }}>{t.contact.phoneLabel}</span>
-                    <a href="tel:0106011201" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 'bold' }}>010 601 12 01</a>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid var(--border-color)' }}>
-                    <span style={{ color: 'var(--text-sub)' }}>{t.contact.whatsappLabel}</span>
-                    <a href="https://wa.me/994106011201" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue)', textDecoration: 'none', fontWeight: 'bold' }}>010 601 12 01</a>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid var(--border-color)' }}>
-                    <span style={{ color: 'var(--text-sub)' }}>{t.contact.emailLabel}</span>
-                    <a href="mailto:emin.imanverdievv@gmail.com" style={{ color: 'var(--accent-blue)', textDecoration: 'none', fontWeight: 'bold' }}>emin.imanverdievv@gmail.com</a>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: 'var(--text-sub)' }}>{t.contact.addressLabel}</span>
-                    <span style={{ color: 'var(--text-main)' }}>Bakı, Azərbaycan</span>
-                  </div>
-                </div>
+        <>
+          <div style={{ position: 'relative', padding: '70px 0 50px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
+            <TechCanvas />
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+              <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', marginBottom: '12px', fontFamily: 'monospace' }}>
+                <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
+                <span style={{ color: 'var(--accent-blue)' }}>»</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.contact}</span>
               </div>
-
-              <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '22px', padding: '28px', boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px' }}>{t.contact.formTitle}</h3>
-                <p style={{ fontSize: '0.82rem', color: 'var(--text-sub)', marginBottom: '20px' }}>{t.contact.formDesc}</p>
-
-                {!isSuccess ? (
-                  <form onSubmit={handleEmailSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                    <div className="grid-two-col">
-                      <div>
-                        <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.nameLabel}</label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="Rəşad Əliyev"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.85rem' }}
-                        />
-                      </div>
-                      <div>
-                        <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.phoneInputLabel}</label>
-                        <input
-                          type="tel"
-                          required
-                          placeholder="050 000 00 00"
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.85rem' }}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid-two-col">
-                      <div>
-                        <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.businessLabel}</label>
-                        <input
-                          type="text"
-                          placeholder="Məsələn: Tibb, Təhsil, Mebel"
-                          value={business}
-                          onChange={(e) => setBusiness(e.target.value)}
-                          style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.85rem' }}
-                        />
-                      </div>
-                      <div>
-                        <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.siteTypeLabel}</label>
-                        <select
-                          value={siteType}
-                          onChange={(e) => setSiteType(e.target.value)}
-                          style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.85rem' }}
-                        >
-                          {t.services.items.map((srv) => (
-                            <option key={srv.id} value={srv.title}>{srv.title}</option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.messageLabel}</label>
-                      <textarea
-                        rows={3}
-                        placeholder="Saytınızda olmasını istədiyiniz əsas məqamlar..."
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.85rem', resize: 'none' }}
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      style={{
-                        background: 'var(--accent-blue)',
-                        color: 'white',
-                        border: 'none',
-                        padding: '14px',
-                        borderRadius: '10px',
-                        fontWeight: 700,
-                        fontSize: '0.9rem',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '8px',
-                        boxShadow: '0 6px 20px var(--accent-glow)'
-                      }}
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 size={16} className="animate-spin" />
-                          <span>{t.contact.submitting}</span>
-                        </>
-                      ) : (
-                        <>
-                          <Send size={16} />
-                          <span>{t.contact.submitBtn}</span>
-                        </>
-                      )}
-                    </button>
-                  </form>
-                ) : (
-                  <div style={{ textAlign: 'center', padding: '30px 10px' }}>
-                    <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'var(--accent-glow)', color: 'var(--accent-blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
-                      <CheckCircle2 size={28} />
-                    </div>
-                    <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '6px' }}>{t.contact.successTitle}</h3>
-                    <p style={{ color: 'var(--text-sub)', fontSize: '0.85rem', marginBottom: '18px' }}>
-                      {t.contact.successDesc}
-                    </p>
-                    <button
-                      onClick={handleWhatsAppSend}
-                      style={{ background: 'var(--accent-blue)', color: 'white', border: 'none', padding: '12px 20px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontSize: '0.85rem' }}
-                    >
-                      {t.contact.confirmWhatsApp}
-                    </button>
-                  </div>
-                )}
-              </div>
+              <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
+                {t.contact.badge}
+              </span>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.contact.title}</h1>
+              <p style={{ color: 'var(--text-sub)', fontSize: '0.95rem', maxWidth: '680px', lineHeight: 1.6 }}>
+                {t.contact.desc}
+              </p>
             </div>
           </div>
-        </section>
+
+          <section style={{ padding: '60px 0 80px' }}>
+            <div className="container">
+              <div className="contact-grid">
+                <div>
+                  <a
+                    href={`https://wa.me/994106011201?text=${encodeURIComponent('Salam. Biznesim üçün sayt hazırlatmaq istəyirəm. Ətraflı məlumat ala bilərəm?')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ background: 'var(--accent-blue)', color: 'white', padding: '14px 24px', borderRadius: '12px', fontSize: '0.92rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '24px', boxShadow: '0 6px 20px var(--accent-glow)' }}
+                  >
+                    <MessageCircle size={18} />
+                    <span>{t.finalCta.whatsappBtn}</span>
+                  </a>
+
+                  <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '16px', padding: '20px', fontFamily: 'monospace', fontSize: '0.82rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid var(--border-color)' }}>
+                      <span style={{ color: 'var(--text-sub)' }}>{t.contact.phoneLabel}</span>
+                      <a href="tel:0106011201" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 'bold' }}>010 601 12 01</a>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid var(--border-color)' }}>
+                      <span style={{ color: 'var(--text-sub)' }}>{t.contact.whatsappLabel}</span>
+                      <a href="https://wa.me/994106011201" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue)', textDecoration: 'none', fontWeight: 'bold' }}>010 601 12 01</a>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid var(--border-color)' }}>
+                      <span style={{ color: 'var(--text-sub)' }}>{t.contact.emailLabel}</span>
+                      <a href="mailto:emin.imanverdievv@gmail.com" style={{ color: 'var(--accent-blue)', textDecoration: 'none', fontWeight: 'bold' }}>emin.imanverdievv@gmail.com</a>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <span style={{ color: 'var(--text-sub)' }}>{t.contact.addressLabel}</span>
+                      <span style={{ color: 'var(--text-main)' }}>Bakı, Azərbaycan</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '22px', padding: '28px', boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '6px' }}>{t.contact.formTitle}</h3>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-sub)', marginBottom: '20px' }}>{t.contact.formDesc}</p>
+
+                  {!isSuccess ? (
+                    <form onSubmit={handleEmailSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                      <div className="grid-two-col">
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.nameLabel}</label>
+                          <input
+                            type="text"
+                            required
+                            placeholder="Rəşad Əliyev"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.85rem' }}
+                          />
+                        </div>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.phoneInputLabel}</label>
+                          <input
+                            type="tel"
+                            required
+                            placeholder="050 000 00 00"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.85rem' }}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="grid-two-col">
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.businessLabel}</label>
+                          <input
+                            type="text"
+                            placeholder="Məsələn: Tibb, Təhsil, Mebel"
+                            value={business}
+                            onChange={(e) => setBusiness(e.target.value)}
+                            style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.85rem' }}
+                          />
+                        </div>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.siteTypeLabel}</label>
+                          <select
+                            value={siteType}
+                            onChange={(e) => setSiteType(e.target.value)}
+                            style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.85rem' }}
+                          >
+                            {t.services.items.map((srv) => (
+                              <option key={srv.id} value={srv.title}>{srv.title}</option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--text-sub)', marginBottom: '4px' }}>{t.contact.messageLabel}</label>
+                        <textarea
+                          rows={3}
+                          placeholder="Saytınızda olmasını istədiyiniz əsas məqamlar..."
+                          value={message}
+                          onChange={(e) => setMessage(e.target.value)}
+                          style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', background: 'var(--bg-input)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.85rem', resize: 'none' }}
+                        />
+                      </div>
+
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        style={{
+                          background: 'var(--accent-blue)',
+                          color: 'white',
+                          border: 'none',
+                          padding: '14px',
+                          borderRadius: '10px',
+                          fontWeight: 700,
+                          fontSize: '0.9rem',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: '8px',
+                          boxShadow: '0 6px 20px var(--accent-glow)'
+                        }}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 size={16} className="animate-spin" />
+                            <span>{t.contact.submitting}</span>
+                          </>
+                        ) : (
+                          <>
+                            <Send size={16} />
+                            <span>{t.contact.submitBtn}</span>
+                          </>
+                        )}
+                      </button>
+                    </form>
+                  ) : (
+                    <div style={{ textAlign: 'center', padding: '30px 10px' }}>
+                      <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'var(--accent-glow)', color: 'var(--accent-blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
+                        <CheckCircle2 size={28} />
+                      </div>
+                      <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '6px' }}>{t.contact.successTitle}</h3>
+                      <p style={{ color: 'var(--text-sub)', fontSize: '0.85rem', marginBottom: '18px' }}>
+                        {t.contact.successDesc}
+                      </p>
+                      <button
+                        onClick={handleWhatsAppSend}
+                        style={{ background: 'var(--accent-blue)', color: 'white', border: 'none', padding: '12px 20px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontSize: '0.85rem' }}
+                      >
+                        {t.contact.confirmWhatsApp}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
       )}
 
       {/* Footer */}
