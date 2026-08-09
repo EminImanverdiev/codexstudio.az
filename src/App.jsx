@@ -764,7 +764,7 @@ export default function App() {
   const [initialLoading, setInitialLoading] = useState(true)
   const [initialProgress, setInitialProgress] = useState(0)
   const [lang, setLang] = useState(() => localStorage.getItem('codex_lang') || 'az')
-  const [theme, setTheme] = useState(() => localStorage.getItem('codex_theme') || 'dark')
+  const [theme, setTheme] = useState(() => localStorage.getItem('codex_theme_v2') || 'dark')
   const [scrollProgress, setScrollProgress] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [heroTab, setHeroTab] = useState('landing')
@@ -854,7 +854,7 @@ export default function App() {
 
   useEffect(() => {
     document.body.classList.toggle('light-theme', theme === 'light')
-    localStorage.setItem('codex_theme', theme)
+    localStorage.setItem('codex_theme_v2', theme)
   }, [theme])
 
   useEffect(() => {
