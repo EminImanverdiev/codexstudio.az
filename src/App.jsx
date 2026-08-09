@@ -138,39 +138,39 @@ export default function App() {
   const works = [
     {
       id: '01',
-      name: 'Leyla Qasımova — Fizika və Elm Mərkəzi',
-      type: 'Müəllim / Şəxsi Brend üçün sayt',
-      desc: 'Təlim proqramları, video dərslər, tələbə rəyləri və birbaşa sınaq dərsinə qeydiyyat toplayan şəxsi brend platforması.',
-      isLive: true,
-      liveUrl: 'https://leylagasimova.az',
-      tags: ['Şəxsi brend', 'Kurs qeydiyyatı', 'Video təqdimat', 'WhatsApp inteqrasiyası']
+      name: 'Sinaps Med — Tibbi Avadanlıq & Səhiyyə Şirkəti',
+      type: 'Tibbi & Korporativ Veb Portal',
+      desc: 'Tibbi avadanlıqlar, ginekoloji və klinik məhsullar, beynəlxalq distribütorluq və tərəfdaşlar üçün geniş korporativ veb platforma.',
+      url: 'https://sinapsmed.com',
+      displayUrl: 'sinapsmed.com',
+      tags: ['Tibbi avadanlıq', 'Məhsul kataloqu', 'Korporativ struktur', 'Partnyor əlaqələri']
     },
     {
       id: '02',
-      name: 'Vektor Logistics & Holding',
-      type: 'Korporativ B2B Şirkət Portalı',
-      desc: 'Beynəlxalq yükdaşıma, anbar xidmətləri və tərəfdaş şirkətlər üçün çoxsəhifəli, etibarlı korporativ veb portal.',
-      isLive: false,
-      demoUrl: 'vektor-holding.codexstudio.az',
-      tags: ['B2B korporativ', 'Xidmət kataloqu', 'Çoxdilli struktur', 'Sorğu sistemi']
+      name: 'Leyla Qasımova — Fizika və Elm Mərkəzi',
+      type: 'Müəllim / Şəxsi Brend üçün sayt',
+      desc: 'Təlim proqramları, video dərslər, tələbə nəticələri və birbaşa sınaq dərsinə qeydiyyat toplayan şəxsi brend platforması.',
+      url: 'https://leylagasimova.az',
+      displayUrl: 'leylagasimova.az',
+      tags: ['Şəxsi brend', 'Kurs qeydiyyatı', 'Video təqdimat', 'WhatsApp inteqrasiyası']
     },
     {
       id: '03',
-      name: 'Aura Home & Living',
-      type: 'E-commerce Onlayn Mağaza',
-      desc: 'İnteryer mebeli və ev aksessuarları üçün müasir məhsul vitrini, kateqoriya filtri, səbət və bank kartı ilə ödəniş axını.',
-      isLive: false,
-      demoUrl: 'aurahome.codexstudio.az',
-      tags: ['Onlayn mağaza', 'Səbət sistemi', 'Kartla ödəniş', 'Mobil optimizasiya']
+      name: 'Vektor Logistics & Holding',
+      type: 'Korporativ B2B Şirkət Portalı',
+      desc: 'Beynəlxalq yükdaşıma, anbar xidmətləri və tərəfdaş şirkətlər üçün çoxsəhifəli, etibarlı korporativ veb portal.',
+      url: 'https://vektor-holding.codexstudio.az',
+      displayUrl: 'vektor-holding.az',
+      tags: ['B2B korporativ', 'Xidmət kataloqu', 'Çoxdilli struktur', 'Sorğu sistemi']
     },
     {
       id: '04',
-      name: 'Medica Prime Estetik Klinika',
-      type: 'Xidmət biznesi üçün Landing Page',
-      desc: 'Estetik və stomatoloji xidmətlər üçün həkimlərin təqdimatı, pasiyent nəticələri və onlayn qəbula yazılma landing page-i.',
-      isLive: false,
-      demoUrl: 'medicaprime.codexstudio.az',
-      tags: ['Landing page', 'Onlayn qəbul', 'Həkim təqdimatı', 'Yüksək konversiya']
+      name: 'Aura Home & Living',
+      type: 'E-commerce Onlayn Mağaza',
+      desc: 'İnteryer mebeli və ev aksessuarları üçün müasir məhsul vitrini, kateqoriya filtri, səbət və bank kartı ilə ödəniş axını.',
+      url: 'https://aurahome.codexstudio.az',
+      displayUrl: 'aurahome.az',
+      tags: ['Onlayn mağaza', 'Səbət sistemi', 'Kartla ödəniş', 'Mobil optimizasiya']
     }
   ]
 
@@ -371,7 +371,7 @@ export default function App() {
         </div>
       )}
 
-      {/* 1. Hero Section (Clear, Human, Realistic Website Previews) */}
+      {/* 1. Hero Section */}
       <section id="hero" style={{ padding: '60px 0 70px' }}>
         <div className="container">
           <div className="hero-grid">
@@ -502,7 +502,7 @@ export default function App() {
                   <div style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#9CA6B5', background: '#080C14', padding: '3px 12px', borderRadius: '6px', border: '1px solid #162032' }}>
                     <span style={{ color: '#0066FF' }}>https://</span>
                     <span>
-                      {heroTab === 'landing' && 'medicaprime.az'}
+                      {heroTab === 'landing' && 'sinapsmed.com'}
                       {heroTab === 'corporate' && 'vektor-holding.az'}
                       {heroTab === 'ecommerce' && 'aurahome.az'}
                     </span>
@@ -513,14 +513,14 @@ export default function App() {
                 <div style={{ padding: '24px', background: 'linear-gradient(180deg, #080C14 0%, #0D121D 100%)', minHeight: '260px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   {heroTab === 'landing' && (
                     <div>
-                      <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '6px' }}>ESTETİK & STOMATOLOJİ KLİNİKA</div>
-                      <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Gözəl və sağlam təbəssümünüzü bizə etibar edin.</h3>
+                      <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: '#0066FF', marginBottom: '6px' }}>TİBBİ AVADANLIQ & SƏHİYYƏ</div>
+                      <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Sinaps Med — Tibbi Avadanlıq və Klinik Həllər.</h3>
                       <p style={{ fontSize: '0.85rem', color: '#9CA6B5', lineHeight: 1.6, marginBottom: '18px' }}>
-                        Peşəkar həkim heyəti və müasir avadanlıqlarla xidmətinizdəyik.
+                        Beynəlxalq tibbi avadanlıqlar, distribütorluq və səhiyyə müəssisələri üçün korporativ veb portal.
                       </p>
                       <div style={{ display: 'flex', gap: '8px' }}>
-                        <a href="#contact" style={{ background: '#0066FF', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>Qəbula yazılın →</a>
-                        <span style={{ background: '#162032', color: '#9CA6B5', padding: '8px 14px', borderRadius: '8px', fontSize: '0.78rem' }}>Həkimlər</span>
+                        <a href="https://sinapsmed.com" target="_blank" rel="noopener noreferrer" style={{ background: '#0066FF', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600, textDecoration: 'none' }}>Sayta baxın →</a>
+                        <span style={{ background: '#162032', color: '#9CA6B5', padding: '8px 14px', borderRadius: '8px', fontSize: '0.78rem' }}>Məhsul kataloqu</span>
                       </div>
                     </div>
                   )}
@@ -716,7 +716,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 5. Works / Portfolio Section */}
+      {/* 5. Works / Portfolio Section (With Sinaps Med & Leyla Qasımova) */}
       <section id="works" style={{ padding: '80px 0', borderTop: '1px solid #162032' }}>
         <div className="container">
           <div style={{ maxWidth: '640px', marginBottom: '40px' }}>
@@ -744,8 +744,8 @@ export default function App() {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
                   <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: '#0066FF', fontWeight: 'bold' }}>0{idx + 1}</span>
-                  <span style={{ fontSize: '0.65rem', fontFamily: 'monospace', padding: '2px 6px', borderRadius: '4px', background: w.isLive ? 'rgba(16, 185, 129, 0.15)' : '#080C14', color: w.isLive ? '#10B981' : '#9CA6B5' }}>
-                    {w.isLive ? 'Real layihə' : 'Demo layihə'}
+                  <span style={{ fontSize: '0.68rem', fontFamily: 'monospace', padding: '2px 8px', borderRadius: '4px', background: '#05070B', color: '#10B981', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
+                    {w.displayUrl}
                   </span>
                 </div>
                 <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '4px' }}>{w.name}</h4>
@@ -768,25 +768,31 @@ export default function App() {
                     </span>
                   ))}
                 </div>
-                <div>
-                  {currentWork.isLive ? (
-                    <a href={currentWork.liveUrl} target="_blank" rel="noopener noreferrer" style={{ background: '#0066FF', color: 'white', padding: '10px 20px', borderRadius: '8px', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                      <span>Canlı baxış</span>
-                      <ExternalLink size={14} />
-                    </a>
-                  ) : (
-                    <a href="#contact" style={{ background: '#0066FF', color: 'white', padding: '10px 20px', borderRadius: '8px', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                      <span>Bənzər sayt sifariş et</span>
-                      <ArrowUpRight size={14} />
-                    </a>
-                  )}
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  <a
+                    href={currentWork.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ background: '#0066FF', color: 'white', padding: '10px 20px', borderRadius: '8px', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                  >
+                    <span>Sayta baxın</span>
+                    <ExternalLink size={14} />
+                  </a>
+
+                  <a
+                    href="#contact"
+                    style={{ background: '#05070B', border: '1px solid #162032', color: '#F5F7FA', padding: '10px 18px', borderRadius: '8px', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                  >
+                    <span>Bənzər sayt sifariş et</span>
+                    <ArrowUpRight size={14} />
+                  </a>
                 </div>
               </div>
 
               <div style={{ background: '#05070B', border: '1px solid #162032', borderRadius: '16px', padding: '20px', minHeight: '220px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #162032', paddingBottom: '8px' }}>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700 }}>{currentWork.name}</span>
-                  <span style={{ fontSize: '0.68rem', color: '#0066FF', fontFamily: 'monospace' }}>codexstudio.az</span>
+                  <span style={{ fontSize: '0.68rem', color: '#0066FF', fontFamily: 'monospace' }}>{currentWork.displayUrl}</span>
                 </div>
                 <div style={{ margin: '20px 0' }}>
                   <h5 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '6px' }}>{currentWork.type}</h5>
@@ -834,7 +840,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 7. Objection-Removal Section (High Conversion) */}
+      {/* 7. Objection-Removal Section */}
       <section style={{ padding: '60px 0', borderTop: '1px solid #162032' }}>
         <div className="container">
           <div style={{ background: 'linear-gradient(180deg, #080C14 0%, #0D121D 100%)', border: '1px solid rgba(0, 102, 255, 0.3)', borderRadius: '24px', padding: '36px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', alignItems: 'center' }}>
