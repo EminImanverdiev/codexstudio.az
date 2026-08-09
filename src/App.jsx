@@ -1797,18 +1797,17 @@ export default function App() {
                     <MapPin size={16} color="var(--accent-blue)" />
                     <span>Xəritədə yerləşməmiz: Bakı, Azərbaycan</span>
                   </div>
-                  <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--text-sub)' }}>010 601 12 01</span>
+                  <a href="https://maps.google.com/?q=Baku,+Azerbaijan" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.78rem', color: 'var(--accent-blue)', textDecoration: 'none', fontWeight: 600 }}>Google Maps-də aç →</a>
                 </div>
-                <div style={{ width: '100%', height: '340px' }}>
+                <div style={{ width: '100%', height: '380px', background: 'var(--bg-card)' }}>
                   <iframe
                     title="Google Maps Baku Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194473.42999496733!2d49.69014902143493!3d40.39473700767137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d6bd6211cf9%3A0x343f6b5e7ae56c6b!2sBaku%2C%20Azerbaijan!5e0!3m2!1sen!2saz!4v1700000000000!5m2!1sen!2saz"
+                    src="https://maps.google.com/maps?q=Baku%20city%20center%20Azerbaijan&t=&z=14&ie=UTF8&iwloc=&output=embed"
                     width="100%"
                     height="100%"
-                    style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%)' }}
-                    allowFullScreen={false}
+                    style={{ border: 0 }}
+                    allowFullScreen={true}
                     loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
               </div>
