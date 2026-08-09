@@ -1333,78 +1333,114 @@ export default function App() {
         </div>
       </header>
 
-      {/* Mobile Drawer with Language & Theme Controls */}
+      {/* Mobile Drawer with Clean Modern Design */}
       {mobileMenuOpen && (
         <div style={{
           position: 'fixed',
           inset: 0,
           zIndex: 105,
           background: 'var(--bg-page)',
-          padding: '24px 20px',
+          padding: '20px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
           overflowY: 'auto'
         }}>
-          {/* Mobile Top Header row */}
           <div>
+            {/* Mobile Top Header row */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--border-color)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <img src="/logo.png" alt="CodeX Studio" style={{ width: '28px', height: '28px', borderRadius: '8px' }} />
-                <span style={{ fontWeight: 800, fontSize: '1.1rem' }}>Code<span style={{ color: 'var(--accent-blue)' }}>X</span> Studio</span>
+                <span style={{ fontWeight: 800, fontSize: '1.08rem' }}>Code<span style={{ color: 'var(--accent-blue)' }}>X</span> Studio</span>
               </div>
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(false)}
-                style={{ padding: '8px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', cursor: 'pointer' }}
-              >
-                <X size={20} />
-              </button>
-            </div>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                {/* Language Switcher */}
+                <div style={{ display: 'flex', padding: '2px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '8px' }}>
+                  <button
+                    type="button"
+                    onClick={() => changeLanguage('az')}
+                    style={{ padding: '6px 10px', borderRadius: '6px', border: 'none', background: lang === 'az' ? 'var(--accent-blue)' : 'transparent', color: lang === 'az' ? 'white' : 'var(--text-sub)', fontSize: '0.78rem', fontWeight: 700, cursor: 'pointer' }}
+                  >
+                    AZ
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => changeLanguage('en')}
+                    style={{ padding: '6px 10px', borderRadius: '6px', border: 'none', background: lang === 'en' ? 'var(--accent-blue)' : 'transparent', color: lang === 'en' ? 'white' : 'var(--text-sub)', fontSize: '0.78rem', fontWeight: 700, cursor: 'pointer' }}
+                  >
+                    EN
+                  </button>
+                </div>
 
-            {/* Language & Theme in Drawer */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 0', borderBottom: '1px solid var(--border-color)' }}>
-              <div style={{ display: 'flex', padding: '4px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '10px' }}>
+                {/* Theme icon only */}
                 <button
                   type="button"
-                  onClick={() => changeLanguage('az')}
-                  style={{ padding: '8px 18px', borderRadius: '8px', border: 'none', background: lang === 'az' ? 'var(--accent-blue)' : 'transparent', color: lang === 'az' ? 'white' : 'var(--text-sub)', fontSize: '0.88rem', fontWeight: 'bold', cursor: 'pointer' }}
+                  onClick={toggleTheme}
+                  style={{ padding: '7px 9px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-sub)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  aria-label="Rejimi dəyiş"
                 >
-                  AZ (Azərbaycan)
+                  {theme === 'dark' ? <Sun size={16} color="#FFBD2E" /> : <Moon size={16} color="var(--accent-blue)" />}
                 </button>
+
+                {/* Close Button */}
                 <button
                   type="button"
-                  onClick={() => changeLanguage('en')}
-                  style={{ padding: '8px 18px', borderRadius: '8px', border: 'none', background: lang === 'en' ? 'var(--accent-blue)' : 'transparent', color: lang === 'en' ? 'white' : 'var(--text-sub)', fontSize: '0.88rem', fontWeight: 'bold', cursor: 'pointer' }}
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{ padding: '7px 9px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  aria-label="Bağla"
                 >
-                  EN (English)
+                  <X size={18} />
                 </button>
               </div>
-
-              <button
-                type="button"
-                onClick={toggleTheme}
-                style={{ padding: '8px 14px', borderRadius: '10px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-sub)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', fontWeight: 600 }}
-              >
-                {theme === 'dark' ? <><Sun size={16} color="#FFBD2E" /> <span>Light</span></> : <><Moon size={16} color="var(--accent-blue)" /> <span>Dark</span></>}
-              </button>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', paddingTop: '16px' }}>
-              <button type="button" onClick={() => navigateTo('home')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)', cursor: 'pointer' }}>01. {t.nav.home}</button>
-              <button type="button" onClick={() => navigateTo('services')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)', cursor: 'pointer' }}>02. {t.nav.services}</button>
-              <button type="button" onClick={() => navigateTo('works')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)', cursor: 'pointer' }}>03. {t.nav.works}</button>
-              <button type="button" onClick={() => navigateTo('about')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)', cursor: 'pointer' }}>04. {t.nav.about}</button>
-              <button type="button" onClick={() => navigateTo('faq')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)', cursor: 'pointer' }}>05. {t.nav.faq}</button>
-              <button type="button" onClick={() => navigateTo('contact')} style={{ background: 'none', border: 'none', textAlign: 'left', color: 'var(--text-main)', fontSize: '1.15rem', padding: '12px 0', borderBottom: '1px solid var(--border-color)', cursor: 'pointer' }}>06. {t.nav.contact}</button>
+            {/* Clean Mobile Menu Items (No 01, 02 numbers, modern cards) */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', paddingTop: '16px' }}>
+              {[
+                { route: 'home', label: t.nav.home },
+                { route: 'services', label: t.nav.services },
+                { route: 'works', label: t.nav.works },
+                { route: 'about', label: t.nav.about },
+                { route: 'faq', label: t.nav.faq },
+                { route: 'contact', label: t.nav.contact }
+              ].map((item) => {
+                const isActive = currentRoute === item.route
+                return (
+                  <button
+                    key={item.route}
+                    type="button"
+                    onClick={() => navigateTo(item.route)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      width: '100%',
+                      padding: '13px 14px',
+                      borderRadius: '12px',
+                      border: `1px solid ${isActive ? 'rgba(0, 102, 255, 0.35)' : 'transparent'}`,
+                      background: isActive ? 'var(--bg-card)' : 'transparent',
+                      color: isActive ? 'var(--accent-blue)' : 'var(--text-main)',
+                      fontSize: '1.02rem',
+                      fontWeight: isActive ? 700 : 600,
+                      textAlign: 'left',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s ease'
+                    }}
+                  >
+                    <span>{item.label}</span>
+                    <ChevronRight size={16} color={isActive ? 'var(--accent-blue)' : 'var(--text-muted)'} />
+                  </button>
+                )
+              })}
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '24px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingTop: '20px' }}>
             <button
               type="button"
               onClick={() => navigateTo('contact')}
-              style={{ background: 'var(--accent-blue)', color: 'white', padding: '14px', borderRadius: '12px', textAlign: 'center', fontWeight: 600, border: 'none', fontSize: '0.95rem', cursor: 'pointer' }}
+              style={{ background: 'var(--accent-blue)', color: 'white', padding: '14px', borderRadius: '12px', textAlign: 'center', fontWeight: 700, border: 'none', fontSize: '0.92rem', cursor: 'pointer', boxShadow: '0 4px 14px var(--accent-glow)' }}
             >
               {t.hero.primaryBtn} →
             </button>
@@ -1412,9 +1448,10 @@ export default function App() {
               href="https://wa.me/994106011201"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', padding: '14px', borderRadius: '12px', textAlign: 'center', fontWeight: 600, textDecoration: 'none', fontSize: '0.95rem' }}
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', padding: '13px', borderRadius: '12px', textAlign: 'center', fontWeight: 600, textDecoration: 'none', fontSize: '0.9rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
             >
-              WhatsApp: 010 601 12 01
+              <MessageCircle size={16} color="var(--accent-blue)" />
+              <span>WhatsApp: 010 601 12 01</span>
             </a>
           </div>
         </div>
@@ -1854,28 +1891,26 @@ export default function App() {
       {/* ======================================================== */}
       {currentRoute === 'services' && (
         <>
-          <div style={{ position: 'relative', padding: '70px 0 50px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
+          <div style={{ position: 'relative', padding: '60px 0 45px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
             <TechCanvas />
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', fontSize: '0.82rem' }}>
                 <button
-                  onClick={goBack}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
+                  type="button"
+                  onClick={() => navigateTo('home')}
+                  style={{ background: 'none', border: 'none', padding: 0, color: 'var(--accent-blue)', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}
                 >
                   <ArrowLeft size={14} />
-                  <span>{t.nav.back}</span>
+                  <span>{t.nav.home}</span>
                 </button>
-                <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', fontFamily: 'monospace' }}>
-                  <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
-                  <span style={{ color: 'var(--accent-blue)' }}>»</span>
-                  <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.services}</span>
-                </div>
+                <span style={{ color: 'var(--text-muted)' }}>/</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.services}</span>
               </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
                 {t.services.badge}
               </span>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.services.title}</h1>
-              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>{t.services.desc}</p>
+              <h1 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '12px' }}>{t.services.title}</h1>
+              <p style={{ color: 'var(--text-sub)', fontSize: '0.95rem', lineHeight: 1.6, maxWidth: '680px' }}>{t.services.desc}</p>
             </div>
           </div>
 
@@ -1925,30 +1960,26 @@ export default function App() {
       {/* ======================================================== */}
       {currentRoute === 'service-detail' && (
         <>
-          <div style={{ position: 'relative', padding: '70px 0 50px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
+          <div style={{ position: 'relative', padding: '60px 0 45px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
             <TechCanvas />
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', fontSize: '0.82rem' }}>
                 <button
-                  onClick={goBack}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
+                  type="button"
+                  onClick={() => navigateTo('services')}
+                  style={{ background: 'none', border: 'none', padding: 0, color: 'var(--accent-blue)', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}
                 >
                   <ArrowLeft size={14} />
-                  <span>{t.nav.back}</span>
+                  <span>{t.nav.services}</span>
                 </button>
-                <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', fontFamily: 'monospace' }}>
-                  <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
-                  <span style={{ color: 'var(--accent-blue)' }}>»</span>
-                  <span onClick={() => navigateTo('services')} style={{ cursor: 'pointer' }}>{t.nav.services}</span>
-                  <span style={{ color: 'var(--accent-blue)' }}>»</span>
-                  <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{currentServiceDetail.title}</span>
-                </div>
+                <span style={{ color: 'var(--text-muted)' }}>/</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{currentServiceDetail.title}</span>
               </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
                 {t.services.badge}
               </span>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{currentServiceDetail.title}</h1>
-              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>{currentServiceDetail.shortDesc}</p>
+              <h1 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '12px' }}>{currentServiceDetail.title}</h1>
+              <p style={{ color: 'var(--text-sub)', fontSize: '0.95rem', lineHeight: 1.6, maxWidth: '680px' }}>{currentServiceDetail.shortDesc}</p>
             </div>
           </div>
 
@@ -2103,28 +2134,26 @@ export default function App() {
       {/* ======================================================== */}
       {currentRoute === 'works' && (
         <>
-          <div style={{ position: 'relative', padding: '70px 0 50px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
+          <div style={{ position: 'relative', padding: '60px 0 45px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
             <TechCanvas />
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', fontSize: '0.82rem' }}>
                 <button
-                  onClick={goBack}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
+                  type="button"
+                  onClick={() => navigateTo('home')}
+                  style={{ background: 'none', border: 'none', padding: 0, color: 'var(--accent-blue)', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}
                 >
                   <ArrowLeft size={14} />
-                  <span>{t.nav.back}</span>
+                  <span>{t.nav.home}</span>
                 </button>
-                <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', fontFamily: 'monospace' }}>
-                  <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
-                  <span style={{ color: 'var(--accent-blue)' }}>»</span>
-                  <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.works}</span>
-                </div>
+                <span style={{ color: 'var(--text-muted)' }}>/</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.works}</span>
               </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
                 {t.works.badge}
               </span>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.works.title}</h1>
-              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>{t.works.desc}</p>
+              <h1 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '12px' }}>{t.works.title}</h1>
+              <p style={{ color: 'var(--text-sub)', fontSize: '0.95rem', lineHeight: 1.6, maxWidth: '680px' }}>{t.works.desc}</p>
             </div>
           </div>
 
@@ -2176,28 +2205,26 @@ export default function App() {
       {/* ======================================================== */}
       {currentRoute === 'about' && (
         <>
-          <div style={{ position: 'relative', padding: '70px 0 50px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
+          <div style={{ position: 'relative', padding: '60px 0 45px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
             <TechCanvas />
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', fontSize: '0.82rem' }}>
                 <button
-                  onClick={goBack}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
+                  type="button"
+                  onClick={() => navigateTo('home')}
+                  style={{ background: 'none', border: 'none', padding: 0, color: 'var(--accent-blue)', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}
                 >
                   <ArrowLeft size={14} />
-                  <span>{t.nav.back}</span>
+                  <span>{t.nav.home}</span>
                 </button>
-                <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', fontFamily: 'monospace' }}>
-                  <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
-                  <span style={{ color: 'var(--accent-blue)' }}>»</span>
-                  <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.about}</span>
-                </div>
+                <span style={{ color: 'var(--text-muted)' }}>/</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.about}</span>
               </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
                 {t.about.badge}
               </span>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '16px' }}>{t.about.title}</h1>
-              <p style={{ fontSize: '1.05rem', color: 'var(--text-main)', lineHeight: 1.6, maxWidth: '680px' }}>
+              <h1 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '16px' }}>{t.about.title}</h1>
+              <p style={{ fontSize: '1rem', color: 'var(--text-main)', lineHeight: 1.6, maxWidth: '680px' }}>
                 {t.about.desc}
               </p>
             </div>
@@ -2236,28 +2263,26 @@ export default function App() {
       {/* ======================================================== */}
       {currentRoute === 'faq' && (
         <>
-          <div style={{ position: 'relative', padding: '70px 0 50px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
+          <div style={{ position: 'relative', padding: '60px 0 45px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
             <TechCanvas />
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', fontSize: '0.82rem' }}>
                 <button
-                  onClick={goBack}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
+                  type="button"
+                  onClick={() => navigateTo('home')}
+                  style={{ background: 'none', border: 'none', padding: 0, color: 'var(--accent-blue)', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}
                 >
                   <ArrowLeft size={14} />
-                  <span>{t.nav.back}</span>
+                  <span>{t.nav.home}</span>
                 </button>
-                <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', fontFamily: 'monospace' }}>
-                  <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
-                  <span style={{ color: 'var(--accent-blue)' }}>»</span>
-                  <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.faq}</span>
-                </div>
+                <span style={{ color: 'var(--text-muted)' }}>/</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.faq}</span>
               </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
                 {t.faq.badge}
               </span>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.faq.title}</h1>
-              <p style={{ color: 'var(--text-sub)', fontSize: '1rem', lineHeight: 1.6, maxWidth: '680px' }}>{t.faq.desc}</p>
+              <h1 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '12px' }}>{t.faq.title}</h1>
+              <p style={{ color: 'var(--text-sub)', fontSize: '0.95rem', lineHeight: 1.6, maxWidth: '680px' }}>{t.faq.desc}</p>
             </div>
           </div>
 
@@ -2292,27 +2317,25 @@ export default function App() {
       {/* ======================================================== */}
       {currentRoute === 'contact' && (
         <>
-          <div style={{ position: 'relative', padding: '70px 0 50px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
+          <div style={{ position: 'relative', padding: '60px 0 45px', backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
             <TechCanvas />
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', fontSize: '0.82rem' }}>
                 <button
-                  onClick={goBack}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '6px 12px', borderRadius: '8px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-main)', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer' }}
+                  type="button"
+                  onClick={() => navigateTo('home')}
+                  style={{ background: 'none', border: 'none', padding: 0, color: 'var(--accent-blue)', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}
                 >
                   <ArrowLeft size={14} />
-                  <span>{t.nav.back}</span>
+                  <span>{t.nav.home}</span>
                 </button>
-                <div style={{ display: 'flex', gap: '6px', fontSize: '0.78rem', color: 'var(--text-sub)', fontFamily: 'monospace' }}>
-                  <span onClick={() => navigateTo('home')} style={{ cursor: 'pointer' }}>{t.nav.home}</span>
-                  <span style={{ color: 'var(--accent-blue)' }}>»</span>
-                  <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.contact}</span>
-                </div>
+                <span style={{ color: 'var(--text-muted)' }}>/</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{t.nav.contact}</span>
               </div>
               <span style={{ fontSize: '0.72rem', fontFamily: 'monospace', color: 'var(--accent-blue)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
                 {t.contact.badge}
               </span>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '12px' }}>{t.contact.title}</h1>
+              <h1 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '12px' }}>{t.contact.title}</h1>
               <p style={{ color: 'var(--text-sub)', fontSize: '0.95rem', maxWidth: '680px', lineHeight: 1.6 }}>
                 {t.contact.desc}
               </p>
