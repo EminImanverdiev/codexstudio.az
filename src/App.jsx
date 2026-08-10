@@ -4,7 +4,7 @@ import {
   Zap, Smartphone, CheckCircle2, ChevronDown, X, Sun, Moon,
   Mail, ExternalLink, Loader2, ArrowUpRight, ShieldCheck, Menu,
   Code2, Palette, Headphones, Search, Phone, ChevronLeft, ChevronRight,
-  MapPin, Check, ArrowLeft
+  MapPin, Check, ArrowLeft, Bot
 } from 'lucide-react'
 
 // Animated Interactive Tech Canvas
@@ -613,8 +613,18 @@ const translations = {
       successDesc: 'Məlumatlar email poçtuna çatdırıldı.',
       confirmWhatsApp: 'WhatsApp ilə təsdiqləyin',
       mapTitle: 'Xəritədə yerləşməmiz: Bakı, Azərbaycan',
-      openMaps: 'Google Maps-də aç →',
       captchaError: 'Zəhmət olmasa "Mən robot deyiləm" xanasını təsdiqləyin.'
+    },
+    chatbot: {
+      title: 'Codex AI Köməkçi',
+      status: 'Aktiv • Cavab verməyə hazırdır',
+      welcome: 'Salam! Codex Studio-ya xoş gəlmisiniz. Biznesiniz üçün hansı növ sayt hazırlamaq istəyirsiniz?',
+      placeholder: 'Sualınızı yazın...',
+      typing: 'Yazır...',
+      quick1: '⏱️ Layihə müddəti nə qədərdir?',
+      quick2: '💰 Qiymət necə hesablanır?',
+      quick3: '📱 Mobil telefonlara uyğundurmu?',
+      quick4: '📩 Birbaşa email ilə əlaqə'
     },
     footer: {
       rights: '© 2026 Codex Studio. Bütün hüquqlar qorunur.'
@@ -748,8 +758,18 @@ const translations = {
       successDesc: 'Your details have been delivered to our inbox.',
       confirmWhatsApp: 'Confirm via WhatsApp',
       mapTitle: 'Location on map: Baku, Azerbaijan',
-      openMaps: 'Open in Google Maps →',
       captchaError: 'Please check "I am not a robot" box.'
+    },
+    chatbot: {
+      title: 'Codex AI Assistant',
+      status: 'Online • Ready to assist',
+      welcome: 'Hello! Welcome to Codex Studio. What kind of website or web solution do you need for your business?',
+      placeholder: 'Type your question...',
+      typing: 'Typing...',
+      quick1: '⏱️ How long does a project take?',
+      quick2: '💰 How is pricing calculated?',
+      quick3: '📱 Is it fully mobile responsive?',
+      quick4: '📩 Direct email contact'
     },
     footer: {
       rights: '© 2026 Codex Studio. All rights reserved.'
@@ -784,6 +804,23 @@ export default function App() {
   const [captchaError, setCaptchaError] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+
+  // Chatbot State
+  const [isChatOpen, setIsChatOpen] = useState(false)
+  const [chatUnread, setChatUnread] = useState(1)
+  const [chatInput, setChatInput] = useState('')
+  const [isChatTyping, setIsChatTyping] = useState(false)
+  const [chatMessages, setChatMessages] = useState([
+    {
+      id: 'welcome',
+      sender: 'bot',
+      text: lang === 'az'
+        ? 'Salam! Codex Studio-ya xoş gəlmisiniz. Biznesiniz üçün hansı növ sayt hazırlamaq istəyirsiniz?'
+        : 'Hello! Welcome to Codex Studio. What kind of website solution do you need for your business?',
+      time: 'İndi'
+    }
+  ])
+  const chatScrollRef = useRef(null)
 
   const t = translations[lang] || translations.az
   const currentServicesList = detailedServicesData[lang] || detailedServicesData.az
@@ -895,6 +932,120 @@ export default function App() {
   }
 
   // Smooth Navigation with Instant Top Scroll & History Push
+  // Chatbot Auto-Scroll
+  useEffect(() => {
+    if (isChatOpen) {
+      setChatUnread(0)
+      chatScrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [isChatOpen, chatMessages, isChatTyping])
+
+  const getBotResponse = (userInput) => {
+    const text = (userInput || '').toLowerCase()
+
+    if (lang === 'en') {
+      if (text.includes('time') || text.includes('long') || text.includes('duration') || text.includes('timeline') || text.includes('day')) {
+        return {
+          text: 'Project timeline depends on complexity: Landing pages are delivered in 2-4 days, while multi-page corporate and e-commerce platforms take 1-3 weeks.',
+          actionUrl: 'https://wa.me/994106011201?text=Hello%20Codex%20Studio!%20Inquiring%20about%20website%20timelines.',
+          actionLabel: 'Chat on WhatsApp →'
+        }
+      }
+      if (text.includes('price') || text.includes('cost') || text.includes('quote') || text.includes('budget')) {
+        return {
+          text: 'Pricing is calculated transparently based on website type (Landing page, Corporate, E-commerce), page count, and custom features.',
+          actionRoute: 'contact',
+          actionLabel: 'Get a proposal →'
+        }
+      }
+      if (text.includes('email') || text.includes('mail') || text.includes('contact')) {
+        return {
+          text: 'Official inquiries can be sent directly to emin.imanverdievv@gmail.com or via our inquiry form below!',
+          actionRoute: 'contact',
+          actionLabel: 'Open inquiry form →'
+        }
+      }
+      if (text.includes('mobile') || text.includes('responsive') || text.includes('phone')) {
+        return {
+          text: 'Yes, 100%! All websites we build are fully optimized for smartphones, tablets, and desktop screens with swift loading speeds.'
+        }
+      }
+      return {
+        text: 'Thank you for reaching out! To discuss your project details and get a customized proposal, contact our team directly on WhatsApp or submit the form.',
+        actionUrl: 'https://wa.me/994106011201?text=Hello%20Codex%20Studio,%20I%20would%20like%20to%20discuss%20a%20project.',
+        actionLabel: 'Connect on WhatsApp →'
+      }
+    }
+
+    // Azerbaijani Responses
+    if (text.includes('vaxt') || text.includes('müddət') || text.includes('neçə gün') || text.includes('nə qədər')) {
+      return {
+        text: 'Layihənin həcmindən asılı olaraq: Sadə bir səhifəlik (Landing page) saytlar 2-3 günə, korporativ şirkət saytları və onlayn mağazalar isə orta hesabla 1-3 həftəyə tam təhvil verilir.',
+        actionUrl: 'https://wa.me/994106011201?text=Salam.%20Layihənin%20hazırlanma%20müddəti%20ilə%20bağlı%20əlaqə%20saxlayıram.',
+        actionLabel: 'WhatsApp ilə danışaq →'
+      }
+    }
+
+    if (text.includes('qiymət') || text.includes('neçiyə') || text.includes('neçəyə') || text.includes('ödəniş') || text.includes('büdcə')) {
+      return {
+        text: 'Qiymət saytın növünə (Bir səhifəlik, Korporativ, E-ticarət və ya Fərdi sistemlər), səhifə sayına və funksionallığa görə şəffaf şəkildə hesablanır.',
+        actionRoute: 'contact',
+        actionLabel: 'Təklif al →'
+      }
+    }
+
+    if (text.includes('mobil') || text.includes('telefon') || text.includes('responsive')) {
+      return {
+        text: 'Bəli, 100%! Bütün hazırladığımız saytlar ilk növbədə smartfon və planşet ekranlarına tam uyğunlaşdırılır və bütün cihazlarda sürətli açılır.'
+      }
+    }
+
+    if (text.includes('email') || text.includes('məktub') || text.includes('poçt') || text.includes('əlaqə')) {
+      return {
+        text: 'Rəsmi müraciətlərinizi emin.imanverdievv@gmail.com ünvanına göndərə və ya saytdakı müraciət formunu doldura bilərsiniz.',
+        actionRoute: 'contact',
+        actionLabel: 'Əlaqə forması →'
+      }
+    }
+
+    return {
+      text: 'Məlumat üçün təşəkkür edirik! Layihənizin detallarını dərhal müzakirə etmək üçün WhatsApp ilə əlaqə saxlaya və ya müraciət formunu göndərə bilərsiniz.',
+      actionUrl: `https://wa.me/994106011201?text=${encodeURIComponent('Salam, Codex Studio! Sayt üzərindən yazıram: ' + userInput)}`,
+      actionLabel: 'WhatsApp ilə davam et →'
+    }
+  }
+
+  const handleSendChatMessage = (textToSend = null) => {
+    const messageText = textToSend || chatInput
+    if (!messageText || !messageText.trim()) return
+
+    const userMsg = {
+      id: Date.now().toString(),
+      sender: 'user',
+      text: messageText,
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    }
+
+    setChatMessages((prev) => [...prev, userMsg])
+    setChatInput('')
+    setIsChatTyping(true)
+
+    setTimeout(() => {
+      const response = getBotResponse(messageText)
+      const botMsg = {
+        id: (Date.now() + 1).toString(),
+        sender: 'bot',
+        text: response.text,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        actionUrl: response.actionUrl,
+        actionRoute: response.actionRoute,
+        actionLabel: response.actionLabel
+      }
+      setChatMessages((prev) => [...prev, botMsg])
+      setIsChatTyping(false)
+    }, 600)
+  }
+
   const navigateTo = (route, serviceSlug = null, pushHistory = true) => {
     if (serviceSlug) {
       setSelectedServiceSlug(serviceSlug)
@@ -2568,7 +2719,7 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Floating WhatsApp Button */}
+      {/* Floating WhatsApp Button (Left Side) */}
       <a
         href={`https://wa.me/994106011201?text=${encodeURIComponent('Salam. Biznesim üçün sayt hazırlatmaq istəyirəm. Ətraflı məlumat ala bilərəm?')}`}
         target="_blank"
@@ -2576,9 +2727,9 @@ export default function App() {
         style={{
           position: 'fixed',
           bottom: '20px',
-          right: '20px',
+          left: '20px',
           zIndex: 150,
-          background: 'var(--accent-blue)',
+          background: '#25D366',
           color: 'white',
           border: 'none',
           padding: '12px 18px',
@@ -2586,16 +2737,297 @@ export default function App() {
           display: 'flex',
           alignItems: 'center',
           gap: '8px',
-          boxShadow: '0 8px 24px var(--accent-glow)',
+          boxShadow: '0 8px 24px rgba(37, 211, 102, 0.35)',
           textDecoration: 'none',
           fontSize: '0.85rem',
-          fontWeight: 600
+          fontWeight: 700,
+          transition: 'all 0.2s ease',
+          cursor: 'pointer'
         }}
-        title="WhatsApp"
+        title="WhatsApp ilə əlaqə"
       >
         <MessageCircle size={18} />
         <span className="hidden sm:inline">WhatsApp</span>
       </a>
+
+      {/* Floating AI Chatbot (Right Side) */}
+      <div style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: 150 }}>
+        {/* Chat Trigger Button */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          {!isChatOpen && (
+            <button
+              onClick={() => setIsChatOpen(true)}
+              style={{
+                display: 'none',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 14px',
+                borderRadius: '999px',
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border-color)',
+                fontSize: '0.78rem',
+                color: 'var(--text-sub)',
+                boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
+                cursor: 'pointer'
+              }}
+              className="hidden md:flex"
+            >
+              <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-blue)', display: 'inline-block' }} />
+              <span>{t.chatbot.title}</span>
+            </button>
+          )}
+
+          <button
+            onClick={() => setIsChatOpen(!isChatOpen)}
+            style={{
+              position: 'relative',
+              width: '52px',
+              height: '52px',
+              borderRadius: '16px',
+              background: 'var(--accent-blue)',
+              color: 'white',
+              border: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 8px 24px var(--accent-glow)',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }}
+            aria-label="Codex AI Çat"
+          >
+            {isChatOpen ? <X size={22} /> : <Bot size={24} />}
+            {!isChatOpen && chatUnread > 0 && (
+              <span
+                style={{
+                  position: 'absolute',
+                  top: '-4px',
+                  right: '-4px',
+                  width: '18px',
+                  height: '18px',
+                  borderRadius: '50%',
+                  background: '#FF3B30',
+                  color: 'white',
+                  fontSize: '10px',
+                  fontWeight: 'bold',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '2px solid var(--bg-page)'
+                }}
+              >
+                {chatUnread}
+              </span>
+            )}
+          </button>
+        </div>
+
+        {/* Chat Dialog Window */}
+        {isChatOpen && (
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '64px',
+              right: 0,
+              width: 'calc(100vw - 32px)',
+              maxWidth: '380px',
+              height: '490px',
+              maxHeight: '80vh',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-color)',
+              borderRadius: '20px',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.7)',
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'hidden',
+              animation: 'fadeIn 0.2s ease-out'
+            }}
+          >
+            {/* Header */}
+            <div style={{ padding: '14px 16px', background: 'var(--bg-page)', borderBottom: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ position: 'relative', width: '34px', height: '34px', borderRadius: '10px', background: 'var(--bg-card)', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-blue)' }}>
+                  <Bot size={18} />
+                  <span style={{ position: 'absolute', bottom: '-1px', right: '-1px', width: '8px', height: '8px', borderRadius: '50%', background: '#10B981', border: '2px solid var(--bg-card)' }} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span>{t.chatbot.title}</span>
+                    <span style={{ fontSize: '0.65rem', fontFamily: 'monospace', color: 'var(--accent-blue)', background: 'var(--bg-surface)', padding: '1px 6px', borderRadius: '4px' }}>Online</span>
+                  </div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-sub)' }}>{t.chatbot.status}</div>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsChatOpen(false)}
+                style={{ background: 'none', border: 'none', color: 'var(--text-sub)', cursor: 'pointer', padding: '4px' }}
+                aria-label="Bağla"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Messages Scroll Area */}
+            <div style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px', background: 'var(--bg-card)' }}>
+              {chatMessages.map((msg) => {
+                const isUser = msg.sender === 'user'
+                return (
+                  <div key={msg.id} style={{ display: 'flex', flexDirection: 'column', alignItems: isUser ? 'flex-end' : 'flex-start' }}>
+                    <div
+                      style={{
+                        maxWidth: '85%',
+                        padding: '10px 14px',
+                        borderRadius: isUser ? '14px 14px 2px 14px' : '14px 14px 14px 2px',
+                        background: isUser ? 'var(--accent-blue)' : 'var(--bg-surface)',
+                        color: isUser ? 'white' : 'var(--text-main)',
+                        border: isUser ? 'none' : '1px solid var(--border-color)',
+                        fontSize: '0.82rem',
+                        lineHeight: 1.5
+                      }}
+                    >
+                      <div>{msg.text}</div>
+                      {msg.actionUrl && (
+                        <div style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+                          <a
+                            href={msg.actionUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                              fontSize: '0.75rem',
+                              fontWeight: 700,
+                              color: 'var(--accent-blue)',
+                              background: 'var(--bg-page)',
+                              padding: '5px 10px',
+                              borderRadius: '6px',
+                              textDecoration: 'none',
+                              border: '1px solid var(--border-color)'
+                            }}
+                          >
+                            <span>{msg.actionLabel || 'Keçid et'}</span>
+                            <ArrowRight size={12} />
+                          </a>
+                        </div>
+                      )}
+                      {msg.actionRoute && (
+                        <div style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+                          <button
+                            onClick={() => {
+                              setIsChatOpen(false)
+                              navigateTo(msg.actionRoute)
+                            }}
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                              fontSize: '0.75rem',
+                              fontWeight: 700,
+                              color: 'white',
+                              background: 'var(--accent-blue)',
+                              padding: '5px 10px',
+                              borderRadius: '6px',
+                              border: 'none',
+                              cursor: 'pointer'
+                            }}
+                          >
+                            <span>{msg.actionLabel || 'Forma bax'}</span>
+                            <ArrowRight size={12} />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                    <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', marginTop: '3px', padding: '0 4px', fontFamily: 'monospace' }}>
+                      {msg.time}
+                    </span>
+                  </div>
+                )
+              })}
+
+              {/* Typing Indicator */}
+              {isChatTyping && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 12px', borderRadius: '12px', background: 'var(--bg-surface)', border: '1px solid var(--border-color)', width: 'fit-content', fontSize: '0.75rem', color: 'var(--text-sub)' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-blue)' }} />
+                  <span>{t.chatbot.typing}</span>
+                </div>
+              )}
+
+              <div ref={chatScrollRef} />
+            </div>
+
+            {/* Quick Prompts */}
+            <div style={{ padding: '8px 12px', background: 'var(--bg-page)', borderTop: '1px solid var(--border-color)', display: 'flex', gap: '6px', overflowX: 'auto', whiteSpace: 'nowrap' }}>
+              {[t.chatbot.quick1, t.chatbot.quick2, t.chatbot.quick3, t.chatbot.quick4].map((q, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleSendChatMessage(q.replace(/^[^\s]+\s/, ''))}
+                  style={{
+                    fontSize: '0.72rem',
+                    fontWeight: 500,
+                    color: 'var(--text-sub)',
+                    background: 'var(--bg-card)',
+                    border: '1px solid var(--border-color)',
+                    padding: '5px 10px',
+                    borderRadius: '999px',
+                    cursor: 'pointer',
+                    flexShrink: 0
+                  }}
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+
+            {/* Input Bar */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault()
+                handleSendChatMessage()
+              }}
+              style={{ padding: '10px 12px', background: 'var(--bg-page)', borderTop: '1px solid var(--border-color)', display: 'flex', gap: '8px' }}
+            >
+              <input
+                type="text"
+                placeholder={t.chatbot.placeholder}
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                style={{
+                  flex: 1,
+                  padding: '8px 12px',
+                  borderRadius: '10px',
+                  background: 'var(--bg-card)',
+                  border: '1px solid var(--border-color)',
+                  color: 'var(--text-main)',
+                  fontSize: '0.82rem',
+                  outline: 'none'
+                }}
+              />
+              <button
+                type="submit"
+                disabled={!chatInput.trim()}
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '10px',
+                  background: 'var(--accent-blue)',
+                  color: 'white',
+                  border: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: chatInput.trim() ? 'pointer' : 'default',
+                  opacity: chatInput.trim() ? 1 : 0.4
+                }}
+                aria-label="Göndər"
+              >
+                <Send size={15} />
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
+
     </div>
   )
 }
