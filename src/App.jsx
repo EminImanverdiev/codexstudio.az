@@ -1172,8 +1172,8 @@ export default function App() {
             <div style={{ width: '100%', height: '4px', background: '#080C14', border: '1px solid #162032', borderRadius: '999px', overflow: 'hidden' }}>
               <div style={{ height: '100%', background: '#0066FF', width: `${initialProgress}%`, boxShadow: '0 0 10px #0066FF', transition: 'width 0.1s ease' }} />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontFamily: 'monospace', color: '#9CA6B5' }}>
-              <span>{lang === 'az' ? 'YÜKLƏNİR...' : 'LOADING...'}</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', fontFamily: 'monospace', color: '#9CA6B5', letterSpacing: '0.08em', fontWeight: 600 }}>
+              <span>YÜKLƏNİR...</span>
               <span style={{ color: '#0066FF', fontWeight: 'bold' }}>{initialProgress}%</span>
             </div>
           </div>
