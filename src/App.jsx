@@ -960,7 +960,7 @@ export default function App() {
       }
       if (text.includes('email') || text.includes('mail') || text.includes('contact')) {
         return {
-          text: 'Official inquiries can be sent directly to emin.imanverdievv@gmail.com or via our inquiry form below!',
+          text: 'Official inquiries can be sent directly to info@codexstudio.az or support@codexstudio.az, or via our inquiry form below!',
           actionRoute: 'contact',
           actionLabel: 'Open inquiry form →'
         }
@@ -1002,7 +1002,7 @@ export default function App() {
 
     if (text.includes('email') || text.includes('məktub') || text.includes('poçt') || text.includes('əlaqə')) {
       return {
-        text: 'Rəsmi müraciətlərinizi emin.imanverdievv@gmail.com ünvanına göndərə və ya saytdakı müraciət formunu doldura bilərsiniz.',
+        text: 'Rəsmi müraciətlərinizi info@codexstudio.az və ya texniki dəstək üçün support@codexstudio.az ünvanına göndərə bilərsiniz.',
         actionRoute: 'contact',
         actionLabel: 'Əlaqə forması →'
       }
@@ -2529,7 +2529,11 @@ export default function App() {
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid var(--border-color)' }}>
                       <span style={{ color: 'var(--text-sub)' }}>{t.contact.emailLabel}</span>
-                      <a href="mailto:emin.imanverdievv@gmail.com" style={{ color: 'var(--accent-blue)', textDecoration: 'none', fontWeight: 'bold' }}>emin.imanverdievv@gmail.com</a>
+                      <a href="mailto:info@codexstudio.az" style={{ color: 'var(--accent-blue)', textDecoration: 'none', fontWeight: 'bold' }}>info@codexstudio.az</a>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid var(--border-color)' }}>
+                      <span style={{ color: 'var(--text-sub)' }}>{lang === 'az' ? 'Dəstək Emaili:' : 'Support Email:'}</span>
+                      <a href="mailto:support@codexstudio.az" style={{ color: 'var(--accent-blue)', textDecoration: 'none', fontWeight: 'bold' }}>support@codexstudio.az</a>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                       <span style={{ color: 'var(--text-sub)' }}>{t.contact.addressLabel}</span>
