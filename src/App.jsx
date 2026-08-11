@@ -1801,7 +1801,9 @@ export default function App() {
                           <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>
                             {lang === 'az' ? 'FƏRDİ PORTFEL & MÜHƏNDİS SAYTI' : 'PERSONAL PORTFOLIO & PLATFORM'}
                           </div>
-                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Emin İmanverdiyev — Şəxsi Sayt</h3>
+                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>
+                            {lang === 'az' ? 'Emin İmanverdiyev — Şəxsi Sayt' : 'Emin Imanverdiyev — Personal Site'}
+                          </h3>
                           <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>
                             {lang === 'az' ? 'Proqramlaşdırma layihələri, texnoloji həllər və əməkdaşlıq üçün fərdi platforma.' : 'Personal developer portfolio and tech projects showcase platform.'}
                           </p>
@@ -1814,7 +1816,9 @@ export default function App() {
                           <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>
                             {lang === 'az' ? 'BİZNES VƏ MÜƏSSİSƏ İDARƏETMƏ SİSTEMİ' : 'CUSTOM ENTERPRISE MANAGEMENT SYSTEM'}
                           </div>
-                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Encode Soft — İdarəetmə Portalı</h3>
+                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>
+                            {lang === 'az' ? 'Encode Soft — İdarəetmə Portalı' : 'Encode Soft — ERP Management Portal'}
+                          </h3>
                           <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>
                             {lang === 'az' ? 'Müəssisələr üçün anbar, satış, maliyyə, əməkdaşlar və proseslərin idarə olunması üçün fərdi bulud sistemi.' : 'Enterprise cloud management platform covering operations, sales, and analytics.'}
                           </p>
@@ -1827,7 +1831,9 @@ export default function App() {
                           <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>
                             {lang === 'az' ? 'KORPORATİV ŞİRKƏT PORTALI' : 'ENTERPRISE HEALTHCARE PORTAL'}
                           </div>
-                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>Sinaps Med — Tibbi Avadanlıq & Səhiyyə</h3>
+                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>
+                            {lang === 'az' ? 'Sinaps Med — Tibbi Avadanlıq & Səhiyyə' : 'Sinaps Med — Medical Equipment & Healthcare'}
+                          </h3>
                           <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>
                             {lang === 'az' ? 'Şirkətiniz və xidmətləriniz haqqında məlumatların peşəkar şəkildə təqdim edildiyi rəsmi sayt.' : 'Official enterprise healthcare portal presenting equipment catalogs and distribution services.'}
                           </p>
@@ -1840,7 +1846,9 @@ export default function App() {
                           <div style={{ fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--accent-blue)', marginBottom: '6px' }}>
                             {lang === 'az' ? 'ONLAYN ELAN VƏ ALQI-SATQI PLATFORMASI' : 'CLASSIFIED ADS & MARKETPLACE'}
                           </div>
-                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>JetEvimiz — Əmlak & Elan Portalı</h3>
+                          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '8px', lineHeight: 1.25 }}>
+                            {lang === 'az' ? 'JetEvimiz — Əmlak & Elan Portalı' : 'JetEvimiz — Real Estate & Marketplace'}
+                          </h3>
                           <p style={{ fontSize: '0.85rem', color: 'var(--text-sub)', lineHeight: 1.6, marginBottom: '18px' }}>
                             {lang === 'az' ? 'Tap.az tipli daşınmaz əmlak və alqı-satqı platforması. Kateqoriyalar üzrə axtarış, filtrasiya, istifadəçi kabineti və elan yerləşdirmə sistemi.' : 'Tap.az-style real estate and classified marketplace platform with smart filters and instant ad posting.'}
                           </p>
@@ -1849,7 +1857,7 @@ export default function App() {
                       )}
 
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border-color)', paddingTop: '12px', marginTop: '16px', fontSize: '0.72rem', color: 'var(--text-sub)' }}>
-                        <span>✓ 100% Mobil və Planşet Uyğun</span>
+                        <span>{lang === 'az' ? '✓ 100% Mobil və Planşet Uyğun' : '✓ 100% Mobile & Tablet Responsive'}</span>
                         <span style={{ color: 'var(--accent-blue)' }}>Codex Studio</span>
                       </div>
                     </div>
