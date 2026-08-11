@@ -1190,47 +1190,63 @@ export default function App() {
   const works = [
     {
       id: '01',
-      name: 'Emin İmanverdiyev — Şəxsi Portfel & Mühəndis Saytı',
+      name: lang === 'az'
+        ? 'Emin İmanverdiyev — Şəxsi Portfel & Mühəndis Saytı'
+        : 'Emin Imanverdiyev — Personal Portfolio & Engineer Website',
       type: lang === 'az' ? 'Fərdi portfel və təqdimat saytı' : 'Personal Portfolio & Presentation Site',
       desc: lang === 'az'
         ? 'Proqramlaşdırma layihələri, texnoloji stack, mühəndislik təcrübəsi və birbaşa əməkdaşlıq əlaqəsi üçün fərdi təqdimat platforması.'
         : 'Showcase of software engineering projects, tech stack, and direct collaboration contact.',
       url: 'https://eminimanverdiyev.site/',
       displayUrl: 'eminimanverdiyev.site',
-      tags: ['Fərdi sayt', 'Portfel platforması', 'Texnoloji layihələr', 'CV təqdimatı']
+      tags: lang === 'az'
+        ? ['Fərdi sayt', 'Portfel platforması', 'Texnoloji layihələr', 'CV təqdimatı']
+        : ['Personal site', 'Portfolio platform', 'Tech stack', 'CV presentation']
     },
     {
       id: '02',
-      name: 'Encode Soft — Biznes və Müəssisə İdarəetmə Sistemi',
+      name: lang === 'az'
+        ? 'Encode Soft — Biznes və Müəssisə İdarəetmə Sistemi'
+        : 'Encode Soft — Enterprise ERP & Cloud Management Platform',
       type: lang === 'az' ? 'Fərdi Veb Sistem & İdarəetmə Portalı' : 'Custom Enterprise & Business Management Portal',
       desc: lang === 'az'
         ? 'Müəssisələr üçün anbar, satış, maliyyə, əməkdaşlar və biznes proseslərinin idarə olunması üçün hazırlanmış fərdi idarəetmə və bulud sistemi.'
         : 'Cloud-based custom enterprise management platform covering warehouse, sales, finance, and operations.',
       url: 'https://app.encode-soft.com/',
       displayUrl: 'app.encode-soft.com',
-      tags: ['İdarəetmə sistemi', 'Anbar və Satış', 'Fərdi sistem', 'Bulud platforması']
+      tags: lang === 'az'
+        ? ['İdarəetmə sistemi', 'Anbar və Satış', 'Fərdi sistem', 'Bulud platforması']
+        : ['ERP system', 'Warehouse & Sales', 'Custom portal', 'Cloud platform']
     },
     {
       id: '03',
-      name: 'JetEvimiz — Əmlak & Onlayn Elan Portalı',
+      name: lang === 'az'
+        ? 'JetEvimiz — Əmlak & Onlayn Elan Portalı'
+        : 'JetEvimiz — Real Estate & Classified Marketplace',
       type: lang === 'az' ? 'E-ticarət və Onlayn Elan Platforması' : 'E-commerce & Classified Marketplace Platform',
       desc: lang === 'az'
         ? 'Tap.az tipli daşınmaz əmlak və alqı-satqı platforması. Kateqoriyalar üzrə rahat axtarış, filtrasiya, şəxsi istifadəçi kabineti və elan yerləşdirmə sistemi.'
         : 'Tap.az-style real estate and classified marketplace platform with smart filters, user dashboards, and instant ad posting.',
       url: 'https://jetevimiz.az',
       displayUrl: 'jetevimiz.az',
-      tags: ['Onlayn elanlar', 'Tap.az tipli portal', 'Axtarış və filtrlər', 'İstifadəçi kabineti']
+      tags: lang === 'az'
+        ? ['Onlayn elanlar', 'Tap.az tipli portal', 'Axtarış və filtrlər', 'İstifadəçi kabineti']
+        : ['Online classifieds', 'Marketplace portal', 'Search & filters', 'User dashboard']
     },
     {
       id: '04',
-      name: 'Sinaps Med — Tibbi Avadanlıq & Səhiyyə Şirkəti',
+      name: lang === 'az'
+        ? 'Sinaps Med — Tibbi Avadanlıq & Səhiyyə Şirkəti'
+        : 'Sinaps Med — Medical Equipment & Healthcare Solutions',
       type: lang === 'az' ? 'Korporativ şirkət saytı' : 'Corporate website development',
       desc: lang === 'az' 
         ? 'Tibbi avadanlıqlar, klinik məhsul kataloqu, distribütorluq və səhiyyə müəssisələri üçün çoxdilli rəsmi korporativ platforma.' 
         : 'Medical devices, clinical equipment catalog, distribution services, and enterprise healthcare platform.',
       url: 'https://sinapsmed.com',
       displayUrl: 'sinapsmed.com',
-      tags: ['Korporativ sayt', 'Məhsul kataloqu', 'Çoxdillilik', 'Partnyor əlaqələri']
+      tags: lang === 'az'
+        ? ['Korporativ sayt', 'Məhsul kataloqu', 'Çoxdillilik', 'Partnyor əlaqələri']
+        : ['Corporate website', 'Product catalog', 'Multilingual', 'Partner network']
     },
     {
       id: '05',
@@ -1241,7 +1257,9 @@ export default function App() {
         : 'Designer furniture and home decor catalog with instant filters, cart checkout, and bank card payments.',
       url: 'https://aurahome.codexstudio.az',
       displayUrl: 'aurahome.az',
-      tags: ['Onlayn mağaza', 'Səbət sistemi', 'Kartla ödəniş', 'Mobil uyğun dizayn']
+      tags: lang === 'az'
+        ? ['Onlayn mağaza', 'Səbət sistemi', 'Kartla ödəniş', 'Mobil uyğun dizayn']
+        : ['Online store', 'Cart system', 'Card payment', 'Mobile responsive']
     },
     {
       id: '06',
@@ -1252,7 +1270,9 @@ export default function App() {
         : 'Global shipping routes, warehousing capabilities, and multi-page structured corporate presentation.',
       url: 'https://vektor-holding.codexstudio.az',
       displayUrl: 'vektor-holding.az',
-      tags: ['Korporativ sayt', 'Xidmət kataloqu', 'Çoxdilli struktur', 'Sorğu sistemi']
+      tags: lang === 'az'
+        ? ['Korporativ sayt', 'Xidmət kataloqu', 'Çoxdilli struktur', 'Sorğu sistemi']
+        : ['Corporate website', 'Service catalog', 'Multilingual', 'Inquiry pipeline']
     }
   ]
 
