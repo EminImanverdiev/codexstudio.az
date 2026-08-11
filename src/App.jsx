@@ -613,6 +613,7 @@ const translations = {
       successDesc: 'Məlumatlar email poçtuna çatdırıldı.',
       confirmWhatsApp: 'WhatsApp ilə təsdiqləyin',
       mapTitle: 'Xəritədə yerləşməmiz: Bakı, Azərbaycan',
+      address: 'Bakı, Azərbaycan',
       captchaError: 'Zəhmət olmasa "Mən robot deyiləm" xanasını təsdiqləyin.'
     },
     chatbot: {
@@ -758,6 +759,7 @@ const translations = {
       successDesc: 'Your details have been delivered to our inbox.',
       confirmWhatsApp: 'Confirm via WhatsApp',
       mapTitle: 'Location on map: Baku, Azerbaijan',
+      address: 'Baku, Azerbaijan',
       captchaError: 'Please check "I am not a robot" box.'
     },
     chatbot: {
@@ -2565,7 +2567,7 @@ export default function App() {
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                       <span style={{ color: 'var(--text-sub)' }}>{t.contact.addressLabel}</span>
-                      <span style={{ color: 'var(--text-main)' }}>Bakı, Azərbaycan</span>
+                      <span style={{ color: 'var(--text-main)' }}>{t.contact.address}</span>
                     </div>
                   </div>
                 </div>
